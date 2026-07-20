@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مديان | إدارة ديون محلك أصبحت أسهل من أي وقت</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="سجل الديون، المدفوعات، أرصدة الزبائن، وتابع جميع التعاملات من هاتفك بطريقة احترافية وآمنة عبر تطبيق مديان المخصص لأصحاب المتاجر.">
+    <meta name="keywords" content="إدارة الديون, دفاتر المحلات, مديان, تطبيق ديون, حسابات العملاء, أصحاب المتاجر">
+    <meta name="author" content="Madyan Team">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="مديان - إدارة ديون محلك بأمان وسهولة">
+    <meta property="og:description" content="سجل الديون، المدفوعات، أرصدة الزبائن، وتابع جميع التعاملات من هاتفك بطريقة احترافية وآمنة.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ar_AR">
+
+    <!-- Google Fonts: Tajawal & Material Symbols -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <!-- Embedded CSS Styles -->
+    <style>
+        :root {
+            --primary: #2563EB;
+            --primary-dark: #1D4ED8;
+            --primary-light: #EFF6FF;
+            --bg: #F8FAFC;
+            --surface: #FFFFFF;
+            --text-main: #0F172A;
+            --text-secondary: #64748B;
+            --positive: #22C55E;
+            --positive-bg: #F0FDF4;
+            --negative: #EF4444;
+            --negative-bg: #FEF2F2;
+            --border: #E2E8F0;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-sm: 10px;
+            --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+            --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.08);
+            --shadow-lg: 0 25px 50px -12px rgba(15, 23, 42, 0.15);
+            --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Dark Mode Configuration */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary: #3B82F6;
+                --primary-dark: #2563EB;
+                --primary-light: #1E293B;
+                --bg: #090D16;
+                --surface: #111827;
+                --text-main: #F8FAFC;
+                --text-secondary: #94A3B8;
+                --border: #1E293B;
+                --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+                --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+                --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Utility classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatPhone {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-12px) rotate(0.5deg);
+            }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .fade-in-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Navbar */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            header {
+                background: rgba(17, 24, 39, 0.85);
+            }
+        }
+
+        .nav-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 900;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 15px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-light);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg-shapes {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1000px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(37,99,235,0.08) 0%, rgba(248,250,252,0) 70%);
+            z-index: -1;
+            pointer-events: none;
+            animation: pulseGlow 6s ease-in-out infinite;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background-color: var(--primary-light);
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            width: fit-content;
+            border: 1px solid rgba(37, 99, 235, 0.15);
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: 900;
+            line-height: 1.25;
+            color: var(--text-main);
+            letter-spacing: -1px;
+        }
+
+        .hero-desc {
+            font-size: 18px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 520px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            margin-top: 8px;
+        }
+
+        /* Android Phone Mockup */
+        .phone-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .android-phone {
+            width: 320px;
+            height: 650px;
+            background: #111;
+            border-radius: 44px;
+            padding: 14px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            animation: floatPhone 5s ease-in-out infinite;
+            border: 3px solid #333;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: var(--surface);
+            border-radius: 34px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            border: 1px solid var(--border);
+        }
+
+        /* Notch / Camera Punchhole */
+        .phone-notch {
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90px;
+            height: 18px;
+            background: #111;
+            border-radius: 10px;
+            z-index: 50;
+        }
+
+        /* App Mockup UI */
+        .app-header {
+            background: var(--primary);
+            color: #fff;
+            padding: 36px 16px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .app-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .app-title {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .app-balance-box {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 10px 14px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .app-balance-box span {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .app-balance-box strong {
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .app-body {
+            padding: 12px;
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: var(--bg);
+        }
+
+        .mock-customer-card {
+            background: var(--surface);
+            padding: 12px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .cust-info h4 {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .cust-info p {
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        .cust-amount {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--negative);
+        }
+
+        .cust-amount.positive {
+            color: var(--positive);
+        }
+
+        .fab-mock {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(37,99,235,0.4);
+            font-size: 24px;
+        }
+
+        /* Features Section */
+        .section-header {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            color: var(--text-main);
+        }
+
+        .section-desc {
+            font-size: 16px;
+            color: var(--text-secondary);
+        }
+
+        .features-section {
+            padding: 100px 0;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+            background: var(--surface);
+        }
+
+        .feature-icon-box {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-sm);
+            background: var(--primary-light);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Ledger Preview Section */
+        .ledger-section {
+            padding: 120px 0;
+        }
+
+        .ledger-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .ledger-table-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .ledger-table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .ledger-table-header h4 {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .custom-ledger-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: right;
+        }
+
+        .custom-ledger-table th {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            padding: 12px 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .custom-ledger-table td {
+            font-size: 14px;
+            padding: 16px 8px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-main);
+        }
+
+        .custom-ledger-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .amount-green {
+            color: var(--positive);
+            font-weight: 700;
+        }
+
+        .amount-red {
+            color: var(--negative);
+            font-weight: 700;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .status-badge.paid {
+            background: var(--positive-bg);
+            color: var(--positive);
+        }
+
+        .status-badge.debt {
+            background: var(--negative-bg);
+            color: var(--negative);
+        }
+
+        /* Why Madyan (Comparison) Section */
+        .comparison-section {
+            padding: 100px 0;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .comparison-table-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .comp-header, .comp-row {
+            display: grid;
+            grid-template-columns: 2fr 1.5fr 1.5fr;
+            padding: 20px 24px;
+            align-items: center;
+        }
+
+        .comp-header {
+            background: var(--primary-light);
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--text-main);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .comp-row {
+            border-bottom: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .comp-row:hover {
+            background: var(--surface);
+        }
+
+        .comp-row:last-child {
+            border-bottom: none;
+        }
+
+        .feature-name {
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        .bad-item {
+            color: var(--negative);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .good-item {
+            color: var(--positive);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Statistics Section */
+        .stats-section {
+            padding: 80px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 40px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Screenshots Showcase Section */
+        .showcase-section {
+            padding: 120px 0;
+            background: var(--bg);
+            overflow: hidden;
+        }
+
+        .showcase-row {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            perspective: 1000px;
+            margin-top: 50px;
+        }
+
+        .mockup-item {
+            width: 260px;
+            height: 520px;
+            background: #111;
+            border-radius: 36px;
+            padding: 12px;
+            box-shadow: var(--shadow-lg);
+            border: 2px solid #333;
+            transition: var(--transition);
+        }
+
+        .mockup-item:nth-child(1) {
+            transform: rotateY(15deg) translateY(20px);
+        }
+
+        .mockup-item:nth-child(2) {
+            transform: translateY(-10px);
+            z-index: 10;
+        }
+
+        .mockup-item:nth-child(3) {
+            transform: rotateY(-15deg) translateY(20px);
+        }
+
+        .mockup-item:hover {
+            transform: rotateY(0deg) translateY(-15px) scale(1.03);
+            z-index: 20;
+        }
+
+        .mockup-screen {
+            width: 100%;
+            height: 100%;
+            background: var(--surface);
+            border-radius: 26px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mockup-header-bar {
+            background: var(--primary);
+            color: #fff;
+            padding: 24px 12px 10px;
+            font-size: 13px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .mockup-content {
+            padding: 12px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 100px 0;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .stars {
+            display: flex;
+            gap: 4px;
+            color: #F59E0B;
+            font-size: 18px;
+        }
+
+        .testimonial-text {
+            font-size: 15px;
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: auto;
+        }
+
+        .client-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #cbd5e1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #475569;
+            font-size: 15px;
+        }
+
+        .client-details h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .client-details p {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 120px 0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .faq-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .faq-question {
+            padding: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text-main);
+            cursor: pointer;
+        }
+
+        .faq-question span.material-symbols-outlined {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-question span.material-symbols-outlined {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            padding: 0 24px;
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding: 0 24px 24px;
+        }
+
+        /* Download CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-title {
+            font-size: 40px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+
+        .cta-desc {
+            font-size: 18px;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        .cta-actions {
+            display: flex;
+            gap: 16px;
+            margin-top: 10px;
+        }
+
+        .btn-white {
+            background: #fff;
+            color: var(--primary);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-white:hover {
+            background: var(--bg);
+            color: var(--primary-dark);
+        }
+
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            padding-top: 30px;
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-grid, .ledger-container {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            .hero-content {
+                text-align: center;
+                align-items: center;
+            }
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .stats-grid, .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            .showcase-row {
+                flex-direction: column;
+                align-items: center;
+            }
+            .mockup-item:nth-child(1), .mockup-item:nth-child(3) {
+                transform: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero-title {
+                font-size: 34px;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .comp-header, .comp-row {
+                grid-template-columns: 1.5fr 1fr 1fr;
+                font-size: 13px;
+                padding: 14px 16px;
+            }
+            .footer-content {
+                flex-direction: column;
+                gap: 24px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header>
+        <div class="container nav-content">
+            <a href="#" class="logo-container">
+                <div class="logo-icon">م</div>
+                <span class="logo-text">مديان</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">المميزات</a></li>
+                <li><a href="#ledger">دفتر الحسابات</a></li>
+                <li><a href="#comparison">لماذا مديان</a></li>
+                <li><a href="#testimonials">آراء العملاء</a></li>
+                <li><a href="#faq">الأسئلة الشائعة</a></li>
+            </ul>
+            <a href="#download" class="btn btn-primary">
+                <span class="material-symbols-outlined">download</span>
+                تحميل التطبيق
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg-shapes"></div>
+        <div class="container hero-grid">
+            <div class="hero-content fade-in-up">
+                <div class="badge-pill">
+                    <span class="material-symbols-outlined" style="font-size: 16px;">verified</span>
+                    التطبيق الأول لأصحاب المتاجر في العالم العربي
+                </div>
+                <h1 class="hero-title">إدارة ديون محلك أصبحت أسهل من أي وقت</h1>
+                <p class="hero-desc">سجل الديون، المدفوعات، أرصدة الزبائن، وتابع جميع التعاملات من هاتفك بطريقة احترافية وآمنة بالكامل.</p>
+                <div class="hero-actions">
+                    <a href="#download" class="btn btn-primary">
+                        <span class="material-symbols-outlined">android</span>
+                        تحميل التطبيق
+                    </a>
+                    <a href="#features" class="btn btn-secondary">
+                        معرفة المزيد
+                    </a>
+                </div>
+            </div>
+
+            <div class="phone-wrapper fade-in-up">
+                <div class="android-phone">
+                    <div class="phone-notch"></div>
+                    <div class="phone-screen">
+                        <div class="app-header">
+                            <div class="app-top-row">
+                                <span class="app-title">محل التوفيق للسلع</span>
+                                <span class="material-symbols-outlined" style="font-size: 20px;">notifications</span>
+                            </div>
+                            <div class="app-balance-box">
+                                <div>
+                                    <span>إجمالي الديون المعلقة</span><br>
+                                    <strong>١,٤٥0,000 د.ع</strong>
+                                </div>
+                                <span class="material-symbols-outlined" style="font-size: 24px; color: #93C5FD;">account_balance_wallet</span>
+                            </div>
+                        </div>
+                        <div class="app-body">
+                            <div style="font-size: 11px; font-weight: 700; color: var(--text-secondary); margin-top: 4px;">الزبائن الأنشط</div>
+                            
+                            <div class="mock-customer-card">
+                                <div class="cust-info">
+                                    <h4>أحمد محمد علي</h4>
+                                    <p>آخر معاملة: أمس</p>
+                                </div>
+                                <div class="cust-amount">٢٥0,000 د.ع</div>
+                            </div>
+
+                            <div class="mock-customer-card">
+                                <div class="cust-info">
+                                    <h4>محمد حسن كريم</h4>
+                                    <p>آخر معاملة: قبل 3 أيام</p>
+                                </div>
+                                <div class="cust-amount positive">تم السداد</div>
+                            </div>
+
+                            <div class="mock-customer-card">
+                                <div class="cust-info">
+                                    <h4>حسين كاظم جاسم</h4>
+                                    <p>آخر معاملة: الأسبوع الماضي</p>
+                                </div>
+                                <div class="cust-amount">١٢0,000 د.ع</div>
+                            </div>
+                        </div>
+                        <div class="fab-mock">
+                            <span class="material-symbols-outlined">add</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <div class="badge-pill" style="margin: 0 auto;">مميزات متقدمة</div>
+                <h2 class="section-title">صُمم خصيصاً ليناسب طبيعة عملك التجاري</h2>
+                <p class="section-desc">كل ما تحتاجه لتنظيم حسابات محلك، بعيداً عن الدفاتر الورقية المعقدة والأخطاء الحسابية.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon-box">
+                        <span class="material-symbols-outlined">group</span>
+                    </div>
+                    <h3>إدارة الزبائن</h3>
+                    <p>أضف زبائنك بسهولة، تتبع أرصدتهم المالية، واحتفظ بسجل تفصيلي لكافة أسمائهم ومعلومات التواصل.</p>
+                </div>
+
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon-box">
+                        <span class="material-symbols-outlined">receipt_long</span>
+                    </div>
+                    <h3>سجل المعاملات</h3>
+                    <p>سجل المبيعات والمدفوعات بدقة متناهية مع معرفة فورية لمن له الحق ومن عليه الدين لحظة بلحظة.</p>
+                </div>
+
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon-box">
+                        <span class="material-symbols-outlined">cloud_sync</span>
+                    </div>
+                    <h3>مزامنة آمنة</h3>
+                    <p>بياناتك محفوظة بأعلى معايير التشفير السحابي، لا تقلق من ضياع الدفاتر أو تلف الهواتف بعد اليوم.</p>
+                </div>
+
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon-box">
+                        <span class="material-symbols-outlined">translate</span>
+                    </div>
+                    <h3>واجهة عربية كاملة</h3>
+                    <p>تصميم متوافق تماماً مع اللغة العربية (RTL) وسهل الاستخدام لا يتطلب أي خبرة محاسبية مسبقة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ledger Preview Section -->
+    <section id="ledger" class="ledger-section">
+        <div class="container ledger-container">
+            <div class="ledger-content fade-in-up">
+                <div class="badge-pill">تجربة مستخدم سلسة</div>
+                <h2 class="section-title">دفتر حسابات رقمي بين يديك</h2>
+                <p class="section-desc">شاهد كيف تبدو المعاملات واضحة ومرتبة. تتبع المبالغ الواردة والصادرة بترميز لوني ذكي يوضح الحالة المالية لكل زبون بلمظة واحدة.</p>
+            </div>
+
+            <div class="ledger-table-card fade-in-up">
+                <div class="ledger-table-header">
+                    <h4>سجل تعاملات الزبون: أحمد محمد</h4>
+                    <span class="material-symbols-outlined" style="color: var(--primary);">filter_list</span>
+                </div>
+                <table class="custom-ledger-table">
+                    <thead>
+                        <tr>
+                            <th>التاريخ</th>
+                            <th>الملاحظة</th>
+                            <th>المبلغ</th>
+                            <th>الحالة</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>18 يوليو 2026</td>
+                            <td>شراء بضاعة (مواد غذائية)</td>
+                            <td><span class="amount-red">- ٧٥,000 د.ع</span></td>
+                            <td><span class="status-badge debt">دين جديد</span></td>
+                        </tr>
+                        <tr>
+                            <td>12 يوليو 2026</td>
+                            <td>دفعة نقدية مسددة</td>
+                            <td><span class="amount-green">+ 100,000 د.ع</span></td>
+                            <td><span class="status-badge paid">تم السداد</span></td>
+                        </tr>
+                        <tr>
+                            <td>05 يوليو 2026</td>
+                            <td>فاتورة مواد تنظيف</td>
+                            <td><span class="amount-red">- ٤0,000 د.ع</span></td>
+                            <td><span class="status-badge debt">دين جديد</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section id="comparison" class="comparison-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <div class="badge-pill" style="margin: 0 auto;">لماذا مديان؟</div>
+                <h2 class="section-title">الفرق الواضح بين الدفتر التقليدي ومديان</h2>
+                <p class="section-desc">قارن بنفسك واختر الطريقة الأكثر ذكاءً وأماناً لإدارة أموال محلك.</p>
+            </div>
+
+            <div class="comparison-table-wrapper fade-in-up">
+                <div class="comp-header">
+                    <div>المعيار</div>
+                    <div style="color: var(--negative);">الدفتـر التقليدي ❌</div>
+                    <div style="color: var(--primary);">تطبيق مديان ✅</div>
+                </div>
+                <div class="comp-row">
+                    <div class="feature-name">سهولة البحث عن زبون</div>
+                    <div class="bad-item"><span>✗</span> تقليب صفحات بطيء</div>
+                    <div class="good-item"><span>✓</span> بحث فوري بالاسم أو الرقم</div>
+                </div>
+                <div class="comp-row">
+                    <div class="feature-name">النسخ الاحتياطي للبيانات</div>
+                    <div class="bad-item"><span>✗</span> غير متوفر (عرضة للتلف)</div>
+                    <div class="good-item"><span>✓</span> آمن ومشفر سحابياً</div>
+                </div>
+                <div class="comp-row">
+                    <div class="feature-name">سرعة تسجيل العمليات</div>
+                    <div class="bad-item"><span>✗</span> كتابة يدوية متعبة</div>
+                    <div class="good-item"><span>✓</span> تسجيل بثوانٍ معدودة</div>
+                </div>
+                <div class="comp-row">
+                    <div class="feature-name">إدارة العملاء والديون</div>
+                    <div class="bad-item"><span>✗</span> حسابات ذهنية أو ورقية</div>
+                    <div class="good-item"><span>✓</span> تقارير وأرصدة تلقائية</div>
+                </div>
+                <div class="comp-row">
+                    <div class="feature-name">الأمان والخصوصية</div>
+                    <div class="bad-item"><span>✗</span> متاح لأي شخص يمسك الدفتر</div>
+                    <div class="good-item"><span>✓</span> محمي برمز مرور وتشفير</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card fade-in-up">
+                    <div class="stat-number" data-target="10000" data-suffix="+">0</div>
+                    <div class="stat-label">عملية تسجيل ناجحة</div>
+                </div>
+                <div class="stat-card fade-in-up">
+                    <div class="stat-number" data-target="500" data-suffix="+">0</div>
+                    <div class="stat-label">متجر يعتمد على التطبيق</div>
+                </div>
+                <div class="stat-card fade-in-up">
+                    <div class="stat-number" data-target="99" data-suffix="%">0</div>
+                    <div class="stat-label">رضا المستخدمين</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Showcase Section -->
+    <section class="showcase-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <div class="badge-pill" style="margin: 0 auto;">نظرة من داخل التطبيق</div>
+                <h2 class="section-title">واجهات أنيقة صُممت بعناية فائقة</h2>
+                <p class="section-desc">تعرف على شاشات التطبيق الرئيسية التي تضمن لك راحة البال وسهولة التحكم.</p>
+            </div>
+
+            <div class="showcase-row">
+                <!-- Screen 1: Login -->
+                <div class="mockup-item fade-in-up">
+                    <div class="mockup-screen">
+                        <div class="mockup-header-bar">تسجيل الدخول</div>
+                        <div class="mockup-content">
+                            <div style="text-align: center; margin: 20px 0; font-weight: 700; color: var(--text-main); font-size: 14px;">مرحباً بك في مديان</div>
+                            <div style="background: var(--bg); padding: 10px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 8px;">رقم الهاتف المحمول</div>
+                            <div style="background: var(--primary); color: #fff; padding: 10px; border-radius: 8px; text-align: center; font-weight: 700;">دخول آمن</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Screen 2: Customer List -->
+                <div class="mockup-item fade-in-up">
+                    <div class="mockup-screen">
+                        <div class="mockup-header-bar">قائمة الزبائن</div>
+                        <div class="mockup-content">
+                            <div class="mock-customer-card" style="padding: 8px;">
+                                <div class="cust-info">
+                                    <h4 style="font-size: 11px;">علي عبد الله</h4>
+                                </div>
+                                <div class="cust-amount" style="font-size: 11px;">٥0,000</div>
+                            </div>
+                            <div class="mock-customer-card" style="padding: 8px;">
+                                <div class="cust-info">
+                                    <h4 style="font-size: 11px;">مهدي صالح</h4>
+                                </div>
+                                <div class="cust-amount positive" style="font-size: 11px;">مخلص</div>
+                            </div>
+                            <div class="mock-customer-card" style="padding: 8px;">
+                                <div class="cust-info">
+                                    <h4 style="font-size: 11px;">خالد الراشد</h4>
+                                </div>
+                                <div class="cust-amount" style="font-size: 11px;">١٢0,000</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Screen 3: Ledger -->
+                <div class="mockup-item fade-in-up">
+                    <div class="mockup-screen">
+                        <div class="mockup-header-bar">تفاصيل الحساب</div>
+                        <div class="mockup-content">
+                            <div style="background: var(--primary-light); padding: 10px; border-radius: 8px; text-align: center;">
+                                <span style="font-size: 10px; color: var(--primary);">الرصيد الكلي</span>
+                                <div style="font-size: 14px; font-weight: 700; color: var(--primary);">- ١٧0,000 د.ع</div>
+                            </div>
+                            <div style="font-size: 10px; font-weight: 700; margin-top: 4px;">آخر العمليات</div>
+                            <div style="background: var(--surface); padding: 8px; border-radius: 6px; border: 1px solid var(--border); font-size: 10px;">
+                                شراء بضاعة - ٧0,000 د.ع
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <div class="badge-pill" style="margin: 0 auto;">قصص نجاح</div>
+                <h2 class="section-title">ماذا يقول أصحاب المتاجر عن مديان؟</h2>
+                <p class="section-desc">شهادات حقيقية من أشخاص غيروا طريقة إدارة أعمالهم نحو الأفضل.</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in-up">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"التطبيق أنقذني من ضياع حسابات الزبائن. كنت أعتمد على الدفتر الورقي وضاعت علي مبالغ كثيرة، أما الآن فكل شيء مسجل بدقة ولا أواجه أي مشكلة."</p>
+                    <div class="client-info">
+                        <div class="client-avatar">ر</div>
+                        <div class="client-details">
+                            <h4>رائد التميمي</h4>
+                            <p>صاحب محل مواد بناء</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in-up">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"أفضل تطبيق عربي لإدارة الديون جربته. الواجهة جداً بسيطة وسريعة، والزبائن صاروا يثقون بالحسابات الإلكترونية الواضحة أكثر."</p>
+                    <div class="client-info">
+                        <div class="client-avatar">ع</div>
+                        <div class="client-details">
+                            <h4>عمار الخفاجي</h4>
+                            <p>صاحب متجر مواد غذائية</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in-up">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"المزامنة الآمنة ميزة رائعة جداً. قمت بتغيير هاتفي واستعدت كافة البيانات بثوانٍ معدودة. أنصح كل صاحب محل بتحميله فوراً."</p>
+                    <div class="client-info">
+                        <div class="client-avatar">س</div>
+                        <div class="client-details">
+                            <h4>سعد العبيدي</h4>
+                            <p>تاجر أدوات منزلية</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <div class="badge-pill" style="margin: 0 auto;">الأسئلة الشائعة</div>
+                <h2 class="section-title">إجابات على أبرز استفساراتك</h2>
+                <p class="section-desc">كل ما تحتاج لمعرفته حول استخدام تطبيق مديان وكيفية الحفاظ على بياناتك.</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item fade-in-up">
+                    <div class="faq-question">
+                        <span>هل التطبيق مجاني؟</span>
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </div>
+                    <div class="faq-answer">
+                        نعم، يوفر تطبيق مديان نسخة أساسية مجانية بالكامل تتضمن كافة الميزات الرئيسية التي يحتاجها أي صاحب محل لإدارة ديونه وأرصدة زبائنه بكفاءة.
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in-up">
+                    <div class="faq-question">
+                        <span>هل يعمل بدون إنترنت؟</span>
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </div>
+                    <div class="faq-answer">
+                        نعم! يمكنك تسجيل المعاملات والديون والاطلاع على حسابات الزبائن حتى في حال عدم توفر اتصال بالإنترنت، وسيتم مزامنة البيانات تلقائياً بمجرد اتصالك بالشبكة.
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in-up">
+                    <div class="faq-question">
+                        <span>كيف يتم حفظ البيانات؟</span>
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </div>
+                    <div class="faq-answer">
+                        تُحفظ بياناتك بشكل مشفر وآمن بالكامل على خوادم سحابية عالية الحماية، مما يضمن عدم ضياعها نهائياً حتى لو تعرض هاتفك للتلف أو الضياع.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="cta-section">
+        <div class="container cta-content fade-in-up">
+            <h2 class="cta-title">ابدأ بتنظيم ديون محلك اليوم</h2>
+            <p class="cta-desc">انضم إلى آلاف أصحاب المتاجر الذين اعتمدوا على مديان لتأمين حساباتهم وتوفير وقتهم الثمين.</p>
+            <div class="cta-actions">
+                <a href="#" class="btn btn-white">
+                    <span class="material-symbols-outlined">download</span>
+                    تحميل التطبيق
+                </a>
+                <a href="#faq" class="btn btn-glass">
+                    تواصل معنا
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <a href="#" class="logo-container">
+                    <div class="logo-icon">م</div>
+                    <span class="logo-text">مديان</span>
+                </a>
+                <ul class="footer-links">
+                    <li><a href="#features">المميزات</a></li>
+                    <li><a href="#ledger">الحسابات</a></li>
+                    <li><a href="#faq">الأسئلة الشائعة</a></li>
+                    <li><a href="#">سياسة الخصوصية</a></li>
+                    <li><a href="#">شروط الاستخدام</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                جميع الحقوق محفوظة لتطبيق مديان &copy; 2026
+            </div>
+        </div>
+    </footer>
+
+    <!-- Embedded JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Intersection Observer for scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries, observerInstance) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        
+                        // Trigger counter animation if element has counter
+                        const counters = entry.target.querySelectorAll('.stat-number');
+                        counters.forEach(counter => {
+                            if (!counter.classList.contains('counted')) {
+                                startCounter(counter);
+                                counter.classList.add('counted');
+                            }
+                        });
+
+                        observerInstance.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in-up').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Animated Counters Function
+            function startCounter(el) {
+                const target = parseInt(el.getAttribute('data-target'));
+                const suffix = el.getAttribute('data-suffix') || '';
+                let current = 0;
+                const duration = 2000; // 2 seconds
+                const stepTime = 20;
+                const steps = duration / stepTime;
+                const increment = target / steps;
+
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        el.textContent = target.toLocaleString() + suffix;
+                        clearInterval(timer);
+                    } else {
+                        el.textContent = Math.floor(current).toLocaleString() + suffix;
+                    }
+                }, stepTime);
+            }
+
+            // FAQ Accordion functionality
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all
+                    faqItems.forEach(other => other.classList.remove('active'));
+                    
+                    // Toggle current if it wasn't active
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+
+            // Button Ripple effect
+            document.querySelectorAll('.btn').forEach(button => {
+                button.addEventListener('click', function (e) {
+                    const x = e.clientX - e.target.getBoundingClientRect().left;
+                    const y = e.clientY - e.target.getBoundingClientRect().top;
+                    
+                    const ripple = document.createElement('span');
+                    ripple.style.position = 'absolute';
+                    ripple.style.left = x + 'px';
+                    ripple.style.top = y + 'px';
+                    ripple.style.width = '0px';
+                    ripple.style.height = '0px';
+                    ripple.style.borderRadius = '50%';
+                    ripple.style.background = 'rgba(255, 255, 255, 0.4)';
+                    ripple.style.transform = 'translate(-50%, -50%)';
+                    ripple.style.transition = 'width 0.5s ease, height 0.5s ease, opacity 0.5s ease';
+                    ripple.style.pointerEvents = 'none';
+                    
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.style.width = '200px';
+                        ripple.style.height = '200px';
+                        ripple.style.opacity = '0';
+                    }, 20);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 500);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
