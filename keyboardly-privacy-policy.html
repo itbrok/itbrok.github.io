@@ -1,17 +1,598 @@
-<h1 id="privacy-policy-for-keyboardly">Privacy Policy for Keyboardly</h1>
-<p>Effective Date: July 2026</p>
-<p>At Keyboardly, we take your privacy incredibly seriously.</p>
-<h2 id="1-local-first-storage">1. Local-First Storage</h2>
-<p>Keyboardly is designed to be fully local-first. All block content, descriptions, color tags, custom JavaScript scripts, options, and usage statistics are stored exclusively inside your local Google Chrome profile using the <code>chrome.storage.local</code> API.</p>
-<h2 id="2-no-external-server-communications">2. No External Server Communications</h2>
-<p>Keyboardly does not communicate with external servers. No telemetry, statistics, usage analytics, personal identifiers, or block contents are transmitted outside your local browser environment.</p>
-<h2 id="3-principle-of-least-privilege">3. Principle of Least Privilege</h2>
-<p>The extension requests only the minimum required permissions to function correctly:</p>
-<ul>
-<li><code>storage</code>: Saved local block mapping values.</li>
-<li><code>scripting</code>: Runs developer script snippets locally.</li>
-<li><code>clipboardRead</code>: Provides selection content fallbacks.</li>
-<li><code>activeTab</code>: Targets scripts and content insertion solely to pages you explicitly trigger Keyboardly on.</li>
-</ul>
-<h2 id="4-updates-policy-changes">4. Updates &amp; Policy Changes</h2>
-<p>We reserve the right to update this policy if required by Google Chrome Web Store guidelines. Any updates will maintain our core promise: we do not collect, monetize, or transmit your personal text data.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Keyboardly Privacy Policy</title>
+
+    <meta
+        name="description"
+        content="Keyboardly Privacy Policy. Learn how Keyboardly handles your data, permissions, local storage, clipboard content, and JavaScript Blocks."
+    >
+
+    <style>
+        :root {
+            color-scheme: dark;
+
+            --background: #111714;
+            --surface: #19211d;
+            --surface-hover: #202b26;
+            --border: rgba(255, 255, 255, 0.09);
+
+            --text-primary: #f1f5f2;
+            --text-secondary: #a8b5ae;
+            --text-muted: #78877f;
+
+            --accent: #7fc9a7;
+            --accent-dark: #274c44;
+
+            --max-width: 860px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at 50% -10%,
+                    rgba(70, 125, 103, 0.18),
+                    transparent 40%
+                ),
+                var(--background);
+
+            color: var(--text-primary);
+
+            font-family:
+                Inter,
+                ui-sans-serif,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            line-height: 1.7;
+        }
+
+        .container {
+            width: min(
+                calc(100% - 40px),
+                var(--max-width)
+            );
+
+            margin: 0 auto;
+        }
+
+        header {
+            padding: 80px 0 56px;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+
+            margin-bottom: 28px;
+
+            color: var(--text-primary);
+
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .brand-mark {
+            display: grid;
+            place-items: center;
+
+            width: 38px;
+            height: 38px;
+
+            border-radius: 11px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #467a64,
+                    #274c44
+                );
+
+            color: white;
+
+            font-size: 18px;
+            font-weight: 800;
+
+            box-shadow:
+                0 8px 30px rgba(39, 76, 68, 0.3);
+        }
+
+        h1 {
+            max-width: 720px;
+
+            margin: 0 0 18px;
+
+            font-size: clamp(36px, 6vw, 58px);
+            line-height: 1.05;
+            letter-spacing: -0.055em;
+        }
+
+        .intro {
+            max-width: 680px;
+
+            margin: 0;
+
+            color: var(--text-secondary);
+
+            font-size: 18px;
+        }
+
+        .updated {
+            display: inline-block;
+
+            margin-top: 24px;
+
+            color: var(--text-muted);
+
+            font-size: 14px;
+        }
+
+        main {
+            padding: 56px 0 100px;
+        }
+
+        section {
+            margin-bottom: 48px;
+        }
+
+        h2 {
+            margin: 0 0 16px;
+
+            color: var(--text-primary);
+
+            font-size: 25px;
+            line-height: 1.25;
+            letter-spacing: -0.03em;
+        }
+
+        h3 {
+            margin: 28px 0 10px;
+
+            color: var(--text-primary);
+
+            font-size: 17px;
+        }
+
+        p {
+            margin: 0 0 16px;
+
+            color: var(--text-secondary);
+        }
+
+        ul {
+            margin: 16px 0;
+            padding-left: 24px;
+
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        strong {
+            color: var(--text-primary);
+            font-weight: 650;
+        }
+
+        .card {
+            padding: 24px;
+
+            border: 1px solid var(--border);
+            border-radius: 16px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255, 255, 255, 0.045),
+                    rgba(255, 255, 255, 0.018)
+                );
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            border-left: 3px solid var(--accent);
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        code {
+            padding: 3px 7px;
+
+            border: 1px solid var(--border);
+            border-radius: 6px;
+
+            background: rgba(255, 255, 255, 0.05);
+
+            color: var(--accent);
+
+            font-family:
+                "SFMono-Regular",
+                Consolas,
+                "Liberation Mono",
+                monospace;
+
+            font-size: 0.9em;
+        }
+
+        footer {
+            padding: 32px 0 48px;
+
+            border-top: 1px solid var(--border);
+
+            color: var(--text-muted);
+
+            font-size: 14px;
+        }
+
+        footer p {
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: min(
+                    calc(100% - 28px),
+                    var(--max-width)
+                );
+            }
+
+            header {
+                padding: 52px 0 40px;
+            }
+
+            main {
+                padding: 40px 0 70px;
+            }
+
+            section {
+                margin-bottom: 40px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+
+            <div class="brand">
+                <div class="brand-mark">K</div>
+                <span>Keyboardly</span>
+            </div>
+
+            <h1>Privacy Policy</h1>
+
+            <p class="intro">
+                Keyboardly is designed to help you work faster without sending
+                your personal Blocks, clipboard content, or browsing activity
+                to external servers.
+            </p>
+
+            <span class="updated">
+                Last updated: July 21, 2026
+            </span>
+
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+
+            <section>
+                <h2>1. Overview</h2>
+
+                <p>
+                    Keyboardly is a keyboard-first productivity extension for
+                    Google Chrome. It allows users to create reusable Blocks
+                    containing text, URLs, and user-configured JavaScript
+                    actions, then access them through a keyboard-driven command
+                    palette.
+                </p>
+
+                <p>
+                    This Privacy Policy explains what information Keyboardly
+                    accesses, how that information is used, and how it is
+                    stored.
+                </p>
+
+                <div class="card highlight">
+                    <p>
+                        <strong>In short:</strong> Keyboardly is designed as a
+                        local-first extension. Your Blocks, settings, and
+                        locally generated usage statistics are stored in your
+                        browser. Keyboardly does not operate a remote backend
+                        that collects or stores your personal Block data.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>2. Information Stored by Keyboardly</h2>
+
+                <p>
+                    Keyboardly may store the following information locally in
+                    your browser using the Chrome Storage API:
+                </p>
+
+                <ul>
+                    <li>Block IDs and titles.</li>
+                    <li>Block content.</li>
+                    <li>Block types, such as Text, URL, or JavaScript.</li>
+                    <li>Tags, labels, colors, and organization settings.</li>
+                    <li>Extension preferences and configuration.</li>
+                    <li>Locally calculated Block usage statistics.</li>
+                    <li>Keyboard and interface preferences.</li>
+                </ul>
+
+                <p>
+                    This information is stored using Chrome's local extension
+                    storage and is not transmitted to Keyboardly-operated
+                    servers.
+                </p>
+            </section>
+
+            <section>
+                <h2>3. Clipboard Data</h2>
+
+                <p>
+                    Keyboardly may access the current clipboard contents when
+                    you explicitly use the feature that creates a Block from
+                    clipboard content.
+                </p>
+
+                <p>
+                    This may occur when no text is selected and you explicitly
+                    invoke the save-to-Block workflow.
+                </p>
+
+                <p>
+                    Clipboard content is used only to create or update a Block
+                    requested by you. Keyboardly does not continuously monitor
+                    your clipboard and does not transmit clipboard content to
+                    external servers.
+                </p>
+            </section>
+
+            <section>
+                <h2>4. Webpage Access</h2>
+
+                <p>
+                    Keyboardly requires access to webpages to provide its core
+                    functionality.
+                </p>
+
+                <p>
+                    When you use Keyboardly, the extension may interact with
+                    the active webpage to:
+                </p>
+
+                <ul>
+                    <li>
+                        Display the Keyboardly command palette.
+                    </li>
+
+                    <li>
+                        Read text that you explicitly select for saving as a
+                        Block.
+                    </li>
+
+                    <li>
+                        Insert a Block into an active editable field when you
+                        explicitly request that action.
+                    </li>
+
+                    <li>
+                        Perform other actions explicitly requested through a
+                        user-created Block.
+                    </li>
+                </ul>
+
+                <p>
+                    Keyboardly does not use webpage access to build a browsing
+                    history profile, sell browsing data, or transmit general
+                    webpage content to external servers.
+                </p>
+            </section>
+
+            <section>
+                <h2>5. JavaScript Blocks</h2>
+
+                <p>
+                    Keyboardly may allow advanced users to create JavaScript
+                    Blocks that perform user-configured actions on webpages.
+                </p>
+
+                <p>
+                    JavaScript execution is an advanced feature and is
+                    intended for users who understand the code they create or
+                    execute.
+                </p>
+
+                <p>
+                    Keyboardly does not provide or remotely download JavaScript
+                    code for these Blocks. The code is provided by the user and
+                    is stored locally as part of the user's Block data.
+                </p>
+
+                <p>
+                    Users are responsible for reviewing and understanding any
+                    JavaScript they choose to execute.
+                </p>
+            </section>
+
+            <section>
+                <h2>6. Analytics and Tracking</h2>
+
+                <p>
+                    Keyboardly does not use third-party analytics services,
+                    advertising trackers, tracking pixels, or external
+                    analytics scripts inside the extension.
+                </p>
+
+                <p>
+                    Any usage statistics shown by Keyboardly are calculated
+                    locally from the user's own extension activity and remain
+                    stored locally in the browser.
+                </p>
+            </section>
+
+            <section>
+                <h2>7. Data Sharing</h2>
+
+                <p>
+                    Keyboardly does not sell, rent, or share your personal
+                    Block data with third parties.
+                </p>
+
+                <p>
+                    Keyboardly does not transmit your Blocks, clipboard
+                    contents, or general browsing activity to a remote
+                    Keyboardly server.
+                </p>
+            </section>
+
+            <section>
+                <h2>8. Data Retention and Deletion</h2>
+
+                <p>
+                    Your locally stored Keyboardly data remains in your browser
+                    until you delete it, remove the extension, or clear the
+                    relevant browser extension storage.
+                </p>
+
+                <p>
+                    You can delete individual Blocks through the Keyboardly
+                    interface. You may also remove all locally stored
+                    Keyboardly data by removing the extension or clearing its
+                    stored browser data through Chrome.
+                </p>
+            </section>
+
+            <section>
+                <h2>9. Third-Party Services</h2>
+
+                <p>
+                    The core functionality of Keyboardly does not depend on
+                    external cloud services or remote APIs.
+                </p>
+
+                <p>
+                    If you voluntarily visit an external website linked from
+                    Keyboardly, such as a creator-support page, that website
+                    operates under its own privacy policy and terms.
+                </p>
+            </section>
+
+            <section>
+                <h2>10. Children's Privacy</h2>
+
+                <p>
+                    Keyboardly is a general productivity extension and is not
+                    specifically directed toward children.
+                </p>
+
+                <p>
+                    We do not knowingly collect personal information from
+                    children through Keyboardly.
+                </p>
+            </section>
+
+            <section>
+                <h2>11. Changes to This Privacy Policy</h2>
+
+                <p>
+                    This Privacy Policy may be updated from time to time to
+                    reflect changes to Keyboardly's functionality, privacy
+                    practices, or applicable requirements.
+                </p>
+
+                <p>
+                    The latest version will be made available through the
+                    Keyboardly project or its official distribution channels.
+                </p>
+            </section>
+
+            <section>
+                <h2>12. Contact</h2>
+
+                <p>
+                    If you have questions about this Privacy Policy or
+                    Keyboardly's privacy practices, please contact the
+                    Keyboardly developer through the official project
+                    distribution or support channels.
+                </p>
+            </section>
+
+            <section>
+                <div class="card">
+                    <h2>Support Keyboardly</h2>
+
+                    <p>
+                        Keyboardly is built as an independent productivity
+                        project. If you find it useful and would like to
+                        support continued development, you can support the
+                        project voluntarily.
+                    </p>
+
+                    <p>
+                        <a
+                            href="https://www.patreon.com/c/itbrok"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Support Keyboardly development →
+                        </a>
+                    </p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>
+                © 2026 Keyboardly. Built with a local-first approach.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
