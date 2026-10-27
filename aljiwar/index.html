@@ -1,773 +1,386 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#252525">
-<title>ALJIWAR CO. | Model Card</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#252525">
+    <title>ALJIWAR CO. | Model Card</title>
+    <style>
+        :root {
+            --ink: #252525;
+            --gold: #9a8455;
+            --paper: #ffffff;
+            --soft: #f5f3ee;
+            --muted: #77746d;
+        }
+        * { box-sizing: border-box; }
 
-<style>
-:root {
-    --ink: #252525;
-    --gold: #9a8455;
-    --paper: #ffffff;
-    --soft: #f5f3ee;
-    --muted: #77746d;
-}
-
-* { box-sizing: border-box; }
-
-body {
-    margin: 0;
-    padding: 18px 12px;
-    background: #eae8e2;
-    color: var(--ink);
-    font-family: Tahoma, Arial, sans-serif;
-}
-
-.card {
-    max-width: 430px;
-    margin: auto;
-    background: var(--paper);
-    border: 1px solid #dedbd2;
-    box-shadow: 0 8px 30px #0000000c;
-    overflow: hidden;
-}
-
-.header {
-    padding: 24px 18px 19px;
-    text-align: center;
-    border-bottom: 2px solid var(--gold);
-}
-
-.logo {
-    display: block;
-    width: 100px;
-    height: 75px;
-    margin: 0 auto 10px;
-    object-fit: contain;
-}
-
-.company {
-    direction: ltr;
-    font-size: 25px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    margin: 0;
-}
-
-.subtitle {
-    direction: ltr;
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: var(--gold);
-    margin-top: 8px;
-}
-
-.body-content { padding: 22px 20px; }
-
-.section-title {
-    font-size: 18px;
-    margin: 0 0 16px;
-}
-
-.model-badge {
-    display: inline-block;
-    direction: ltr;
-    background: var(--ink);
-    color: white;
-    padding: 7px 15px;
-    font-size: 15px;
-    letter-spacing: 1px;
-}
-
-.info-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-}
-
-.info-box {
-    background: var(--soft);
-    padding: 14px;
-    border-right: 3px solid var(--gold);
-}
-
-.label {
-    color: var(--muted);
-    font-size: 12px;
-    margin-bottom: 8px;
-}
-
-.value {
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.color-value {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.color-swatch {
-    width: 19px;
-    height: 19px;
-    border-radius: 50%;
-    background: #a7a29a;
-    border: 1px solid #77736b;
-    flex-shrink: 0;
-}
-
-hr {
-    border: 0;
-    border-top: 1px solid #e6e2d9;
-    margin: 22px 0;
-}
-
-.drawing-title {
-    font-size: 16px;
-    margin: 0 0 14px;
-}
-
-.drawing {
-    padding: 12px 5px 8px;
-    background: #faf9f6;
-    border: 1px solid #eeece5;
-}
-
-.drawing svg {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.note {
-    font-size: 10px;
-    color: var(--muted);
-    text-align: center;
-    margin: 8px 0 2px;
-}
-
-.dimensions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 16px;
-}
-
-.dimension {
-    padding: 12px;
-    border: 1px solid #e5e1d8;
-    text-align: center;
-}
-
-.dimension-label {
-    color: var(--muted);
-    font-size: 12px;
-    margin-bottom: 6px;
-}
-
-.dimension-value {
-    direction: ltr;
-    font-size: 21px;
-    font-weight: bold;
-}
-
-.footer {
-    background: var(--ink);
-    color: white;
-    text-align: center;
-    padding: 17px 10px;
-}
-
-.footer-brand {
-    color: #d8c7a0;
-    font-size: 12px;
-    direction: ltr;
-    letter-spacing: 2px;
-}
-
-.footer-caption {
-    margin-top: 7px;
-    font-size: 10px;
-    direction: ltr;
-    letter-spacing: 1px;
-}
-
-.error {
-    max-width: 430px;
-    margin: 40px auto;
-    padding: 30px 20px;
-    background: white;
-    border: 1px solid #dedbd2;
-    text-align: center;
-    color: #a52b2b;
-}
-
-@media print {
-    @page {
-        margin: 0;
-    }
-
-    body {
-        padding: 0;
-        background: white;
-    }
-
-    .card {
-        box-shadow: none;
-        border: 0;
-    }
-}
-</style>
+        body {
+            margin: 0;
+            padding: 18px 12px;
+            background: #eae8e2;
+            color: var(--ink);
+            font-family: Tahoma, Arial, sans-serif;
+        }
+        .card {
+            max-width: 430px;
+            margin: auto;
+            background: var(--paper);
+            border: 1px solid #dedbd2;
+            box-shadow: 0 8px 30px #0000000c;
+            overflow: hidden;
+        }
+        .header {
+            padding: 24px 18px 19px;
+            text-align: center;
+            border-bottom: 2px solid var(--gold);
+        }
+        .logo {
+            display: block;
+            width: 100px;
+            height: 75px;
+            margin: 0 auto 10px;
+            object-fit: contain;
+        }
+        .company {
+            direction: ltr;
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin: 0;
+        }
+        .subtitle {
+            direction: ltr;
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: var(--gold);
+            margin-top: 8px;
+        }
+        .body-content { padding: 22px 20px; }
+        .section-title { font-size: 18px; margin: 0 0 16px; }
+        .model-badge {
+            display: inline-block;
+            direction: ltr;
+            background: var(--ink);
+            color: white;
+            padding: 7px 15px;
+            font-size: 15px;
+            letter-spacing: 1px;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .info-box {
+            background: var(--soft);
+            padding: 14px;
+            border-right: 3px solid var(--gold);
+        }
+        .label {
+            color: var(--muted);
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+        .value { font-size: 18px; font-weight: bold; }
+        .color-value {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .color-swatch {
+            width: 19px;
+            height: 19px;
+            border-radius: 50%;
+            background: #a7a29a;
+            border: 1px solid #77736b;
+            flex-shrink: 0;
+        }
+        hr {
+            border: 0;
+            border-top: 1px solid #e6e2d9;
+            margin: 22px 0;
+        }
+        .drawing-title { font-size: 16px; margin: 0 0 14px; }
+        .drawing {
+            padding: 12px 5px 8px;
+            background: #faf9f6;
+            border: 1px solid #eeece5;
+        }
+        .drawing svg { width: 100%; height: auto; display: block; }
+        .note {
+            font-size: 10px;
+            color: var(--muted);
+            text-align: center;
+            margin: 8px 0 2px;
+        }
+        .dimensions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        .dimension {
+            padding: 12px;
+            border: 1px solid #e5e1d8;
+            text-align: center;
+        }
+        .dimension-label {
+            color: var(--muted);
+            font-size: 12px;
+            margin-bottom: 6px;
+        }
+        .dimension-value {
+            direction: ltr;
+            font-size: 21px;
+            font-weight: bold;
+        }
+        .footer {
+            background: var(--ink);
+            color: white;
+            text-align: center;
+            padding: 17px 10px;
+        }
+        .footer-brand {
+            color: #d8c7a0;
+            font-size: 12px;
+            direction: ltr;
+            letter-spacing: 2px;
+        }
+        .footer-caption {
+            margin-top: 7px;
+            font-size: 10px;
+            direction: ltr;
+            letter-spacing: 1px;
+        }
+        .error {
+            max-width: 430px;
+            margin: 40px auto;
+            padding: 30px 20px;
+            background: white;
+            border: 1px solid #dedbd2;
+            text-align: center;
+            color: #a52b2b;
+        }
+        @media print {
+            @page { margin: 0; }
+            body { padding: 0; background: white; }
+            .card { box-shadow: none; border: 0; }
+        }
+    </style>
 </head>
-
 <body>
-
 <main class="card" id="door-card" hidden>
-
     <header class="header">
-
-        <img class="logo"
-             src="images/aljiwar-logo.png"
-             alt="ALJIWAR CO. Logo"
-             onerror="this.style.display='none'">
-
+        <img class="logo" src="images/aljiwar-logo.png" alt="ALJIWAR CO. Logo" onerror="this.style.display='none'">
         <h1 class="company">ALJIWAR CO.</h1>
-
-        <div class="subtitle">
-            DOOR COLLECTION · MODEL CARD
-        </div>
-
+        <div class="subtitle">DOOR COLLECTION · MODEL CARD</div>
     </header>
-
     <section class="body-content">
-
-        <div style="display:flex;align-items:center;
-                    justify-content:space-between;margin-bottom:16px">
-
-            <h2 class="section-title" style="margin:0">
-                معلومات الباب
-            </h2>
-
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+            <h2 class="section-title" style="margin:0">معلومات الباب</h2>
             <span class="model-badge" id="model-badge"></span>
-
         </div>
-
         <div class="info-grid">
-
+            <div class="info-box" id="product-code-box" style="grid-column: 1 / -1;" hidden>
+                <div class="label">رمز المنتج (Code)</div>
+                <div class="value" dir="ltr" id="product-code"></div>
+            </div>
             <div class="info-box">
-
                 <div class="label">اللون</div>
-
                 <div class="value color-value">
-
-                    <span class="color-swatch"
-                          id="color-swatch"></span>
-
+                    <span class="color-swatch" id="color-swatch"></span>
                     <span id="color-name"></span>
-
                 </div>
-
             </div>
-
             <div class="info-box">
-
                 <div class="label">رقم الموديل</div>
-
-                <div class="value" dir="ltr"
-                     id="model-number"></div>
-
+                <div class="value" dir="ltr" id="model-number"></div>
             </div>
-
         </div>
-
         <hr>
-
-        <h3 class="drawing-title">
-            رسم توضيحي للأبعاد
-        </h3>
-
+        <h3 class="drawing-title">رسم توضيحي للأبعاد</h3>
         <div class="drawing">
-
-            <svg viewBox="0 0 320 300"
-                 role="img"
-                 aria-label="رسم توضيحي لأبعاد الباب">
-
+            <svg viewBox="0 0 320 300" role="img" aria-label="رسم توضيحي لأبعاد الباب">
                 <defs>
-
-                    <pattern id="hatch"
-                             width="5"
-                             height="5"
-                             patternUnits="userSpaceOnUse">
-
-                        <path d="M0 5 L5 0"
-                              stroke="#c8c3b8"
-                              stroke-width=".5"/>
-
+                    <pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse">
+                        <path d="M0 5 L5 0" stroke="#c8c3b8" stroke-width=".5"/>
                     </pattern>
-
                 </defs>
-
-                <!-- قياس العرض العلوي -->
-
-                <g stroke="#9a8455"
-                   stroke-width="1"
-                   fill="none">
-
+                <g stroke="#9a8455" stroke-width="1" fill="none">
                     <path d="M75 36 V17 M231 36 V17 M75 24 H231"/>
-
-                    <path d="M75 24 l7 -3 M75 24 l7 3
-                             M231 24 l-7 -3 M231 24 l-7 3"/>
-
+                    <path d="M75 24 l7 -3 M75 24 l7 3 M231 24 l-7 -3 M231 24 l-7 3"/>
                 </g>
-
-                <!-- جسم الباب -->
-
-                <rect id="door-main"
-                      x="75" y="36"
-                      width="156" height="232"
-                      fill="#b4b0a7"
-                      stroke="#393936"
-                      stroke-width="2"/>
-
-                <rect x="84" y="45"
-                      width="138" height="214"
-                      fill="none"
-                      stroke="#6d6a63"
-                      stroke-width="1.5"/>
-
-                <rect x="92" y="53"
-                      width="122" height="198"
-                      fill="url(#hatch)"
-                      stroke="#e3ded4"/>
-
-                <rect x="101" y="62"
-                      width="104" height="180"
-                      fill="#b7b2a8"
-                      stroke="#77736b"
-                      stroke-width="1.2"
-                      id="door-inner"/>
-
-                <rect x="109" y="70"
-                      width="88" height="164"
-                      fill="none"
-                      stroke="#d9d4ca"/>
-
-                <!-- مقبض الباب -->
-
-                <circle cx="190" cy="153"
-                        r="4"
-                        fill="#514b40"
-                        stroke="#e5d6ae"
-                        stroke-width="1.5"/>
-
-                <path d="M190 157 V164"
-                      stroke="#514b40"
-                      stroke-width="2"/>
-
-                <!-- قياس العرض السفلي -->
-
-                <g stroke="#9a8455"
-                   stroke-width="1.2"
-                   fill="none">
-
+                <rect id="door-main" x="75" y="36" width="156" height="232" fill="#b4b0a7" stroke="#393936" stroke-width="2"/>
+                <rect x="84" y="45" width="138" height="214" fill="none" stroke="#6d6a63" stroke-width="1.5"/>
+                <rect x="92" y="53" width="122" height="198" fill="url(#hatch)" stroke="#e3ded4"/>
+                <rect x="101" y="62" width="104" height="180" fill="#b7b2a8" stroke="#77736b" stroke-width="1.2" id="door-inner"/>
+                <rect x="109" y="70" width="88" height="164" fill="none" stroke="#d9d4ca"/>
+                <circle cx="190" cy="153" r="4" fill="#514b40" stroke="#e5d6ae" stroke-width="1.5"/>
+                <path d="M190 157 V164" stroke="#514b40" stroke-width="2"/>
+                <g stroke="#9a8455" stroke-width="1.2" fill="none">
                     <path d="M75 279 H231"/>
-
                     <path d="M75 272 V286 M231 272 V286"/>
-
-                    <path d="M75 279 l7 -3 M75 279 l7 3
-                             M231 279 l-7 -3 M231 279 l-7 3"/>
-
-                    <!-- قياس الطول -->
-
+                    <path d="M75 279 l7 -3 M75 279 l7 3 M231 279 l-7 -3 M231 279 l-7 3"/>
                     <path d="M248 36 H270 M248 268 H270 M260 36 V268"/>
-
-                    <path d="M260 36 l-3 7 M260 36 l3 7
-                             M260 268 l-3 -7 M260 268 l3 -7"/>
-
+                    <path d="M260 36 l-3 7 M260 36 l3 7 M260 268 l-3 -7 M260 268 l3 -7"/>
                 </g>
-
-                <!-- أرقام القياسات -->
-
-                <g fill="#6e5c35"
-                   font-size="11"
-                   font-weight="600">
-
-                    <text x="153" y="15"
-                          text-anchor="middle"
-                          id="svg-width">61 cm</text>
-
-                    <text x="276" y="152"
-                          text-anchor="middle"
-                          transform="rotate(90 276 152)"
-                          id="svg-height">213 cm</text>
-
-                    <text x="153" y="296"
-                          text-anchor="middle">
-                        WIDTH
-                    </text>
-
+                <g fill="#6e5c35" font-size="11" font-weight="600">
+                    <text x="153" y="15" text-anchor="middle" id="svg-width">61 cm</text>
+                    <text x="276" y="152" text-anchor="middle" transform="rotate(90 276 152)" id="svg-height">213 cm</text>
+                    <text x="153" y="296" text-anchor="middle">WIDTH</text>
                 </g>
-
             </svg>
-
-            <p class="note">
-                رسم توضيحي — النسب تقريبية وليست مخطط تصنيع
-            </p>
-
+            <p class="note">رسم توضيحي — النسب تقريبية وليست مخطط تصنيع</p>
         </div>
-
         <div class="dimensions">
-
             <div class="dimension">
-
                 <div class="dimension-label">الطول</div>
-
-                <div class="dimension-value"
-                     id="height-value"></div>
-
+                <div class="dimension-value" id="height-value"></div>
             </div>
-
             <div class="dimension">
-
                 <div class="dimension-label">العرض</div>
-
-                <div class="dimension-value"
-                     id="width-value"></div>
-
+                <div class="dimension-value" id="width-value"></div>
             </div>
-
         </div>
-
     </section>
-
     <footer class="footer">
-
-        <div class="footer-brand">
-            ALJIWAR CO.
-        </div>
-
-        <div class="footer-caption">
-            QUALITY · DESIGN · PRECISION
-        </div>
-
+        <div class="footer-brand">ALJIWAR CO.</div>
+        <div class="footer-caption">QUALITY · DESIGN · PRECISION</div>
     </footer>
-
 </main>
-
 <div class="error" id="error-message" hidden>
-
     <h2>تعذر عرض بيانات الباب</h2>
-
-    <p id="error-description">
-        رابط QR غير صالح أو يحتوي على بيانات غير صحيحة.
-    </p>
-
+    <p id="error-description">رابط QR غير صالح أو يحتوي على بيانات غير صحيحة.</p>
 </div>
-
 <script>
 "use strict";
 
-/*
-    ALJIWAR DOOR ENCODING SYSTEM
-    Format: Base36
-    Payload: Single packed integer
-
-    Model:  10 bits
-    Color:   4 bits
-    Width:   8 bits
-    Height:  9 bits
-
-    Total: 31 bits
-*/
-
-// Color dictionary
-const COLORS = {
-    0: {
-        name: "صاجي",
-        hex: "#b4b0a7"
-    },
-
-    1: {
-        name: "أبيض",
-        hex: "#ffffff"
-    },
-
-    2: {
-        name: "أسود",
-        hex: "#252525"
-    },
-
-    3: {
-        name: "بني",
-        hex: "#795548"
-    },
-
-    4: {
-        name: "رمادي",
-        hex: "#808080"
-    },
-
-    5: {
-        name: "بيج",
-        hex: "#d6c5a5"
-    },
-
-    6: {
-        name: "فضي",
-        hex: "#c0c0c0"
-    },
-
-    7: {
-        name: "ذهبي",
-        hex: "#c5a253"
-    }
+// Fallback legacy colors dictionary for old legacy V1 QRs
+const LEGACY_COLORS = {
+    0: "صاجي", 1: "أبيض", 2: "أسود", 3: "بني",
+    4: "رمادي", 5: "بيج", 6: "فضي", 7: "ذهبي"
 };
 
-
 // ==========================================
-// ENCODER
+// DECODER (Supports Legacy packed integer & V2 JSON String Payload)
 // ==========================================
+function decode(c) {
+    if (typeof c === "string" && c.startsWith("v2_")) {
+        try {
+            const base64 = c.substring(3).replace(/-/g, "+").replace(/_/g, "/");
+            const padded = base64 + "=".repeat((4 - (base64.length % 4)) % 4);
+            const binary = atob(padded);
+            const bytes = Uint8Array.from(binary, char => char.charCodeAt(0));
+            const payload = JSON.parse(new TextDecoder().decode(bytes));
 
-function encode(config) {
-
-    const {
-        model,
-        color,
-        width,
-        height
-    } = config;
-
-    // Validate values
-
-    if (
-        !Number.isInteger(model) ||
-        model < 0 || model > 1023 ||
-
-        !Number.isInteger(color) ||
-        color < 0 || color > 15 ||
-
-        !Number.isInteger(width) ||
-        width < 0 || width > 255 ||
-
-        !Number.isInteger(height) ||
-        height < 0 || height > 511
-    ) {
-        throw new Error("Invalid door configuration");
+            return {
+                version: 2,
+                code: payload.code || null,
+                model: payload.model,
+                color: payload.color || "غير محدد", // Reads color string directly
+                width: payload.width,
+                height: payload.height
+            };
+        } catch (err) {
+            throw new Error("Invalid V2 product payload");
+        }
     }
 
-    // Pack into one integer
-
-    const packed =
-        (((model * 16 + color) * 256 + width) * 512 + height);
-
-    // Convert to Base36
-
-    return packed.toString(36);
-}
-
-
-// ==========================================
-// DECODER
-// ==========================================
-
-function decode(c) {
-
-    if (
-        typeof c !== "string" ||
-        !/^[0-9a-z]{1,6}$/i.test(c)
-    ) {
+    // Existing legacy format decoder
+    if (typeof c !== "string" || !/^[0-9a-z]{1,6}$/i.test(c)) {
         throw new Error("Invalid c parameter");
     }
-
     let n = parseInt(c, 36);
-
-    if (
-        !Number.isSafeInteger(n) ||
-        n < 0 ||
-        n > 2147483647
-    ) {
+    if (!Number.isSafeInteger(n) || n < 0 || n > 2147483647) {
         throw new Error("Invalid packed integer");
     }
-
-    // Extract height: 9 bits
-
     const height = n % 512;
     n = Math.floor(n / 512);
-
-    // Extract width: 8 bits
-
     const width = n % 256;
     n = Math.floor(n / 256);
-
-    // Extract color: 4 bits
-
-    const color = n % 16;
-
-    // Remaining bits: model
-
+    const colorId = n % 16;
     const model = Math.floor(n / 16);
 
-    if (model > 1023) {
-        throw new Error("Invalid model number");
-    }
-
     return {
+        version: 1,
+        code: null,
         model,
-        color,
+        color: LEGACY_COLORS[colorId] || "غير محدد",
         width,
         height
     };
 }
 
-
 // ==========================================
 // RENDER DOOR
 // ==========================================
-
 function renderDoor(config) {
-
-    const color = COLORS[config.color];
-
-    if (!color) {
-        throw new Error("Unknown color ID");
+    // Product Code
+    const codeBox = document.getElementById("product-code-box");
+    if (config.code) {
+        document.getElementById("product-code").textContent = config.code;
+        codeBox.hidden = false;
+    } else {
+        codeBox.hidden = true;
     }
 
     // Model
-
-    document.getElementById("model-badge")
-        .textContent = config.model;
-
-    document.getElementById("model-number")
-        .textContent = config.model;
+    document.getElementById("model-badge").textContent = config.model;
+    document.getElementById("model-number").textContent = config.model;
 
     // Color
-
-    document.getElementById("color-name")
-        .textContent = color.name;
-
-    document.getElementById("color-swatch")
-        .style.backgroundColor = color.hex;
-
-    document.getElementById("door-main")
-        .setAttribute("fill", color.hex);
-
-    document.getElementById("door-inner")
-        .setAttribute("fill", color.hex);
+    document.getElementById("color-name").textContent = config.color;
 
     // Dimensions
-
-    document.getElementById("height-value")
-        .textContent = config.height + " cm";
-
-    document.getElementById("width-value")
-        .textContent = config.width + " cm";
-
-    document.getElementById("svg-width")
-        .textContent = config.width + " cm";
-
-    document.getElementById("svg-height")
-        .textContent = config.height + " cm";
+    document.getElementById("height-value").textContent = config.height + " cm";
+    document.getElementById("width-value").textContent = config.width + " cm";
+    document.getElementById("svg-width").textContent = config.width + " cm";
+    document.getElementById("svg-height").textContent = config.height + " cm";
 
     // Update SVG accessibility description
-
-    document.querySelector(".drawing svg")
-        .setAttribute(
-            "aria-label",
-            `رسم باب بقياس ${config.height} سنتيمتر طول و${config.width} سنتيمتر عرض`
-        );
+    document.querySelector(".drawing svg").setAttribute(
+        "aria-label",
+        `رسم باب بقياس ${config.height} سنتيمتر طول و${config.width} سنتيمتر عرض`
+    );
 
     // Show card
-
     document.getElementById("door-card").hidden = false;
 }
-
 
 // ==========================================
 // LOAD FROM URL
 // ==========================================
-
 function loadDoor() {
-
-    const params = new URLSearchParams(
-        window.location.search
-    );
-
+    const params = new URLSearchParams(window.location.search);
     const c = params.get("c");
-
     if (!c) {
         throw new Error("Missing c parameter");
     }
-
     const config = decode(c);
-
     renderDoor(config);
-
     return config;
 }
-
 
 // ==========================================
 // ERROR HANDLING
 // ==========================================
-
 function showError(error) {
-
     document.getElementById("door-card").hidden = true;
-
     document.getElementById("error-message").hidden = false;
-
-    document.getElementById("error-description")
-        .textContent = error.message;
-
+    document.getElementById("error-description").textContent = error.message;
 }
-
 
 // ==========================================
 // INITIALIZATION
 // ==========================================
-
 try {
-
     const config = loadDoor();
-
     console.log("Door configuration:", config);
-
 } catch (error) {
-
     console.error(error);
-
     showError(error);
-
 }
-
-
-// ==========================================
-// EXAMPLE: GENERATE A QR URL
-// ==========================================
-
-// Run this in the browser console:
-//
-// const code = encode({
-//     model: 182,
-//     color: 0,
-//     width: 61,
-//     height: 213
-// });
-//
-// console.log(
-//     location.origin +
-//     location.pathname +
-//     "?c=" + code
-// );
-//
-// Expected result:
-// http://localhost/index.html?c=...
-
 </script>
-
 </body>
 </html>
