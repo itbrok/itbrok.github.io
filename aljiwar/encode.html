@@ -1,0 +1,691 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#252525">
+<title>ALJIWAR CO. | QR Encoder</title>
+
+<style>
+:root {
+    --ink: #252525;
+    --gold: #9a8455;
+    --paper: #ffffff;
+    --soft: #f5f3ee;
+    --muted: #77746d;
+    --border: #dedbd2;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 25px 15px;
+    background: #eae8e2;
+    color: var(--ink);
+    font-family: Tahoma, Arial, sans-serif;
+}
+
+.container {
+    max-width: 480px;
+    margin: auto;
+}
+
+.card {
+    background: white;
+    border: 1px solid var(--border);
+    box-shadow: 0 8px 30px #0000000c;
+    overflow: hidden;
+}
+
+.header {
+    padding: 25px 20px;
+    text-align: center;
+    border-bottom: 2px solid var(--gold);
+}
+
+.company {
+    direction: ltr;
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+.subtitle {
+    direction: ltr;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-top: 8px;
+}
+
+.content {
+    padding: 22px 20px;
+}
+
+.title {
+    font-size: 19px;
+    margin: 0 0 20px;
+}
+
+.field {
+    margin-bottom: 17px;
+}
+
+.field label {
+    display: block;
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 8px;
+}
+
+input, select {
+    width: 100%;
+    height: 46px;
+    padding: 0 12px;
+    background: var(--soft);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 16px;
+    outline: none;
+}
+
+input:focus, select:focus {
+    border-color: var(--gold);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+button {
+    width: 100%;
+    height: 48px;
+    border: 0;
+    background: var(--ink);
+    color: white;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #403b31;
+}
+
+.result {
+    display: none;
+    margin-top: 22px;
+    padding-top: 22px;
+    border-top: 1px solid #e6e2d9;
+}
+
+.result-title {
+    font-size: 16px;
+    margin: 0 0 14px;
+}
+
+.qr-container {
+    padding: 20px;
+    background: white;
+    border: 1px solid var(--border);
+    text-align: center;
+}
+
+#qr {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#qr img, #qr canvas {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.qr-caption {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.result-box {
+    margin-top: 15px;
+    padding: 13px;
+    background: var(--soft);
+    border-right: 3px solid var(--gold);
+}
+
+.result-label {
+    color: var(--muted);
+    font-size: 11px;
+    margin-bottom: 7px;
+}
+
+.result-value {
+    direction: ltr;
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
+    word-break: break-all;
+}
+
+.url {
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 1.7;
+}
+
+.actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.actions button {
+    height: 43px;
+    font-size: 13px;
+}
+
+.secondary {
+    background: #f0ede5;
+    color: var(--ink);
+    border: 1px solid var(--border);
+}
+
+.secondary:hover {
+    background: #e5e1d8;
+}
+
+.error {
+    display: none;
+    margin-top: 15px;
+    padding: 12px;
+    background: #fff0f0;
+    color: #a52b2b;
+    font-size: 13px;
+}
+
+.preview {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px;
+    margin-bottom: 20px;
+    background: var(--soft);
+}
+
+.preview-swatch {
+    width: 35px;
+    height: 35px;
+    border: 1px solid #777;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.preview-info {
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.footer {
+    background: var(--ink);
+    color: white;
+    text-align: center;
+    padding: 17px 10px;
+}
+
+.footer-brand {
+    color: #d8c7a0;
+    font-size: 12px;
+    letter-spacing: 2px;
+    direction: ltr;
+}
+
+@media print {
+    body {
+        background: white;
+        padding: 0;
+    }
+
+    .header, .content > *:not(.result),
+    .footer, .actions {
+        display: none !important;
+    }
+
+    .container {
+        max-width: none;
+    }
+
+    .card {
+        border: 0;
+        box-shadow: none;
+    }
+
+    .content {
+        padding: 0;
+    }
+
+    .result {
+        display: block !important;
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    .result-box, .result-title, .qr-caption {
+        display: none;
+    }
+
+    .qr-container {
+        border: 0;
+        padding: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+    <header class="header">
+        <h1 class="company">ALJIWAR CO.</h1>
+        <div class="subtitle">
+            DOOR COLLECTION · QR ENCODER
+        </div>
+    </header>
+
+    <section class="content">
+
+        <h2 class="title">إنشاء رمز QR للباب</h2>
+
+        <div class="field">
+            <label for="model">رقم الموديل</label>
+            <input id="model" type="number"
+                   min="0" max="1023"
+                   value="182" placeholder="182">
+        </div>
+
+        <div class="field">
+            <label for="color">لون الباب</label>
+            <select id="color">
+                <option value="0">صاجي</option>
+                <option value="1">أبيض</option>
+                <option value="2">أسود</option>
+                <option value="3">بني</option>
+                <option value="4">رمادي</option>
+                <option value="5">بيج</option>
+                <option value="6">فضي</option>
+                <option value="7">ذهبي</option>
+            </select>
+        </div>
+
+        <div class="grid">
+
+            <div class="field">
+                <label for="width">العرض (cm)</label>
+                <input id="width" type="number"
+                       min="0" max="255"
+                       value="61">
+            </div>
+
+            <div class="field">
+                <label for="height">الطول (cm)</label>
+                <input id="height" type="number"
+                       min="0" max="511"
+                       value="213">
+            </div>
+
+        </div>
+
+        <div class="preview">
+            <div class="preview-swatch" id="preview-swatch"></div>
+            <div class="preview-info">
+                <strong id="preview-color">صاجي</strong>
+                <div id="preview-model">MODEL 182</div>
+            </div>
+        </div>
+
+        <button onclick="generate()">
+            إنشاء رمز QR
+        </button>
+
+        <div class="error" id="error"></div>
+
+        <div class="result" id="result">
+
+            <h3 class="result-title">
+                رمز QR جاهز للطباعة
+            </h3>
+
+            <div class="qr-container">
+                <div id="qr"></div>
+                <div class="qr-caption">
+                    ALJIWAR CO. · DOOR SPECIFICATIONS
+                </div>
+            </div>
+
+            <div class="result-box">
+
+                <div class="result-label">
+                    c VALUE
+                </div>
+
+                <div class="result-value" id="c-value"></div>
+
+            </div>
+
+            <div class="result-box">
+
+                <div class="result-label">
+                    COMPLETE URL
+                </div>
+
+                <div class="result-value url" id="generated-url"></div>
+
+            </div>
+
+            <div class="actions">
+
+                <button class="secondary" onclick="copyURL()">
+                    نسخ الرابط
+                </button>
+
+                <button onclick="downloadQR()">
+                    تحميل QR
+                </button>
+
+                <button class="secondary" onclick="copyCode()">
+                    نسخ الكود
+                </button>
+
+                <button onclick="window.print()">
+                    طباعة
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer class="footer">
+        <div class="footer-brand">ALJIWAR CO.</div>
+    </footer>
+
+</div>
+
+</div>
+
+<!-- QR generation library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script>
+
+// ==========================================
+// CONFIGURATION
+// ==========================================
+
+// IMPORTANT:
+// Change this to your actual published decoder URL.
+
+const DECODER_URL = "https://itbrok.github.io/aljiwar/";
+
+// Color dictionary must match the decoder.
+
+const COLORS = {
+    0: { name: "صاجي", hex: "#b4b0a7" },
+    1: { name: "أبيض", hex: "#ffffff" },
+    2: { name: "أسود", hex: "#252525" },
+    3: { name: "بني", hex: "#795548" },
+    4: { name: "رمادي", hex: "#808080" },
+    5: { name: "بيج", hex: "#d6c5a5" },
+    6: { name: "فضي", hex: "#c0c0c0" },
+    7: { name: "ذهبي", hex: "#c5a253" }
+};
+
+
+// ==========================================
+// ENCODER
+// ==========================================
+
+function encode(config) {
+
+    const { model, color, width, height } = config;
+
+    if (
+        !Number.isInteger(model) || model < 0 || model > 1023 ||
+        !Number.isInteger(color) || color < 0 || color > 15 ||
+        !Number.isInteger(width) || width < 0 || width > 255 ||
+        !Number.isInteger(height) || height < 0 || height > 511
+    ) {
+        throw new Error("يرجى إدخال قيم صحيحة ضمن الحدود المسموحة.");
+    }
+
+    const packed =
+        (((model * 16 + color) * 256 + width) * 512 + height);
+
+    return packed.toString(36);
+}
+
+
+// ==========================================
+// DECODER (ROUND-TRIP VALIDATION)
+// ==========================================
+
+function decode(c) {
+
+    let n = parseInt(c, 36);
+
+    const height = n % 512;
+    n = Math.floor(n / 512);
+
+    const width = n % 256;
+    n = Math.floor(n / 256);
+
+    const color = n % 16;
+    const model = Math.floor(n / 16);
+
+    return { model, color, width, height };
+}
+
+
+// ==========================================
+// LIVE PREVIEW
+// ==========================================
+
+function updatePreview() {
+
+    const colorId = Number(document.getElementById("color").value);
+    const model = document.getElementById("model").value;
+
+    const color = COLORS[colorId];
+
+    document.getElementById("preview-color").textContent = color.name;
+
+    document.getElementById("preview-model").textContent =
+        "MODEL " + (model || "—");
+
+    document.getElementById("preview-swatch").style.background =
+        color.hex;
+}
+
+document.getElementById("color").addEventListener("change", updatePreview);
+document.getElementById("model").addEventListener("input", updatePreview);
+
+
+// ==========================================
+// GENERATE QR
+// ==========================================
+
+let qrInstance = null;
+let currentCode = "";
+let currentURL = "";
+
+function generate() {
+
+    const errorBox = document.getElementById("error");
+
+    errorBox.style.display = "none";
+
+    try {
+
+        const config = {
+            model: Number(document.getElementById("model").value),
+            color: Number(document.getElementById("color").value),
+            width: Number(document.getElementById("width").value),
+            height: Number(document.getElementById("height").value)
+        };
+
+        const c = encode(config);
+
+        // Verify encoding by decoding it again.
+
+        const restored = decode(c);
+
+        if (
+            restored.model !== config.model ||
+            restored.color !== config.color ||
+            restored.width !== config.width ||
+            restored.height !== config.height
+        ) {
+            throw new Error("فشل التحقق من البيانات.");
+        }
+
+        // Generate URL.
+
+        currentCode = c;
+
+        const url = new URL(DECODER_URL);
+
+        url.searchParams.set("c", c);
+
+        currentURL = url.toString();
+
+        // Update output.
+
+        document.getElementById("c-value")
+            .textContent = c;
+
+        document.getElementById("generated-url")
+            .textContent = currentURL;
+
+        // Clear previous QR.
+
+        const qrContainer = document.getElementById("qr");
+
+        qrContainer.innerHTML = "";
+
+        if (typeof QRCode === "undefined") {
+            throw new Error("تعذر تحميل مكتبة QR. تحقق من اتصال الإنترنت.");
+        }
+
+        // Generate QR.
+
+        qrInstance = new QRCode(qrContainer, {
+            text: currentURL,
+            width: 260,
+            height: 260,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.Q
+        });
+
+        document.getElementById("result").style.display = "block";
+
+    } catch (error) {
+
+        errorBox.textContent = error.message;
+        errorBox.style.display = "block";
+
+        document.getElementById("result").style.display = "none";
+
+    }
+}
+
+
+// ==========================================
+// COPY URL
+// ==========================================
+
+async function copyURL() {
+
+    if (!currentURL) return;
+
+    await navigator.clipboard.writeText(currentURL);
+
+    alert("تم نسخ الرابط بنجاح");
+
+}
+
+
+// ==========================================
+// COPY c VALUE
+// ==========================================
+
+async function copyCode() {
+
+    if (!currentCode) return;
+
+    await navigator.clipboard.writeText(currentCode);
+
+    alert("تم نسخ الكود بنجاح");
+
+}
+
+
+// ==========================================
+// DOWNLOAD QR
+// ==========================================
+
+function downloadQR() {
+
+    const qrContainer = document.getElementById("qr");
+
+    const canvas = qrContainer.querySelector("canvas");
+    const img = qrContainer.querySelector("img");
+
+    let imageURL;
+
+    if (canvas) {
+        imageURL = canvas.toDataURL("image/png");
+    } else if (img) {
+        imageURL = img.src;
+    } else {
+        return;
+    }
+
+    const link = document.createElement("a");
+
+    link.href = imageURL;
+    link.download = "ALJIWAR-QR-" + currentCode + ".png";
+
+    link.click();
+
+}
+
+
+// ==========================================
+// INITIALIZATION
+// ==========================================
+
+updatePreview();
+
+</script>
+
+</body>
+</html>
