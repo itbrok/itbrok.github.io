@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محمد آل ثميل — مبرمج . مصمم</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Typography (Aref Ruqaa / Amiri / IBM Plex Sans Arabic) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Reenie+Beanie&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        canvas: '#ffffff',
+                        ink: '#0a0a0a',
+                        inkMuted: '#666666',
+                        inkLight: '#888888',
+                        blueInk: '#1d4ed8'
+                    },
+                    fontFamily: {
+                        arabicDisplay: ['Arsenica Arabic Trial'],
+                        arabicBody: ['IBM Plex Sans Arabic'],
+                        sans: ['IBM Plex Sans Arabic']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Detect language based on device / saved preference before render -->
+    <script>
+        (function () {
+            const saved = localStorage.getItem('preferred_lang');
+            let isArabic = false;
+            if (saved) {
+                isArabic = (saved === 'ar');
+            } else {
+                const navLangs = navigator.languages || [navigator.language || navigator.userLanguage || ''];
+                for (let l of navLangs) {
+                    if (l && l.toLowerCase().startsWith('ar')) {
+                        isArabic = true;
+                        break;
+                    }
+                }
+            }
+            if (!isArabic) {
+                document.documentElement.setAttribute('dir', 'ltr');
+                document.documentElement.setAttribute('lang', 'en');
+            }
+        })();
+    </script>
+
+    <style>
+        /* Extracted local font definitions */
+        @font-face {
+            font-family: 'Arsenica Arabic Trial';
+            src: url('./fonts/Arsenica-Arabic-Bold-TRIAL.ttf') format('truetype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Arsenica Arabic Trial';
+            src: url('./fonts/Arsenica-Arabic-Bold-TRIAL.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'IBM Plex Sans Arabic';
+            src: url('./fonts/IBMPlexSansArabic-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'IBM Plex Sans Arabic';
+            src: url('./fonts/IBMPlexSansArabic-Medium.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'IBM Plex Sans Arabic';
+            src: url('./fonts/IBMPlexSansArabic-SemiBold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'IBM Plex Sans Arabic';
+            src: url('./fonts/IBMPlexSansArabic-Bold.ttf') format('truetype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #0a0a0a;
+            font-family: 'Arsenica Arabic Trial', serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Clean transition between pages */
+        .page-view {
+            display: none;
+            opacity: 0;
+            transform: translateY(4px);
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+
+        .page-view.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Minimal link styling */
+        .nav-link {
+            position: relative;
+            cursor: pointer;
+            transition: color 0.15s ease;
+            user-select: none;
+        }
+
+        .nav-link:hover {
+            color: #000000;
+        }
+
+        /* Subtle Underline Hover effect for bottom list */
+        .section-link {
+            cursor: pointer;
+            display: inline-block;
+            transition: transform 0.15s ease, color 0.15s ease;
+        }
+
+        .section-link:hover {
+            transform: translateX(-4px);
+            color: #000000;
+        }
+
+        html[dir="ltr"] .section-link:hover {
+            transform: translateX(4px);
+        }
+
+        /* Language visibility toggling */
+        html[lang="ar"] .lang-en {
+            display: none !important;
+        }
+
+        html[lang="en"] .lang-ar {
+            display: none !important;
+        }
+
+        /* English font overrides */
+        html[lang="en"] body {
+            font-family: 'IBM Plex Sans Arabic';
+        }
+
+        html[lang="en"] .font-arabicDisplay {
+            font-family: 'Arsenica Arabic Trial';
+        }
+
+        html[lang="en"] .font-arabicBody {
+            font-family: 'IBM Plex Sans Arabic';
+        }
+
+        /* About image float handling for RTL / LTR */
+        .about-img {
+            width: 45%;
+            max-width: 240px;
+            margin-bottom: 12px;
+            border-radius: 2px;
+        }
+
+        html[dir="rtl"] .about-img {
+            float: right;
+            margin-left: 15px;
+            margin-right: 0;
+        }
+
+        html[dir="ltr"] .about-img {
+            float: left;
+            margin-right: 15px;
+            margin-left: 0;
+        }
+
+        /* Signature styling */
+        .signature-img {
+            width: 25%;
+            min-width: 130px;
+            max-width: 190px;
+        }
+
+        html[dir="rtl"] .signature-img {
+            float: left;
+            margin-left: 10%;
+        }
+
+        html[dir="ltr"] .signature-img {
+            float: right;
+            margin-right: 10%;
+        }
+
+        html[lang="en"] header {
+            flex-direction: row-reverse;
+        }
+
+        html[lang="ar"] header {
+            flex-direction: row-reverse;
+        }
+
+        .my-phone-number {
+            direction: ltr !important;
+            unicode-bidi: isolate !important;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body style="padding-top: 0;"
+    class="min-h-screen flex flex-col justify-between p-8 sm:p-14 md:p-20 max-w-4xl mx-auto selection:bg-black selection:text-white">
+
+    <!-- TOP HEADER / LANGUAGE TOGGLE -->
+    <header class="w-full flex justify-between items-center pt-4 mb-9 sm:mb-9">
+        <button id="lang-btn" onclick="toggleLanguage()"
+            class="font-sans font-bold text-sm text-ink hover:opacity-60 transition-opacity tracking-wider uppercase">
+            EN
+        </button>
+        <div id="page-back-btn" onclick="showPage('home')"
+            class="hidden cursor-pointer font-sans text-xs text-inkMuted hover:text-ink transition-colors flex items-center gap-1">
+            <span id="back-arrow">→</span> <span id="back-text">العودة للرئيسية</span>
+        </div>
+    </header>
+
+    <!-- MAIN VIEW CONTAINER -->
+    <main class="w-full flex-grow flex flex-col justify-center">
+
+        <!-- ================= HOME PAGE ================= -->
+        <div id="page-home" class="page-view active space-y-10 sm:space-y-12">
+
+            <!-- NAME & TITLE -->
+            <div class="space-y-2">
+                <h1 id="user-name"
+                    class="text-5xl sm:text-7xl md:text-8xl font-arabicDisplay font-bold text-ink leading-tight tracking-tight">
+                    محمد آل ثميل
+                </h1>
+                <p id="user-role" class="text-base sm:text-lg font-arabicBody text-ink text-opacity-90 font-medium">
+                    مبرمج . مصمم
+                </p>
+            </div>
+
+            <!-- BIO PARAGRAPH -->
+            <div class="max-w-xl">
+                <p id="user-bio" class="text-lg sm:text-2xl font-arabicBody leading-relaxed text-ink font-normal">
+                    أحب الحياة ببساطتها. الكود، النماذج، والتجارب جزء مني. أحول المعقد لسهل لدرجة تسأل نفسك «شلون
+                    سواها؟!».
+                </p>
+            </div>
+
+            <!-- HANDWRITTEN SIGNATURE -->
+            <div class="pt-2 pb-4 flow-root">
+                <img src="signature.png" class="signature-img" alt="Signature">
+            </div>
+
+            <!-- HORIZONTAL LINKS -->
+            <div class="flex items-center gap-8 sm:gap-12 text-lg sm:text-xl font-arabicBody text-ink font-bold pt-2">
+                <span onclick="showPage('about')" class="nav-link" id="link-about">عني</span>
+                <span onclick="showPage('contact')" class="nav-link" id="link-contact">تواصل</span>
+                <span onclick="showPage('follow')" class="nav-link" id="link-follow">تابع</span>
+            </div>
+
+
+            <!-- SECTION LINKS LIST -->
+            <div
+                class="flex flex-col items-start space-y-3 text-xl sm:text-2xl font-arabicBody font-bold text-ink pt-4">
+                <span onclick="showPage('works')" class="section-link" id="link-works">اعمالي</span>
+                <span onclick="showPage('career')" class="section-link" id="link-career">مسيرتي المهنية</span>
+                <span onclick="showPage('skills')" class="section-link" id="link-skills">الخبرات</span>
+            </div>
+
+        </div>
+
+        <!-- ================= WORKS PAGE ================= -->
+        <div id="page-works" class="page-view space-y-8">
+            <h2 class="text-3xl sm:text-4xl font-arabicDisplay font-bold text-ink border-b border-black/10 pb-4"
+                id="title-works">أعمالي</h2>
+
+            <!-- Arabic Works -->
+            <div class="lang-ar space-y-6 max-w-2xl font-arabicBody">
+                <div class="space-y-1">
+                    <div class="text-xl font-bold text-ink">01. ICMS — Integrated Construction ERP</div>
+                    <p class="text-inkMuted text-base">نظام إدارة موارد المؤسسات الشامل لشركات المقاولات الكبرى (PHP /
+                        Laravel / MySQL).</p>
+                </div>
+                <div class="space-y-1">
+                    <div class="text-xl font-bold text-ink">02. Safi — خدمات وسوق حرفي</div>
+                    <p class="text-inkMuted text-base">تطبيق وسوق رقمي يربط أصحاب المهن المحلية بالعملاء مباشرة (Flutter
+                        / Node.js).</p>
+                </div>
+                <div class="space-y-1">
+                    <div class="text-xl font-bold text-ink">03. Flex POS</div>
+                    <p class="text-inkMuted text-base">برنامج نقاط البيع المكتبي والسريع لإدارة الفواتير والمخازن (C#
+                        .NET / WPF).</p>
+                </div>
+                <div class="space-y-1">
+                    <div class="text-xl font-bold text-ink">04. Madyan — دفتر الديون المالي</div>
+                    <p class="text-inkMuted text-base">نظام إدارة الأقساط والديون التجارية بدون إنترنت (Offline-first /
+                        SQLite).</p>
+                </div>
+                <div class="space-y-1">
+                    <div class="text-xl font-bold text-ink">05. Browser DevTools Extensions</div>
+                    <p class="text-inkMuted text-base">RequestPilot, Chrona, and PDF ELITE — حزمة أدوات موجهة للمطورين.
+                    </p>
+                </div>
+            </div>
+
+            <!-- English Works -->
+            <div class="lang-en space-y-6 max-w-2xl font-sans">
+                <div class="space-y-1">
+                    <div class="text-xl font-bold text-ink">01. ICMS — Integrated Construction ERP</div>
+                    <p class="text-inkMuted text-base">Comprehensive enterprise resource planning system for major
+                        contracting companies (PHP / Laravel / MySQL).</p>
+                </div>
+                <div class="space-y-1">
+                    <div class="text-xl font-bold text-ink">02. Safi — On-Demand Services & Artisan Marketplace</div>
+                    <p class="text-inkMuted text-base">Digital marketplace & mobile app connecting local skilled
+                        tradesmen directly with clients (Flutter / Node.js).</p>
+                </div>
+                <div class="space-y-1">
+                    <div class="text-xl font-bold text-ink">03. Flex POS</div>
+                    <p class="text-inkMuted text-base">High-performance desktop point-of-sale software for invoicing and
+                        inventory control (C# .NET / WPF).</p>
+                </div>
+                <div class="space-y-1">
+                    <div class="text-xl font-bold text-ink">04. Madyan — Financial Debt Ledger</div>
+                    <p class="text-inkMuted text-base">Offline-first credit, installment, and commercial debt tracking
+                        system (Offline-first / SQLite).</p>
+                </div>
+                <div class="space-y-1">
+                    <div class="text-xl font-bold text-ink">05. Browser DevTools Extensions</div>
+                    <p class="text-inkMuted text-base">RequestPilot, Chrona, and PDF ELITE — A suite of productivity
+                        tools tailored for developers.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= CAREER PAGE ================= -->
+        <div id="page-career" class="page-view space-y-8">
+            <h2 class="text-3xl sm:text-4xl font-arabicDisplay font-bold text-ink border-b border-black/10 pb-4"
+                id="title-career">مسيرتي المهنية</h2>
+
+            <!-- Arabic Career -->
+            <div class="lang-ar space-y-6 max-w-2xl font-arabicBody text-lg">
+                <div class="space-y-1">
+                    <div class="font-bold text-ink">Co-Founder & Lead Architect — Creative Shot (CSC)</div>
+                    <p class="text-inkMuted text-base">قيادة عمليات التطوير وبناء الأنظمة الرقمية للمؤسسات والشركات.</p>
+                </div>
+                <div class="space-y-1">
+                    <div class="font-bold text-ink">المركز الأول — جامعة الأنبار</div>
+                    <p class="text-inkMuted text-base">التخرج بمرتبة الشرف الأولى على كلية علوم الحاسوب وتكنولوجيا
+                        المعلومات.</p>
+                </div>
+                <div class="space-y-1">
+                    <div class="font-bold text-ink">باحث ومحاضر — Sakarya University (تركيا)</div>
+                    <p class="text-inkMuted text-base">تقديم أوراق وعروض أكاديمية في معالجة اللغة الطبيعية (NLP).</p>
+                </div>
+                <div class="space-y-1">
+                    <div class="font-bold text-ink">خريج حاضنة الأعمال — Orange Corners</div>
+                    <p class="text-inkMuted text-base">تطوير نموذج العمل الريادي والأنظمة التقنية المرافقة.</p>
+                </div>
+            </div>
+
+            <!-- English Career -->
+            <div class="lang-en space-y-6 max-w-2xl font-sans text-lg">
+                <div class="space-y-1">
+                    <div class="font-bold text-ink">Co-Founder & Lead Architect — Creative Shot (CSC)</div>
+                    <p class="text-inkMuted text-base">Leading software engineering initiatives and building enterprise
+                        digital architectures.</p>
+                </div>
+                <div class="space-y-1">
+                    <div class="font-bold text-ink">Valedictorian (Rank 1) — University of Anbar</div>
+                    <p class="text-inkMuted text-base">Graduated with top honors from the College of Computer Science &
+                        Information Technology.</p>
+                </div>
+                <div class="space-y-1">
+                    <div class="font-bold text-ink">Researcher & Lecturer — Sakarya University (Turkey)</div>
+                    <p class="text-inkMuted text-base">Delivered academic presentations and research on Natural Language
+                        Processing (NLP).</p>
+                </div>
+                <div class="space-y-1">
+                    <div class="font-bold text-ink">Incubator Graduate — Orange Corners</div>
+                    <p class="text-inkMuted text-base">Developed innovative startup business models and engineered the
+                        supporting tech stack.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= SKILLS PAGE ================= -->
+        <div id="page-skills" class="page-view space-y-8">
+            <h2 class="text-3xl sm:text-4xl font-arabicDisplay font-bold text-ink border-b border-black/10 pb-4"
+                id="title-skills">الخبرات</h2>
+
+            <!-- Arabic Skills -->
+            <div class="lang-ar grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl font-arabicBody text-base">
+                <div class="space-y-2">
+                    <div class="font-bold text-ink text-lg">تطوير الخلفيات (Backend)</div>
+                    <p class="text-inkMuted">PHP, Laravel, C# .NET Core, Node.js, Express, RESTful APIs, Python.</p>
+                </div>
+                <div class="space-y-2">
+                    <div class="font-bold text-ink text-lg">الواجهات والموبايل (Frontend & Mobile)</div>
+                    <p class="text-inkMuted">Flutter, Dart, JavaScript (ES6+), HTML5/CSS3, Tailwind CSS, Chrome
+                        Extensions Manifest V3.</p>
+                </div>
+                <div class="space-y-2">
+                    <div class="font-bold text-ink text-lg">قواعد البيانات (Databases)</div>
+                    <p class="text-inkMuted">MySQL, MariaDB, MS SQL Server, SQLite, Database Architecture & DBML Design.
+                    </p>
+                </div>
+                <div class="space-y-2">
+                    <div class="font-bold text-ink text-lg">الأنظمة والأجهزة (Systems & Hardware)</div>
+                    <p class="text-inkMuted">ESC/POS Thermal Printing Drivers, Barcode Hardware IO, Git Workflows,
+                        Offline Sync Architecture.</p>
+                </div>
+            </div>
+
+            <!-- English Skills -->
+            <div class="lang-en grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl font-sans text-base">
+                <div class="space-y-2">
+                    <div class="font-bold text-ink text-lg">Backend Development</div>
+                    <p class="text-inkMuted">PHP, Laravel, C# .NET Core, Node.js, Express, RESTful APIs, Python.</p>
+                </div>
+                <div class="space-y-2">
+                    <div class="font-bold text-ink text-lg">Frontend & Mobile</div>
+                    <p class="text-inkMuted">Flutter, Dart, JavaScript (ES6+), HTML5/CSS3, Tailwind CSS, Chrome
+                        Extensions Manifest V3.</p>
+                </div>
+                <div class="space-y-2">
+                    <div class="font-bold text-ink text-lg">Databases & Architecture</div>
+                    <p class="text-inkMuted">MySQL, MariaDB, MS SQL Server, SQLite, Database Architecture & DBML Design.
+                    </p>
+                </div>
+                <div class="space-y-2">
+                    <div class="font-bold text-ink text-lg">Systems & Hardware</div>
+                    <p class="text-inkMuted">ESC/POS Thermal Printing Drivers, Barcode Hardware IO, Git Workflows,
+                        Offline Sync Architecture.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= ABOUT PAGE ================= -->
+        <div id="page-about" class="page-view space-y-8">
+            <h2 class="text-3xl sm:text-4xl font-arabicDisplay font-bold text-ink border-b border-black/10 pb-4"
+                id="title-about">عني</h2>
+
+            <!-- Arabic About Content -->
+            <div class="lang-ar max-w-2xl font-arabicBody text-xl leading-relaxed space-y-6">
+                <!-- التمهيد -->
+                <p>
+                    أنا <strong>محمد أحمد رشيد</strong>، مبرمج ومصمم أنظمة رقمية مقيم في الرمادي، العراق. أركز على بناء
+                    البرمجيات التي تجمع بين البساطة البصرية والقوة الهندسية.
+                </p>
+                <p>
+                    تتراوح مشاريعي بين أنظمة إدارة المؤسسات الكبرى (ERP) وتطبيقات الهواتف وإضافات المتصفح المخصصة
+                    للمطورين.
+                </p>
+
+                <!-- القسم الأول: بداية القصة -->
+                <div class="pt-4 border-t border-black/5">
+                    <h3 class="text-2xl font-arabicDisplay font-bold text-ink mb-3">بداية القصة</h3>
+                    <div class="flow-root">
+                        <img src="mepcpic.png" alt="بداية الشغف" class="about-img">
+                        <p class="text-lg text-ink/90 leading-relaxed">
+                            الشغف بالتقنية لم يكن قراراً اتخذته لاحقاً، بل بدايتي الأولى. الصورة تختصر السنوات الأولى من
+                            الفضول الذي تحول اليوم إلى مهنة وشغف ببناء البرمجيات.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- القسم الثاني: نقطة الانطلاق -->
+                <div class="pt-6 border-t border-black/5 clear-both">
+                    <h3 class="text-2xl font-arabicDisplay font-bold text-ink mb-3">نقطة الانطلاق</h3>
+                    <div class="flow-root">
+                        <img src="grad.jpg" alt="نقطة الانطلاق" class="about-img">
+                        <p class="text-lg text-ink/90 leading-relaxed">
+                            تخرجت بتفوق كـ <strong>المركز الأول على كلية علوم الحاسوب وتكنولوجيا المعلومات في جامعة
+                                الأنبار</strong>. كانت تلك المحطة الأكاديمية ركيزة أساسية انطلقت منها لترجمة النظريات
+                            البرمجية إلى أنظمة وحلول حقيقية تخدم المؤسسات وسوق العمل.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- English About Content -->
+            <div class="lang-en max-w-2xl font-sans text-xl leading-relaxed space-y-6">
+                <!-- Intro -->
+                <p>
+                    I am <strong>Mohammed Ahmed Rasheed</strong>, a software engineer and digital systems architect
+                    based in Ramadi, Iraq. I focus on crafting software that pairs visual clarity with solid
+                    engineering.
+                </p>
+                <p>
+                    My work spans large-scale enterprise resource planning (ERP) platforms, cross-platform mobile apps,
+                    and specialized browser extensions for developers.
+                </p>
+
+                <!-- Story 1: Early Spark -->
+                <div class="pt-4 border-t border-black/5">
+                    <h3 class="text-2xl font-bold text-ink mb-3">The Early Spark</h3>
+                    <div class="flow-root">
+                        <img src="mepcpic.png" alt="Early passion" class="about-img">
+                        <p class="text-lg text-ink/90 leading-relaxed">
+                            My passion for technology wasn't a path chosen later—it was my very beginning. This picture
+                            captures the early years of curiosity and tinkering that evolved into a lifelong career and
+                            dedication to building software.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Story 2: Academic Milestone -->
+                <div class="pt-6 border-t border-black/5 clear-both">
+                    <h3 class="text-2xl font-bold text-ink mb-3">Academic Milestone</h3>
+                    <div class="flow-root">
+                        <img src="grad.jpg" alt="Valedictorian graduation" class="about-img">
+                        <p class="text-lg text-ink/90 leading-relaxed">
+                            I graduated as the <strong>Valedictorian (Rank 1) of the College of Computer Science and
+                                Information Technology at the University of Anbar</strong>. That academic milestone was
+                            the launchpad that enabled me to translate theoretical computer science into scalable,
+                            real-world solutions for businesses.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= CONTACT PAGE ================= -->
+        <div id="page-contact" class="page-view space-y-6">
+            <h2 class="text-3xl sm:text-4xl font-arabicDisplay font-bold text-ink border-b border-black/10 pb-4"
+                id="title-contact">تواصل</h2>
+
+            <!-- Arabic Contact -->
+            <div class="lang-ar max-w-xl font-arabicBody text-lg space-y-4">
+                <div>
+                    <div class="text-sm text-inkMuted uppercase tracking-wider font-sans">البريد الإلكتروني</div>
+                    <a href="mailto:Mohammed@devcore.site"
+                        class="text-xl font-bold text-ink hover:underline">Mohammed@devcore.site</a>
+                </div>
+                <div>
+                    <div class="text-sm text-inkMuted uppercase tracking-wider font-sans">الهاتف / واتساب</div>
+                    <a href="tel:+9647829933540" dir="ltr"
+                        class="my-phone-number text-xl font-bold text-ink hover:underline"><bdi dir="ltr">+964 782 9933
+                            540</bdi></a>
+                </div>
+                <div>
+                    <div class="text-sm text-inkMuted uppercase tracking-wider font-sans">الموقع</div>
+                    <p class="text-xl font-bold text-ink">الرمادي، الأنبار، العراق</p>
+                </div>
+            </div>
+
+            <!-- English Contact -->
+            <div class="lang-en max-w-xl font-sans text-lg space-y-4">
+                <div>
+                    <div class="text-sm text-inkMuted uppercase tracking-wider">Email</div>
+                    <a href="mailto:Mohammed@devcore.site"
+                        class="text-xl font-bold text-ink hover:underline">Mohammed@devcore.site</a>
+                </div>
+                <div>
+                    <div class="text-sm text-inkMuted uppercase tracking-wider">Phone / Whatsapp</div>
+                    <a href="tel:+9647829933540" dir="ltr"
+                        class="my-phone-number text-xl font-bold text-ink hover:underline"><bdi dir="ltr">+964 782 9933
+                            540</bdi></a>
+                </div>
+                <div>
+                    <div class="text-sm text-inkMuted uppercase tracking-wider">Location</div>
+                    <p class="text-xl font-bold text-ink">Ramadi, Anbar, Iraq</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= FOLLOW PAGE ================= -->
+        <div id="page-follow" class="page-view space-y-6">
+            <h2 class="text-3xl sm:text-4xl font-arabicDisplay font-bold text-ink border-b border-black/10 pb-4"
+                id="title-follow">تابع</h2>
+            <div class="flex flex-col items-start gap-3 font-arabicBody text-xl font-bold">
+                <a href="https://github.com" target="_blank" class="hover:underline">GitHub</a>
+                <a href="https://linkedin.com" target="_blank" class="hover:underline">LinkedIn</a>
+                <a href="https://telegram.org" target="_blank" class="hover:underline">Telegram</a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- INTERACTION LOGIC -->
+    <script>
+        let currentLang = document.documentElement.getAttribute('lang') || 'ar';
+
+        const i18n = {
+            ar: {
+                pageTitle: 'محمد آل ثميل — مبرمج . مصمم',
+                langBtn: 'EN',
+                name: 'محمد آل ثميل',
+                role: 'مبرمج . مصمم',
+                bio: 'أحب الحياة ببساطتها. الكود، النماذج، والتجارب جزء مني. أحول المعقد لسهل لدرجة تسأل نفسك «شلون سواها؟!».',
+                linkAbout: 'عني',
+                linkContact: 'تواصل',
+                linkFollow: 'تابع',
+                linkWorks: 'اعمالي',
+                linkCareer: 'مسيرتي المهنية',
+                linkSkills: 'الخبرات',
+                backText: 'العودة للرئيسية',
+                backArrow: '→',
+                titleWorks: 'أعمالي',
+                titleCareer: 'مسيرتي المهنية',
+                titleSkills: 'الخبرات',
+                titleAbout: 'عني',
+                titleContact: 'تواصل',
+                titleFollow: 'تابع'
+            },
+            en: {
+                pageTitle: 'Mohammed Al-Thumail — Developer . Designer',
+                langBtn: 'عربي',
+                name: 'Mohammed Al-Thumail',
+                role: 'Developer . Designer',
+                bio: 'I love life in its simplicity. Code, prototypes, and experiments are part of me. Crafting complex ideas into approachable systems that leave you wondering, "Wait, how did he do that?!".',
+                linkAbout: 'About',
+                linkContact: 'Contact',
+                linkFollow: 'Follow',
+                linkWorks: 'My Works',
+                linkCareer: 'Career Journey',
+                linkSkills: 'Skills & Tech',
+                backText: 'Back to home',
+                backArrow: '←',
+                titleWorks: 'My Works',
+                titleCareer: 'Career Journey',
+                titleSkills: 'Skills & Tech',
+                titleAbout: 'About Me',
+                titleContact: 'Get in Touch',
+                titleFollow: 'Follow Me'
+            }
+        };
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page-view').forEach(el => el.classList.remove('active'));
+            const target = document.getElementById(`page-${pageId}`);
+            if (target) {
+                target.classList.add('active');
+            }
+
+            const backBtn = document.getElementById('page-back-btn');
+            if (pageId === 'home') {
+                backBtn.classList.add('hidden');
+            } else {
+                backBtn.classList.remove('hidden');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function applyLanguage(lang) {
+            currentLang = lang;
+            const html = document.documentElement;
+            const data = i18n[currentLang];
+
+            if (currentLang === 'en') {
+                html.setAttribute('dir', 'ltr');
+                html.setAttribute('lang', 'en');
+                document.body.classList.remove('font-arabicBody');
+                document.body.classList.add('font-sans');
+            } else {
+                html.setAttribute('dir', 'rtl');
+                html.setAttribute('lang', 'ar');
+                document.body.classList.remove('font-sans');
+                document.body.classList.add('font-arabicBody');
+            }
+
+            document.title = data.pageTitle;
+            document.getElementById('lang-btn').textContent = data.langBtn;
+            document.getElementById('user-name').textContent = data.name;
+            document.getElementById('user-role').textContent = data.role;
+            document.getElementById('user-bio').textContent = data.bio;
+            document.getElementById('link-about').textContent = data.linkAbout;
+            document.getElementById('link-contact').textContent = data.linkContact;
+            document.getElementById('link-follow').textContent = data.linkFollow;
+            document.getElementById('link-works').textContent = data.linkWorks;
+            document.getElementById('link-career').textContent = data.linkCareer;
+            document.getElementById('link-skills').textContent = data.linkSkills;
+            document.getElementById('back-text').textContent = data.backText;
+            document.getElementById('back-arrow').textContent = data.backArrow;
+
+            document.getElementById('title-works').textContent = data.titleWorks;
+            document.getElementById('title-career').textContent = data.titleCareer;
+            document.getElementById('title-skills').textContent = data.titleSkills;
+            document.getElementById('title-about').textContent = data.titleAbout;
+            document.getElementById('title-contact').textContent = data.titleContact;
+            document.getElementById('title-follow').textContent = data.titleFollow;
+        }
+
+        function toggleLanguage() {
+            const nextLang = currentLang === 'ar' ? 'en' : 'ar';
+            localStorage.setItem('preferred_lang', nextLang);
+            applyLanguage(nextLang);
+        }
+
+        // Apply detected or saved language on load
+        applyLanguage(currentLang);
+    </script>
+</body>
+
+</html>
