@@ -248,15 +248,32 @@
     </section>
     <footer class="footer">
         <div class="footer-brand">ALJIWAR CO.</div>
-<div class="footer-caption text-center text-sm text-gray-500 py-3 dir-rtl">
-  تصميم وبرمجة: 
-  <a href="https://itbrok.github.io" 
-     target="_blank" 
-     rel="noopener noreferrer" 
-     class="font-semibold text-blue-600 hover:text-blue-800 hover:underline transition-colors">
-    محمد آل ثميل
-  </a>
-</div>    </footer>
+        <style>
+  .footer-caption {
+    font-size: 14px;
+    color: #6B7280;
+    text-align: center;
+    direction: rtl;
+    padding: 10px;
+  }
+  
+  .footer-caption a {
+    color: #2563EB;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+  }
+  
+  .footer-caption a:hover {
+    color: #1D4ED8;
+    text-decoration: underline;
+  }
+</style>
+
+<div class="footer-caption">
+  تصميم وبرمجة: <a href="https://itbrok.github.io" target="_blank" rel="noopener noreferrer">محمد آل ثميل</a>
+</div>
+    </footer>
 </main>
 <div class="error" id="error-message" hidden>
     <h2>تعذر عرض بيانات الباب</h2>
