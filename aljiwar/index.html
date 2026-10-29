@@ -202,7 +202,6 @@
         <hr>
         <h3 class="drawing-title" id="media-title">صورة المنتج والقياسات</h3>
         <div class="drawing" id="media-container">
-            <!-- الرسم التوضيحي الافتراضي SVG -->
             <svg id="default-svg" viewBox="0 0 320 300" role="img" aria-label="رسم توضيحي لأبعاد الباب">
                 <defs>
                     <pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse">
@@ -298,25 +297,24 @@ function renderDoor(config) {
 async function loadDoor() {
     const params = new URLSearchParams(window.location.search);
     const sellId = params.get("sell");
-    const productCode = params.get("code");
+    const itemSerial = params.get("item");
 
-    if (!sellId || !productCode) {
+    if (!sellId || !itemSerial) {
         throw new Error("رابط QR غير مكتمل أو مفقود المعرفات.");
     }
 
-    // جلب ملف الـ JSON الخاص بالطلب من سحابة GitHub عبر الـ Worker
     const cacheFilePath = `cache/sell_${sellId}.json`;
     const res = await fetch(`${workerUrl}?path=${cacheFilePath}`);
     const result = await res.json();
 
-    if (!result.exists || !result.data || !result.data[productCode]) {
+    if (!result.exists || !result.data || !result.data[itemSerial]) {
         throw new Error("لم يتم العثور على بيانات هذا المنتج في السحابة.");
     }
 
-    const itemData = result.data[productCode];
+    const itemData = result.data[itemSerial];
 
     return {
-        code: productCode,
+        code: itemData.code || null,
         model: itemData.model,
         color: itemData.color || "غير محدد",
         width: itemData.width,
