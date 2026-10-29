@@ -337,7 +337,7 @@ function renderDoor(config) {
     if (config.image) {
         mediaTitle.textContent = "صورة الباب الفعلي";
         mediaContainer.innerHTML = `
-            <img src="${config.image}" alt="صورة الباب للموديل ${config.model}" class="product-image" onerror="this.onerror=null; this.src='logo.png';">
+            <img src="https://raw.githubusercontent.com/itbrok/aljiwar.net/main/uploads/${config.image}" alt="صورة الباب للموديل ${config.model}" class="product-image" onerror="this.onerror=null; this.src='logo.png';">
             <p class="note">صورة حقيقية للمنتج المطلوب</p>
         `;
     }
