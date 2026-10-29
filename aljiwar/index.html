@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -49,13 +48,6 @@
             font-weight: 800;
             letter-spacing: 2px;
             margin: 0;
-        }
-        .subtitle {
-            direction: ltr;
-            font-size: 10px;
-            letter-spacing: 2px;
-            color: var(--gold);
-            margin-top: 8px;
         }
         .body-content { padding: 22px 20px; }
         .section-title { font-size: 18px; margin: 0 0 16px; }
@@ -107,8 +99,16 @@
             padding: 12px 5px 8px;
             background: #faf9f6;
             border: 1px solid #eeece5;
+            text-align: center;
         }
         .drawing svg { width: 100%; height: auto; display: block; }
+        .product-image {
+            width: 100%;
+            max-height: 320px;
+            object-fit: contain;
+            border-radius: 4px;
+            display: block;
+        }
         .note {
             font-size: 10px;
             color: var(--muted);
@@ -149,7 +149,6 @@
             letter-spacing: 2px;
         }
         .footer-caption {
-            
             color: #d8c7a0;
             margin-top: 7px;
             font-size: 11px;
@@ -201,9 +200,10 @@
             </div>
         </div>
         <hr>
-        <h3 class="drawing-title">رسم توضيحي للأبعاد</h3>
-        <div class="drawing">
-            <svg viewBox="0 0 320 300" role="img" aria-label="رسم توضيحي لأبعاد الباب">
+        <h3 class="drawing-title" id="media-title">صورة المنتج والقياسات</h3>
+        <div class="drawing" id="media-container">
+            <!-- إذا توفرت صورة خاصة بالمنتج سيتم عرضها هنا، وإلا سيظهر الرسم التوضيحي الافتراضي -->
+            <svg id="default-svg" viewBox="0 0 320 300" role="img" aria-label="رسم توضيحي لأبعاد الباب">
                 <defs>
                     <pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse">
                         <path d="M0 5 L5 0" stroke="#c8c3b8" stroke-width=".5"/>
@@ -233,7 +233,7 @@
                     <text x="153" y="296" text-anchor="middle">WIDTH</text>
                 </g>
             </svg>
-            <p class="note">رسم توضيحي — النسب تقريبية وليست مخطط تصنيع</p>
+            <p class="note" id="media-note">رسم توضيحي — النسب تقريبية وليست مخطط تصنيع</p>
         </div>
         <div class="dimensions">
             <div class="dimension">
@@ -248,49 +248,24 @@
     </section>
     <footer class="footer">
         <div class="footer-brand">ALJIWAR CO.</div>
-        <style>
-  .footer-caption {
-    font-size: 14px;
-    color: #6B7280;
-    text-align: center;
-    direction: rtl;
-    padding: 10px;
-  }
-  
-  .footer-caption a {
-    color: #2563EB;
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.2s ease;
-  }
-  
-  .footer-caption a:hover {
-    color: #1D4ED8;
-    text-decoration: underline;
-  }
-</style>
-
-<div class="footer-caption">
-  تصميم وبرمجة: <a href="https://itbrok.github.io" target="_blank" rel="noopener noreferrer">محمد آل ثميل</a>
-</div>
+        <div class="footer-caption">
+            تصميم وبرمجة: <a href="https://itbrok.github.io" target="_blank" rel="noopener noreferrer" style="color:#d8c7a0; text-decoration:underline;">محمد آل ثميل</a>
+        </div>
     </footer>
 </main>
 <div class="error" id="error-message" hidden>
     <h2>تعذر عرض بيانات الباب</h2>
     <p id="error-description">رابط QR غير صالح أو يحتوي على بيانات غير صحيحة.</p>
 </div>
+
 <script>
 "use strict";
 
-// Fallback legacy colors dictionary for old legacy V1 QRs
 const LEGACY_COLORS = {
     0: "صاجي", 1: "أبيض", 2: "أسود", 3: "بني",
     4: "رمادي", 5: "بيج", 6: "فضي", 7: "ذهبي"
 };
 
-// ==========================================
-// DECODER (Supports Legacy packed integer & V2 JSON String Payload)
-// ==========================================
 function decode(c) {
     if (typeof c === "string" && c.startsWith("v2_")) {
         try {
@@ -304,16 +279,16 @@ function decode(c) {
                 version: 2,
                 code: payload.code || null,
                 model: payload.model,
-                color: payload.color || "غير محدد", // Reads color string directly
+                color: payload.color || "غير محدد",
                 width: payload.width,
-                height: payload.height
+                height: payload.height,
+                image: payload.image || null // قراءة مسار/رابط الصورة
             };
         } catch (err) {
             throw new Error("Invalid V2 product payload");
         }
     }
 
-    // Existing legacy format decoder
     if (typeof c !== "string" || !/^[0-9a-z]{1,6}$/i.test(c)) {
         throw new Error("Invalid c parameter");
     }
@@ -334,15 +309,12 @@ function decode(c) {
         model,
         color: LEGACY_COLORS[colorId] || "غير محدد",
         width,
-        height
+        height,
+        image: null
     };
 }
 
-// ==========================================
-// RENDER DOOR
-// ==========================================
 function renderDoor(config) {
-    // Product Code
     const codeBox = document.getElementById("product-code-box");
     if (config.code) {
         document.getElementById("product-code").textContent = config.code;
@@ -351,32 +323,28 @@ function renderDoor(config) {
         codeBox.hidden = true;
     }
 
-    // Model
     document.getElementById("model-badge").textContent = config.model;
     document.getElementById("model-number").textContent = config.model;
-
-    // Color
     document.getElementById("color-name").textContent = config.color;
 
-    // Dimensions
     document.getElementById("height-value").textContent = config.height + " cm";
     document.getElementById("width-value").textContent = config.width + " cm";
-    document.getElementById("svg-width").textContent = config.width + " cm";
-    document.getElementById("svg-height").textContent = config.height + " cm";
 
-    // Update SVG accessibility description
-    document.querySelector(".drawing svg").setAttribute(
-        "aria-label",
-        `رسم باب بقياس ${config.height} سنتيمتر طول و${config.width} سنتيمتر عرض`
-    );
+    // معالجة الصورة أو الرسم التوضيحي
+    const mediaContainer = document.getElementById("media-container");
+    const mediaTitle = document.getElementById("media-title");
 
-    // Show card
+    if (config.image) {
+        mediaTitle.textContent = "صورة الباب الفعلي";
+        mediaContainer.innerHTML = `
+            <img src="${config.image}" alt="صورة الباب للموديل ${config.model}" class="product-image" onerror="this.onerror=null; this.src='logo.png';">
+            <p class="note">صورة حقيقية للمنتج المطلوب</p>
+        `;
+    }
+
     document.getElementById("door-card").hidden = false;
 }
 
-// ==========================================
-// LOAD FROM URL
-// ==========================================
 function loadDoor() {
     const params = new URLSearchParams(window.location.search);
     const c = params.get("c");
@@ -388,21 +356,14 @@ function loadDoor() {
     return config;
 }
 
-// ==========================================
-// ERROR HANDLING
-// ==========================================
 function showError(error) {
     document.getElementById("door-card").hidden = true;
     document.getElementById("error-message").hidden = false;
     document.getElementById("error-description").textContent = error.message;
 }
 
-// ==========================================
-// INITIALIZATION
-// ==========================================
 try {
-    const config = loadDoor();
-    console.log("Door configuration:", config);
+    loadDoor();
 } catch (error) {
     console.error(error);
     showError(error);
