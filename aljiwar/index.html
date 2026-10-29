@@ -313,10 +313,16 @@ async function loadDoor() {
 
     const itemData = result.data[itemSerial];
 
+    // دعم فك الترميز العربي بشكل سليّم 100% في حال بقاء أي رموز
+    let decodedColor = itemData.color || "غير محدد";
+    try {
+        decodedColor = decodeURIComponent(escape(decodedColor));
+    } catch(e) {}
+
     return {
         code: itemData.code || null,
         model: itemData.model,
-        color: itemData.color || "غير محدد",
+        color: decodedColor,
         width: itemData.width,
         height: itemData.height,
         image: itemData.image || null
