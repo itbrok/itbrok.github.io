@@ -1,1 +1,702 @@
-icms landing here
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICMS — برنامج إدارة شركات المقاولات والمشاريع الإنشائية</title>
+    <meta name="description"
+        content="برنامج مكتبي لإدارة شركات المقاولات في العراق؛ يربط حسابات المشاريع، تمويل الشركاء، رقابة المخازن وسلاسل التوريد، المقاولين الثانويين، وعمال الأجور اليومية.">
+    <link rel="icon" type="image/png" href="images/icms.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: IBM Plex Sans Arabic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Fancybox for full-size screenshot preview -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f5ff',
+                            100: '#e5edff',
+                            600: '#1d4ed8',
+                            700: '#1e40af',
+                            800: '#1e3a8a',
+                            900: '#172554',
+                        },
+                        slate: {
+                            850: '#151f32',
+                            900: '#0f172a',
+                            950: '#020617',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['IBM Plex Sans Arabic', 'system-ui', 'sans-serif'],
+                        mono: ['IBM Plex Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'IBM Plex Sans Arabic', system-ui, sans-serif;
+            background-color: #ffffff;
+            color: #0f172a;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Clean tabular figures for financial numbers */
+        .tabular-nums {
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Subtle technical grid line */
+        .hairline-border {
+            border-color: #e2e8f0;
+        }
+
+        /* Image viewer customization */
+        .fancybox__backdrop {
+            background: rgba(15, 23, 42, 0.95) !important;
+        }
+    </style>
+</head>
+
+<body class="selection:bg-slate-900 selection:text-white">
+
+    <!-- ================= TOP UTILITY / NAVIGATION ================= -->
+    <header class="border-b hairline-border bg-white sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src="images/icms.png" alt="ICMS" class="w-8 h-8 rounded border border-slate-200 object-contain p-0.5">
+                <div>
+                    <span class="font-bold text-base text-slate-900 tracking-tight">ICMS</span>
+                    <span class="text-xs text-slate-500 font-medium me-2">— برنامج إدارة شركات المقاولات</span>
+                </div>
+            </div>
+
+            <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600">
+                <a href="#overview" class="hover:text-slate-950 transition-colors">نظرة عامة</a>
+                <a href="#workflows" class="hover:text-slate-950 transition-colors">محاور العمل الميداني</a>
+                <a href="#screenshots" class="hover:text-slate-950 transition-colors">واجهات النظام</a>
+                <a href="#specs" class="hover:text-slate-950 transition-colors">المواصفات التقنية</a>
+                <a href="#pricing" class="hover:text-slate-950 transition-colors">الترخيص والأسعار</a>
+                <a href="#faq" class="hover:text-slate-950 transition-colors">الأسئلة الشائعة</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <a href="https://wa.me/9647829933540?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%B7%D9%84%D8%A8%20%D8%B9%D8%B1%D8%B6%20%D8%AA%D9%88%D8%B6%D9%8A%D8%AD%D9%8A%20%D9%84%D9%80%20ICMS"
+                    target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white text-xs sm:text-sm font-semibold px-4 py-2 rounded transition-colors">
+                    <span>طلب استعراض مباشر (Demo)</span>
+                    <span>←</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main id="overview">
+
+        <!-- ================= HERO SECTION ================= -->
+        <section class="pt-12 pb-16 lg:pt-16 lg:pb-24 border-b hairline-border bg-slate-50/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-4xl space-y-5">
+                    <div class="inline-block border border-slate-300 bg-white text-slate-700 text-xs font-semibold px-2.5 py-1 rounded">
+                        برنامج مكتبي لنظام Windows · الإصدار 2.5
+                    </div>
+
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-950 leading-[1.25] tracking-tight">
+                        إدارة متكاملة لحسابات المشاريع، المخازن، عمال الأجور، والمقاولين الثانويين
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-slate-700 leading-relaxed max-w-3xl">
+                        صُمم نظام <strong>ICMS</strong> لربط الحسابات المكتبية بواقع مواقع العمل الإنشائية في العراق: من تحديد نسب رأس مال الشركاء والمستثمرين واحتساب الأرباح، مروراً بتتبع أذونات المواد وحركات المخازن، وحتى تسوية مستحقات المقاولين الثانويين وكشوفات عمال الأجر اليومي؛ في نظام مكتبي واحد مستقل يعمل محلياً دون الحاجة لاتصال إنترنت.
+                    </p>
+
+                    <div class="pt-2 flex flex-wrap items-center gap-4 text-sm">
+                        <a href="https://wa.me/9647829933540?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%B7%D9%84%D8%A8%20%D8%B9%D8%B1%D8%B6%20%D8%AA%D9%88%D8%B6%D9%8A%D8%AD%D9%8A%20%D9%84%D9%80%20ICMS"
+                            target="_blank" rel="noopener noreferrer"
+                            class="bg-blue-700 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded text-sm transition-colors">
+                            حجز موعد استعراض توضيحي للشركة
+                        </a>
+                        <a href="tel:+9647829933540"
+                            class="border border-slate-300 hover:bg-white text-slate-800 font-semibold px-5 py-3 rounded text-sm transition-colors flex items-center gap-2">
+                            <span>الاتصال المباشر:</span>
+                            <span dir="ltr" class="font-mono text-xs">+964 782 993 3540</span>
+                        </a>
+                        <span class="text-slate-500 text-xs sm:text-sm">سعر الترخيص الدائم: <strong>950,000 د.ع</strong> دفعة واحدة</span>
+                    </div>
+                </div>
+
+                <!-- Primary UI Centerpiece -->
+                <div class="mt-12">
+                    <div class="border border-slate-300 rounded-lg overflow-hidden bg-slate-900 shadow-md">
+                        <div class="bg-slate-100 border-b border-slate-200 px-4 py-2 flex items-center justify-between text-xs text-slate-600">
+                            <span class="font-mono">ICMS — لوحة تحكم الشركة ومؤشرات الأداء العامة</span>
+                            <span class="text-slate-400">انقر على الصورة للتكبير</span>
+                        </div>
+                        <a href="images/icms_screenshot1.PNG" data-fancybox="hero-screenshot" data-caption="لوحة تحكم الشركة — ICMS">
+                            <img src="images/icms_screenshot1.PNG" alt="لوحة تحكم شركة المقاولات في برنامج ICMS"
+                                class="w-full h-auto object-cover hover:opacity-95 transition-opacity">
+                        </a>
+                    </div>
+
+                    <!-- Interface Annotation Strip -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4 text-xs text-slate-600">
+                        <div class="border-s-2 border-blue-600 ps-3">
+                            <strong class="text-slate-900 block font-semibold">موقف السيولة والمصاريف:</strong>
+                            متابعة الصندوق والتدفق المالي اليومي لكل مشروع.
+                        </div>
+                        <div class="border-s-2 border-slate-400 ps-3">
+                            <strong class="text-slate-900 block font-semibold">إجمالي العقود والمستخلصات:</strong>
+                            رصد المبالغ المستلمة والمتبقية لدى جهات الإشراف.
+                        </div>
+                        <div class="border-s-2 border-slate-400 ps-3">
+                            <strong class="text-slate-900 block font-semibold">مؤشرات التقدم المالي والتنفيذي:</strong>
+                            مقارنة نسبة الصرف الحقيقي بنسبة إنجاز الأعمال.
+                        </div>
+                        <div class="border-s-2 border-slate-400 ps-3">
+                            <strong class="text-slate-900 block font-semibold">حسابات الشركاء التلقائية:</strong>
+                            تحديث حصص الأرباح دورياً وفق نسب التمويل.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SPECIFICATIONS SUMMARY STRIP ================= -->
+        <section class="py-6 border-b hairline-border bg-white text-xs sm:text-sm text-slate-700">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div>
+                        <span class="text-slate-400 block text-xs">نوع التطبيق</span>
+                        <strong class="text-slate-900 font-semibold">برنامج مكتبي لنظام Windows</strong>
+                    </div>
+                    <div>
+                        <span class="text-slate-400 block text-xs">حفظ وأمان البيانات</span>
+                        <strong class="text-slate-900 font-semibold">محلي 100% داخل حاسوب الشركة</strong>
+                    </div>
+                    <div>
+                        <span class="text-slate-400 block text-xs">طبيعة الترخيص</span>
+                        <strong class="text-slate-900 font-semibold">ترخيص دائم بدون اشتراكات شهرية</strong>
+                    </div>
+                    <div>
+                        <span class="text-slate-400 block text-xs">الشبكة الداخلية</span>
+                        <strong class="text-slate-900 font-semibold">يدعم تعدد المستخدمين عبر LAN</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= DETAILED OPERATIONAL WORKFLOWS ================= -->
+        <section id="workflows" class="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+
+            <!-- Section Header -->
+            <div class="max-w-3xl space-y-3">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-950">
+                    كيف يعالج البرنامج تفاصيل العمل الميداني في شركات المقاولات؟
+                </h2>
+                <p class="text-slate-600 text-base leading-relaxed">
+                    بدلاً من السجلات العامة التي لا تلائم قطاع الإنشاءات، قُسمت وظائف ICMS لتعكس دورة حياة المشروع الفعلي خطوة بخطوة:
+                </p>
+            </div>
+
+            <!-- Pillar 1: Financial & Profit Sharing -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center border-t hairline-border pt-12">
+                <div class="lg:col-span-5 space-y-4">
+                    <div class="text-xs font-mono font-semibold text-blue-700 uppercase tracking-wider">01. المحور المالي</div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-slate-950">
+                        حسابات التمويل، مساهمات الشركاء، وتوزيع نسب الأرباح
+                    </h3>
+                    <p class="text-sm text-slate-700 leading-relaxed">
+                        في معظم شركات المقاولات يدخل في المشروع أكثر من شريك أو ممول بنسب تمويل مختلفة. يتيح النظام تسجيل مبالغ رأس المال لكل شريك، وتحديد نسبته في العقد، واحتساب مستحقاته وأرباحه بشكل آلي عند استلام السلف والدفعات.
+                    </p>
+                    <ul class="text-sm text-slate-600 space-y-2 pt-2">
+                        <li class="flex items-start gap-2">
+                            <span class="text-slate-900 font-bold">•</span>
+                            <span>إصدار سندات الصرف والقبض ومذكرات الدفع وتصنيفها حسب بنود المشروع.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-slate-900 font-bold">•</span>
+                            <span>تتبع حركة الخزينة والصناديق الفرعية في كل موقع عمل على حدة.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-slate-900 font-bold">•</span>
+                            <span>كشوفات حساب ختامية تبين الربح الفعلي بعد استبعاد كلفة المواد والعمالة والمقاولين.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-7">
+                    <div class="border border-slate-300 rounded-lg overflow-hidden bg-slate-950 shadow-sm">
+                        <div class="bg-slate-100 border-b border-slate-200 px-3 py-1.5 text-xs text-slate-600 flex justify-between font-mono">
+                            <span>واجهة التمويل وتوزيع الأرباح والتدفق النقدي</span>
+                            <span>اضغط للتكبير</span>
+                        </div>
+                        <a href="images/icms_screenshot5.PNG" data-fancybox="gallery" data-caption="إدارة التمويل وتوزيع الأرباح وحركات الخزينة — ICMS">
+                            <img src="images/icms_screenshot5.PNG" alt="إدارة التمويل وتوزيع الأرباح وحركات الخزينة" class="w-full h-auto object-cover hover:opacity-95 transition-opacity">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pillar 2: Warehousing & Materials -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center border-t hairline-border pt-12">
+                <div class="lg:col-span-7 order-2 lg:order-1">
+                    <div class="border border-slate-300 rounded-lg overflow-hidden bg-slate-950 shadow-sm">
+                        <div class="bg-slate-100 border-b border-slate-200 px-3 py-1.5 text-xs text-slate-600 flex justify-between font-mono">
+                            <span>واجهة تفاصيل المشروع، المخازن، والآليات</span>
+                            <span>اضغط للتكبير</span>
+                        </div>
+                        <a href="images/icms_screenshot4.PNG" data-fancybox="gallery" data-caption="إدارة تفاصيل المشروع والمخزن والآليات والموردين — ICMS">
+                            <img src="images/icms_screenshot4.PNG" alt="إدارة تفاصيل المشروع والمخازن والآليات" class="w-full h-auto object-cover hover:opacity-95 transition-opacity">
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 space-y-4 order-1 lg:order-2">
+                    <div class="text-xs font-mono font-semibold text-blue-700 uppercase tracking-wider">02. الرقابة الميدانية والمخازن</div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-slate-950">
+                        المخازن وسلاسل التوريد وضبط نسبة الهدر
+                    </h3>
+                    <p class="text-sm text-slate-700 leading-relaxed">
+                        أكبر مصادر استنزاف الأرباح في قطاع المقاولات هو فوضى المواد الإنشائية في المواقع. يوفر البرنامج دورة مخزنية كاملة ترصد المواد من إرسالية المورد حتى تفريغها واستهلاكها الفعلي.
+                    </p>
+                    <ul class="text-sm text-slate-600 space-y-2 pt-2">
+                        <li class="flex items-start gap-2">
+                            <span class="text-slate-900 font-bold">•</span>
+                            <span>أذونات استلام مخزني وصرف موقعي مرتبطة باسم المهندس المستلم.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-slate-900 font-bold">•</span>
+                            <span>توثيق المناقلات الداخلية للمواد والمعدات بين مشروع وآخر لمنع الازدواجية.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-slate-900 font-bold">•</span>
+                            <span>تسجيل التالف والهدر (Wastage) ومقارنة الكميات المستهلكة بجداول الكميات (BOQ).</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-slate-900 font-bold">•</span>
+                            <span>سجل آليات وسيارات الشركة ومصاريف الوقود والصيانة لكل آلية.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Pillar 3: Subcontractors & Labor -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center border-t hairline-border pt-12">
+                <div class="lg:col-span-5 space-y-4">
+                    <div class="text-xs font-mono font-semibold text-blue-700 uppercase tracking-wider">03. الكوادر والمقاولون</div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-slate-950">
+                        حسابات المقاولين الثانويين وعمال الأجور اليومية
+                    </h3>
+                    <p class="text-sm text-slate-700 leading-relaxed">
+                        يعالج النظام كشوفات العمل اليومية والأسبوعية التي ترهق الإدارة المالية: من عمال اليومية والأسطاوات إلى مقاولي الباطن (حدادة، نجارة، صحيات، بناء، وغيرها).
+                    </p>
+                    <ul class="text-sm text-slate-600 space-y-2 pt-2">
+                        <li class="flex items-start gap-2">
+                            <span class="text-slate-900 font-bold">•</span>
+                            <span><strong>المقاولون الثانويون:</strong> إدخال بنود الأعمال، احتساب الكميات المنفذة، وخصم المواد المسلمة إليهم من مستحقاتهم آلياً.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-slate-900 font-bold">•</span>
+                            <span><strong>عمال الأجر اليومي:</strong> تسجيل ساعات العمل العادية والإضافية، السلف اليومية، وإصدار قوائم التصفية الأسبوعية بنقرة زر.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-slate-900 font-bold">•</span>
+                            <span><strong>الكادر الثابت:</strong> سلم رواتب المهندسين والموظفين الشهرية، الاستقطاعات، ومكافآت الإنجاز.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-7">
+                    <div class="border border-slate-300 rounded-lg overflow-hidden bg-slate-950 shadow-sm">
+                        <div class="bg-slate-100 border-b border-slate-200 px-3 py-1.5 text-xs text-slate-600 flex justify-between font-mono">
+                            <span>واجهة إدارة الكوادر، سجل الرواتب، والأدوار</span>
+                            <span>اضغط للتكبير</span>
+                        </div>
+                        <a href="images/icms_screenshot3.PNG" data-fancybox="gallery" data-caption="إدارة الكوادر والموظفين والصلاحيات — ICMS">
+                            <img src="images/icms_screenshot3.PNG" alt="إدارة الكوادر والموظفين والصلاحيات" class="w-full h-auto object-cover hover:opacity-95 transition-opacity">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pillar 4: Geospatial & Quality Control -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center border-t hairline-border pt-12">
+                <div class="lg:col-span-7 order-2 lg:order-1">
+                    <div class="border border-slate-300 rounded-lg overflow-hidden bg-slate-950 shadow-sm">
+                        <div class="bg-slate-100 border-b border-slate-200 px-3 py-1.5 text-xs text-slate-600 flex justify-between font-mono">
+                            <span>واجهة خارطة المشاريع التفاعلية في المحافظات</span>
+                            <span>اضغط للتكبير</span>
+                        </div>
+                        <a href="images/icms_screenshot2.PNG" data-fancybox="gallery" data-caption="خارطة المشاريع التفاعلية — ICMS">
+                            <img src="images/icms_screenshot2.PNG" alt="خارطة المشاريع التفاعلية وتوزيعها الجغرافي" class="w-full h-auto object-cover hover:opacity-95 transition-opacity">
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 space-y-4 order-1 lg:order-2">
+                    <div class="text-xs font-mono font-semibold text-blue-700 uppercase tracking-wider">04. المتابعة المكانية والجودة</div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-slate-950">
+                        الخارطة الجغرافية التفاعلية وأرشيف الفحوصات الهندسية
+                    </h3>
+                    <p class="text-sm text-slate-700 leading-relaxed">
+                        تمنح الخارطة التفاعلية إدارة الشركة نظرة بصرية شاملة على مواقع وتوزّع مشاريعها في بغداد، الأنبار، أربيل، البصرة وسائر المحافظات مع استعراض موقف الإنجاز المالي والتنفيذي لكل موقع بنقرة واحدة.
+                    </p>
+                    <ul class="text-sm text-slate-600 space-y-2 pt-2">
+                        <li class="flex items-start gap-2">
+                            <span class="text-slate-900 font-bold">•</span>
+                            <span>تموضع جغرافي للمشاريع مع إحصائيات سريعة للعقد والمدة المتبقية.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-slate-900 font-bold">•</span>
+                            <span><strong>الفحوصات الهندسية والمختبرات:</strong> أرشفة نتائج فحص مكعبات الخرسانة (7 و 28 يوم)، فحص حديد التسليح، وفحوصات التربة والدفان.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-slate-900 font-bold">•</span>
+                            <span>توثيق مطابقة المواصفات القياسية وسجل الدفعات المستحقة للمختبرات الإنشائية.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ================= FULL INTERFACE EXPLORER ================= -->
+        <section id="screenshots" class="py-16 lg:py-20 border-t hairline-border bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl space-y-2 mb-8">
+                    <span class="text-xs font-mono font-semibold text-slate-500 uppercase">واجهات الاستخدام</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-slate-950">
+                        استعراض شاشات البرنامج
+                    </h2>
+                    <p class="text-sm text-slate-600">
+                        شاشات منظمة مصممة للإدخال السريع للبيانات، واستخراج التقارير دون تعقيد:
+                    </p>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <div class="flex flex-wrap gap-2 border-b hairline-border pb-3 mb-6" id="tabs-container">
+                    <button onclick="setPreview(0)" class="preview-tab active text-xs sm:text-sm font-semibold px-3.5 py-2 rounded bg-slate-900 text-white transition-colors">
+                        لوحة تحكم الشركة
+                    </button>
+                    <button onclick="setPreview(1)" class="preview-tab text-xs sm:text-sm font-semibold px-3.5 py-2 rounded bg-white text-slate-700 border hairline-border hover:bg-slate-100 transition-colors">
+                        خارطة المشاريع
+                    </button>
+                    <button onclick="setPreview(2)" class="preview-tab text-xs sm:text-sm font-semibold px-3.5 py-2 rounded bg-white text-slate-700 border hairline-border hover:bg-slate-100 transition-colors">
+                        التمويل ونسب الشركاء
+                    </button>
+                    <button onclick="setPreview(3)" class="preview-tab text-xs sm:text-sm font-semibold px-3.5 py-2 rounded bg-white text-slate-700 border hairline-border hover:bg-slate-100 transition-colors">
+                        تفاصيل المشروع والمخازن
+                    </button>
+                    <button onclick="setPreview(4)" class="preview-tab text-xs sm:text-sm font-semibold px-3.5 py-2 rounded bg-white text-slate-700 border hairline-border hover:bg-slate-100 transition-colors">
+                        الكوادر والصلاحيات
+                    </button>
+                </div>
+
+                <!-- Viewer Display Box -->
+                <div class="border border-slate-300 rounded-lg overflow-hidden bg-white shadow-sm">
+                    <div class="p-3 bg-slate-100 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between text-xs gap-2">
+                        <span id="preview-caption" class="font-semibold text-slate-900">
+                            لوحة تحكم الشركة: ملخص مالي وتنفيذي شامل لكافة المشاريع ونسب الإنجاز.
+                        </span>
+                        <a id="preview-link" href="images/icms_screenshot1.PNG" data-fancybox="gallery-explorer" data-caption="لوحة تحكم الشركة — ICMS" class="text-blue-700 font-semibold hover:underline">
+                            تكبير الشاشة ↗
+                        </a>
+                    </div>
+                    <div class="aspect-[16/10] bg-slate-950 flex items-center justify-center overflow-hidden">
+                        <img id="preview-img" src="images/icms_screenshot1.PNG" alt="واجهة ICMS" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SYSTEM ARCHITECTURE & SPECS ================= -->
+        <section id="specs" class="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl space-y-2 mb-10">
+                <span class="text-xs font-mono font-semibold text-slate-500 uppercase">البنية التقنية</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-950">
+                    المواصفات الفنية ومتطلبات التشغيل
+                </h2>
+                <p class="text-sm text-slate-600">
+                    لماذا صُمم ICMS كبرنامج مكتبي (Desktop ERP) وليس كمنصة سحابية عامة؟
+                </p>
+            </div>
+
+            <div class="border hairline-border rounded-lg overflow-hidden">
+                <table class="w-full text-right text-xs sm:text-sm border-collapse">
+                    <tbody class="divide-y hairline-border">
+                        <tr class="hover:bg-slate-50/50">
+                            <td class="p-4 font-semibold text-slate-900 bg-slate-50/80 w-1/3 sm:w-1/4">بيئة التشغيل المعتمدة</td>
+                            <td class="p-4 text-slate-700">Windows 10، Windows 11، أو Windows Server (64-bit).</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/50">
+                            <td class="p-4 font-semibold text-slate-900 bg-slate-50/80">المعمارية البرمجية</td>
+                            <td class="p-4 text-slate-700">مبني باستخدام C# و Microsoft .NET مع واجهات WPF وتسريع رسومي SkiaSharp لضمان سرعة معالجة الجداول الضخمة دون بطء.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/50">
+                            <td class="p-4 font-semibold text-slate-900 bg-slate-50/80">محرك قاعدة البيانات</td>
+                            <td class="p-4 text-slate-700">قاعدة بيانات محلية مشفرة (SQLite / Local Server) تحفظ كافة سجلاتك على القرص الصلب الخاص بشركتك.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/50">
+                            <td class="p-4 font-semibold text-slate-900 bg-slate-50/80">الاعتماد على الإنترنت</td>
+                            <td class="p-4 text-slate-700"><strong>غير مطلوب نهائياً:</strong> يعمل البرنامج بكامل طاقته وميزاته في المواقع الميدانية المنقطعة عن الشبكة.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/50">
+                            <td class="p-4 font-semibold text-slate-900 bg-slate-50/80">العمل المشترك (Multi-user)</td>
+                            <td class="p-4 text-slate-700">يدعم العمل المتعدد على شبكة الشركة الداخلية (Local LAN)؛ حيث يمكن للمحاسب وأمين المخزن والمدير العمل معاً مع تحديد صلاحية كل مستخدم.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/50">
+                            <td class="p-4 font-semibold text-slate-900 bg-slate-50/80">النسخ الاحتياطي</td>
+                            <td class="p-4 text-slate-700">أداة نسخ احتياطي مدمجة بضغطة زر واحدة لتصدير واسترجاع نسخة كاملة من بيانات الشركة في أي وقت.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ================= PRICING & LICENSING ================= -->
+        <section id="pricing" class="py-16 lg:py-20 border-t hairline-border bg-slate-50/60">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center space-y-3 mb-12">
+                    <span class="text-xs font-mono font-semibold text-blue-700 uppercase">نموذج الشراء المباشر</span>
+                    <h2 class="text-2xl sm:text-4xl font-bold text-slate-950">
+                        ترخيص دائم — بدون أي اشتراكات دورية
+                    </h2>
+                    <p class="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto">
+                        تتجنب معظم شركات المقاولات البرمجيات السحابية بسبب التكاليف الشهرية المتراكمة وخطورة ربط البيانات الحساسة بسيرفرات خارجية. يمنحك ICMS ملكية دائمة بدفعة واحدة واضحة:
+                    </p>
+                </div>
+
+                <!-- Pricing Statement Box -->
+                <div class="bg-white border border-slate-300 rounded-lg p-6 sm:p-10 shadow-sm space-y-8">
+                    <div class="flex flex-col sm:flex-row sm:items-baseline justify-between border-b hairline-border pb-6 gap-2">
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-950">ترخيص النسخة الكاملة لشركة المقاولات</h3>
+                            <p class="text-xs text-slate-500">يشمل البرنامج بكافة وحداته (المالية، المخازن، المقاولين، الكوادر، والمختبرات)</p>
+                        </div>
+                        <div class="text-start sm:text-end">
+                            <span class="text-3xl sm:text-4xl font-bold text-slate-950 font-mono">950,000</span>
+                            <span class="text-sm font-semibold text-slate-600">دينار عراقي</span>
+                            <div class="text-[11px] text-emerald-700 font-semibold mt-0.5">دفعة واحدة لمرة واحدة</div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="text-xs font-semibold text-slate-900 uppercase tracking-wider font-mono">الخدمات المتضمنة ضمن السعر:</div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs sm:text-sm text-slate-700">
+                            <div class="flex items-start gap-2.5">
+                                <span class="text-blue-700 font-bold font-mono">01.</span>
+                                <span><strong>ترخيص دائم:</strong> نسخة أصلية غير مقيدة بمدة زمنية ولا تتطلب أي تجديد.</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <span class="text-blue-700 font-bold font-mono">02.</span>
+                                <span><strong>التثبيت والإعداد:</strong> تنصيب النظام وضبطه على أجهزة الشركة والشبكة الداخلية.</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <span class="text-blue-700 font-bold font-mono">03.</span>
+                                <span><strong>التخصيص المباشر:</strong> تهيئة شجرة الحسابات، تصنيفات المشاريع، والمسميات وفق نظام شركتك.</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <span class="text-blue-700 font-bold font-mono">04.</span>
+                                <span><strong>تدريب الكادر:</strong> جلسة تدريب عملية للمحاسب والمهندس المسؤول على إدخال البيانات والتقارير.</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <span class="text-blue-700 font-bold font-mono">05.</span>
+                                <span><strong>الدعم الفني المباشر:</strong> متابعة مستمرة لمعالجة أي استفسارات محاسبية أو تقنية أثناء التشغيل.</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <span class="text-blue-700 font-bold font-mono">06.</span>
+                                <span><strong>التحديثات الدورية:</strong> الحصول على تحديثات البرنامج والتحسينات المضافة مجاناً.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 border-t hairline-border flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div class="text-xs text-slate-500 text-center sm:text-start">
+                            لطلب النسخة أو التنسيق لجلسة استعراض حي ببيانات تجريبية:
+                        </div>
+                        <a href="https://wa.me/9647829933540?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%B7%D9%84%D8%A8%20%D9%86%D8%B8%D8%A7%D9%85%20ICMS%20%D9%84%D8%B4%D8%B1%D9%83%D8%AA%D9%86%D8%A7"
+                            target="_blank" rel="noopener noreferrer"
+                            class="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs sm:text-sm px-6 py-3 rounded text-center transition-colors">
+                            التواصل لشراء البرنامج أو طلب استعراض
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= FAQ SECTION ================= -->
+        <section id="faq" class="py-16 lg:py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="space-y-2 mb-10">
+                <span class="text-xs font-mono font-semibold text-slate-500 uppercase">إجابات مباشرة</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-950">
+                    الأسئلة الشائعة
+                </h2>
+            </div>
+
+            <div class="divide-y hairline-border border-y hairline-border">
+                <div class="py-5 space-y-2">
+                    <h3 class="font-semibold text-base text-slate-950">هل يمكن تشغيل البرنامج على أكثر من حاسوب في الشركة؟</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        نعم. يمكن تنصيب قاعدة البيانات على الحاسوب الرئيسي (السيرفر المحلي للشركة)، وربط حواسيب المحاسبين والمهندسين وأمناء المخازن عبر الشبكة الداخلية (Local Network)، بحيث يرى كل موظف الشاشات المسموح له بها فقط.
+                    </p>
+                </div>
+
+                <div class="py-5 space-y-2">
+                    <h3 class="font-semibold text-base text-slate-950">ماذا يحدث لبياناتنا في حال حدوث عطل في الحاسوب؟</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        يتضمن البرنامج وظيفة نسخ احتياطي فورية (Backup). يمكنك تصدير نسخة كاملة من قاعدة البيانات بملف واحد مشفر وحفظه على فلاش ميموري أو قرص صلب خارجي دورياً. في حال استبدال الحاسوب، يتم استرجاع كافة المشاريع والحسابات خلال دقيقتين.
+                    </p>
+                </div>
+
+                <div class="py-5 space-y-2">
+                    <h3 class="font-semibold text-base text-slate-950">هل أحتاج إلى خبرة برمجية لتشغيل البرنامج وتعديل نسب الشركاء؟</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        لا، الواجهات صممت بلغة عربية واضحة ومصطلحات محاسبية وإنشائية معتادة في السوق العراقي. كما أن جلسة التدريب المشمولة مع البرنامج تضمن بدء إدخال البيانات واستخراج التقارير بكل سهولة من اليوم الأول.
+                    </p>
+                </div>
+
+                <div class="py-5 space-y-2">
+                    <h3 class="font-semibold text-base text-slate-950">هل يمكننا مشاهدة البرنامج يعمل ببيانات مشاريع حقيقية قبل اتخاذ القرار؟</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        نعم بالتأكيد. نسعد بتقديم جلسة استعراض توضيحي (Live Demo) عبر الإنترنت أو بالحضور المباشر لعرض آلية عمل شاشات التمويل، المخازن، عمال الأجور، والتقارير المالية والتأكد من ملاءمتها لأسلوب عمل شركتكم.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= DIRECT CONTACT BAR ================= -->
+        <section class="py-14 border-t hairline-border bg-slate-900 text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+                    <div class="space-y-2 max-w-2xl">
+                        <h2 class="text-xl sm:text-2xl font-bold">لطلب البرنامج أو حجز موعد استعراض توضيحي</h2>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            يمكنكم التواصل مباشرة مع المهندس المسؤول لمناقشة متطلبات شركتكم وترتيب جلسة الاستعراض:
+                        </p>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-4">
+                        <a href="https://wa.me/9647829933540?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%B7%D9%84%D8%A8%20%D8%B9%D8%B1%D8%B6%20%D8%AA%D9%88%D8%B6%D9%8A%D8%AD%D9%8A%20%D9%84%D9%80%20ICMS"
+                            target="_blank" rel="noopener noreferrer"
+                            class="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm px-6 py-3 rounded transition-colors inline-flex items-center gap-2">
+                            <span>مراسلة عبر واتساب</span>
+                            <span>↗</span>
+                        </a>
+                        <a href="tel:+9647829933540"
+                            class="border border-slate-700 hover:bg-slate-800 text-white font-semibold text-sm px-5 py-3 rounded transition-colors" dir="ltr">
+                            +964 782 993 3540
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="border-t hairline-border bg-white py-10 px-4 sm:px-6 lg:px-8 text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <img src="images/icms.png" alt="ICMS" class="w-6 h-6 rounded border border-slate-200 object-contain p-0.5">
+                <span class="font-semibold text-slate-800">ICMS — Integrated Contracts Management System</span>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-4">
+                <span>تطوير وهندسة: <strong>م. محمد أحمد آل ثميل</strong></span>
+                <span>•</span>
+                <a href="mailto:Mohammed@devcore.site" class="text-slate-700 hover:underline">Mohammed@devcore.site</a>
+                <span>•</span>
+                <span>الرمادي، الأنبار، العراق</span>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto mt-6 pt-6 border-t hairline-border text-center text-slate-400">
+            جميع الحقوق محفوظة © 2026 — نظام ICMS لإدارة شركات المقاولات.
+        </div>
+    </footer>
+
+    <!-- Fancybox 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+
+    <script>
+        // Screenshot Tab Switcher Data
+        const screenshotsData = [
+            {
+                img: "images/icms_screenshot1.PNG",
+                caption: "لوحة تحكم الشركة: ملخص مالي وتنفيذي شامل لكافة المشاريع ونسب الإنجاز والسيولة النقدية."
+            },
+            {
+                img: "images/icms_screenshot2.PNG",
+                caption: "خارطة المشاريع التفاعلية: رصد المواقع جغرافياً ومتابعة الموقف المالي والتنفيذي لكل موقع عمل."
+            },
+            {
+                img: "images/icms_screenshot5.PNG",
+                caption: "التمويل المالي وتوزيع الأرباح: ضبط نسب مساهمة الشركاء في رأس المال واحتساب الأرباح وحركات الخزينة."
+            },
+            {
+                img: "images/icms_screenshot4.PNG",
+                caption: "إدارة تفاصيل المشروع والمخازن: أذونات التوريد والصرف، ضبط التالف والهدر، ومتابعة الآليات والوقود."
+            },
+            {
+                img: "images/icms_screenshot3.PNG",
+                caption: "الكوادر والصلاحيات: كشوفات عمال الأجر اليومي، سلم رواتب الكادر الثابت، وتعيين صلاحيات كل مستخدم."
+            }
+        ];
+
+        function setPreview(index) {
+            const item = screenshotsData[index];
+            if (!item) return;
+
+            const imgEl = document.getElementById('preview-img');
+            const captionEl = document.getElementById('preview-caption');
+            const linkEl = document.getElementById('preview-link');
+
+            imgEl.src = item.img;
+            captionEl.textContent = item.caption;
+            linkEl.href = item.img;
+            linkEl.setAttribute('data-caption', item.caption);
+
+            const buttons = document.querySelectorAll('.preview-tab');
+            buttons.forEach((btn, i) => {
+                if (i === index) {
+                    btn.classList.add('bg-slate-900', 'text-white');
+                    btn.classList.remove('bg-white', 'text-slate-700', 'border', 'hairline-border');
+                } else {
+                    btn.classList.remove('bg-slate-900', 'text-white');
+                    btn.classList.add('bg-white', 'text-slate-700', 'border', 'hairline-border');
+                }
+            });
+        }
+
+        // Initialize Fancybox for clean zoom/pan
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof Fancybox !== 'undefined') {
+                Fancybox.bind('[data-fancybox]', {
+                    wheel: "zoom",
+                    Images: { zoom: true },
+                    Toolbar: {
+                        display: {
+                            left: ["infobar"],
+                            middle: [],
+                            right: ["zoomIn", "zoomOut", "close"],
+                        },
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
