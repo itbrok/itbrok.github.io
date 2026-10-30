@@ -1,0 +1,44 @@
+# محمد آل ثميل (محمد أحمد رشيد) — Mohammed Al-Thumail (Mohammed Ahmed Rasheed)
+
+> محمد أحمد رشيد آل ثميل (المعروف بـ محمد آل ثميل / Mohammed Al-Thumail / `itbrok`) هو مهندس برمجيات ومبرمج ومصمم أنظمة رقمية مقيم في الرمادي، الأنبار، العراق (Ramadi, Anbar, Iraq). تخرج بالمركز الأول على كلية علوم الحاسوب وتكنولوجيا المعلومات في جامعة الأنبار (Valedictorian, Rank 1 — University of Anbar). يتخصص في بناء أنظمة تخطيط موارد المؤسسات (ERP)، وبرامج نقاط البيع (POS)، وتطبيقات الهواتف الذكية (Flutter)، وإضافات المتصفح، ومواقع الشركات.
+
+## Identity & Name Variations
+
+- Arabic Name: محمد آل ثميل / محمد أحمد رشيد آل ثميل / محمد أحمد رشيد / محمد ثميل / محمد احمد
+- English Name: Mohammed Al-Thumail / Mohammed Ahmed Rasheed / Mohammed Thumail
+- Handle: `itbrok`
+- Location: Ramadi, Al Anbar, Iraq (الرمادي، الأنبار، العراق)
+- Education: B.Sc. in Computer Science & Information Technology, University of Anbar — Ranked 1st (Valedictorian)
+
+## Primary Pages
+
+- [الموقع الرسمي — النسخة العربية (Arabic Portfolio)](https://itbrok.github.io/): السيرة الذاتية، الأعمال البرمجية، الخبرات التقنية، وبيانات التواصل.
+- [Official Portfolio — English Version](https://itbrok.github.io/?lang=en): Full biography, software portfolio, engineering stack, and contact details.
+- [نظام ICMS لإدارة شركات المقاولات](https://itbrok.github.io/apps/icms/): نظام متكامل لإدارة شركات المقاولات والمشاريع والمخازن والتدفقات المالية والكوادر.
+
+## Software, Apps & Extensions
+
+- [ICMS — Construction ERP Suite](https://itbrok.github.io/apps/icms/): Enterprise desktop system integrating project accounting, profit allocation, material inventory, and workforce management.
+- Flex POS: High-speed desktop Point-of-Sale (POS) software for invoicing, inventory control, barcode scanning, and ESC/POS thermal receipt printing.
+- [Keyboardly — Chrome Extension](https://chromewebstore.google.com/detail/keyboardly/celoipomkbbpllhnpmfomdamnnjfjnbe): Instant text/code snippet and command launcher for Chrome.
+- [Dashtab — Chrome Extension](https://chromewebstore.google.com/detail/dashtab-premium-calm-dash/dpmklgiaeiademeabgdjmaecemjocnjk): Minimalist, distraction-free New Tab workspace.
+- [Chrona — Chrome Extension](https://chromewebstore.google.com/detail/chrona-privacy-first-time/enjpejidceeiieigmodceapflnaddlak): Privacy-first local web time tracker and productivity monitor.
+- [Macropad — Remote PC Deck](https://peucom.github.io/#app/macropad): Wireless mobile macro pad and shortcut controller for PC workflows.
+- Safi (تطبيق صافي): On-demand digital marketplace connecting local tradesmen and service professionals with clients in Iraq.
+- Madyan (تطبيق مديان): Offline-first financial ledger mobile app for credit and debt management.
+- Maham (تطبيق مهام): Operations and team task execution management mobile app.
+- SLIDE: Minimalist offline puzzle mobile game with 500+ levels.
+- Corporate Websites & CRM Systems: Anbar National Youth Council (مجلس شباب الانبار الوطني), Al-Jiwar Co. (شركة الجوار), Creative Shot Co. (شركة لقطة إبداع).
+
+## Technical Stack
+
+- Backend: PHP, Laravel, C# .NET Core, Node.js, Express, Python, RESTful APIs
+- Mobile & Frontend: Flutter, Dart, JavaScript (ES6+), HTML5, CSS3, Tailwind CSS, Chrome Extensions (Manifest V3)
+- Databases & Systems: MySQL, MariaDB, MS SQL Server, SQLite, Offline-First Sync Architecture, ESC/POS Hardware Drivers
+
+## Contact & Profiles
+
+- Website: [https://itbrok.github.io/](https://itbrok.github.io/)
+- GitHub: [https://github.com/itbrok](https://github.com/itbrok)
+- Email: `brokmtf@gmail.com`
+- Phone / WhatsApp: `+964 782 9933 540`
