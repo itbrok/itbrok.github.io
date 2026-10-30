@@ -16,6 +16,7 @@
         href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Reenie+Beanie&display=swap"
         rel="stylesheet">
 
+
     <script>
         tailwind.config = {
             theme: {
@@ -39,25 +40,25 @@
 
     <!-- Detect language based on device / saved preference before render -->
     <script>
-        (function () {
-            const saved = localStorage.getItem('preferred_lang');
-            let isArabic = false;
-            if (saved) {
-                isArabic = (saved === 'ar');
-            } else {
-                const navLangs = navigator.languages || [navigator.language || navigator.userLanguage || ''];
-                for (let l of navLangs) {
-                    if (l && l.toLowerCase().startsWith('ar')) {
-                        isArabic = true;
-                        break;
+            (function () {
+                const saved = localStorage.getItem('preferred_lang');
+                let isArabic = false;
+                if (saved) {
+                    isArabic = (saved === 'ar');
+                } else {
+                    const navLangs = navigator.languages || [navigator.language || navigator.userLanguage || ''];
+                    for (let l of navLangs) {
+                        if (l && l.toLowerCase().startsWith('ar')) {
+                            isArabic = true;
+                            break;
+                        }
                     }
                 }
-            }
-            if (!isArabic) {
-                document.documentElement.setAttribute('dir', 'ltr');
-                document.documentElement.setAttribute('lang', 'en');
-            }
-        })();
+                if (!isArabic) {
+                    document.documentElement.setAttribute('dir', 'ltr');
+                    document.documentElement.setAttribute('lang', 'en');
+                }
+            })();
     </script>
 
     <style>
@@ -276,7 +277,7 @@
 
             <!-- HANDWRITTEN SIGNATURE -->
             <div class="pt-2 pb-4 flow-root">
-                <img src="signature.png" class="signature-img" alt="Signature">
+                <img src="images/me/signature.png" class="signature-img" alt="Signature">
             </div>
 
             <!-- HORIZONTAL LINKS -->
@@ -291,7 +292,6 @@
             <div
                 class="flex flex-col items-start space-y-3 text-xl sm:text-2xl font-arabicBody font-bold text-ink pt-4">
                 <span onclick="showPage('works')" class="section-link" id="link-works">اعمالي</span>
-                <span onclick="showPage('career')" class="section-link" id="link-career">مسيرتي المهنية</span>
                 <span onclick="showPage('skills')" class="section-link" id="link-skills">الخبرات</span>
             </div>
 
@@ -303,114 +303,724 @@
                 id="title-works">أعمالي</h2>
 
             <!-- Arabic Works -->
-            <div class="lang-ar space-y-6 max-w-2xl font-arabicBody">
-                <div class="space-y-1">
-                    <div class="text-xl font-bold text-ink">01. ICMS — Integrated Construction ERP</div>
-                    <p class="text-inkMuted text-base">نظام إدارة موارد المؤسسات الشامل لشركات المقاولات الكبرى (PHP /
-                        Laravel / MySQL).</p>
+            <div class="lang-ar space-y-6 max-w-3xl font-arabicBody">
+                <!-- 01. Desktop Software -->
+                <div class="space-y-3 pb-6 border-b border-black/10">
+                    <div class="space-y-1">
+                        <div class="text-xl font-bold text-ink">برامج وتطبيقات سطح المكتب</div>
+                    </div>
+
+                    <!-- Desktop Apps Cards Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 pt-2">
+                        <!-- Card 1: ICMS -->
+                        <a href="https://itbrok.github.io/apps/icms/" target="_blank" rel="noopener noreferrer"
+                            class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
+                            <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
+                                <img src="images/apps/icms_promo_ar.jpg" alt="ICMS"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-4 space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <img src="images/apps/icms.png" alt="ICMS Logo"
+                                            class="w-6 h-6 rounded object-contain">
+                                        <span
+                                            class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">ICMS</span>
+                                    </div>
+                                    <span
+                                        class="text-xs text-inkMuted group-hover:text-ink font-sans transition-colors">صفحة
+                                        النظام ↗</span>
+                                </div>
+                                <p class="text-xs text-inkMuted leading-relaxed">
+                                    نظام إدارة شركات المقاولات؛ يربط التدفقات المالية، حركات المخازن والمواد، والكوادر
+                                    والعمالة والمشاريع.
+                                </p>
+                            </div>
+                        </a>
+
+                        <!-- Card 2: Flex POS -->
+                        <div
+                            class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
+                            <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
+                                <img src="images/apps/flex_promo_ar.jpg" alt="Flex POS"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-4 space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <img src="images/apps/flex.png" alt="Flex POS Logo"
+                                            class="w-6 h-6 rounded object-contain">
+                                        <span
+                                            class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">Flex
+                                            POS</span>
+                                    </div>
+                                    <span class="text-xs text-inkMuted font-sans">برنامج مكتبي</span>
+                                </div>
+                                <p class="text-xs text-inkMuted leading-relaxed">
+                                    برنامج نقاط البيع المكتبي والسريع لإدارة الفواتير والمخازن وطباعة الإيصالات
+                                    والباركود بكفاءة عالية.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="space-y-1">
-                    <div class="text-xl font-bold text-ink">02. Safi — خدمات وسوق حرفي</div>
-                    <p class="text-inkMuted text-base">تطبيق وسوق رقمي يربط أصحاب المهن المحلية بالعملاء مباشرة (Flutter
-                        / Node.js).</p>
+
+                <!-- Chrome Extensions -->
+                <div class="space-y-3 pb-6 border-b border-black/10">
+                    <div class="space-y-1">
+                        <div class="text-xl font-bold text-ink">إضافات كروم</div>
+                    </div>
+
+                    <!-- Extensions Cards Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 pt-2">
+                        <!-- Card 1: Keyboardly -->
+                        <a href="https://chromewebstore.google.com/detail/keyboardly/celoipomkbbpllhnpmfomdamnnjfjnbe"
+                            target="_blank" rel="noopener noreferrer"
+                            class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
+                            <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
+                                <img src="images/extensions/keyboardly_promo.png" alt="Keyboardly"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-4 space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <img src="images/extensions/keyboardly.webp" alt="Keyboardly Logo"
+                                            class="w-6 h-6 rounded object-contain">
+                                        <span
+                                            class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">Keyboardly</span>
+                                    </div>
+                                    <span
+                                        class="text-xs text-inkMuted group-hover:text-ink font-sans transition-colors">متجر
+                                        كروم ↗</span>
+                                </div>
+                                <p class="text-xs text-inkMuted leading-relaxed">
+                                    وصول واختصارات فورية للأكواد والنصوص والروابط بضغطة واحدة وبحث ذكي.
+                                </p>
+                            </div>
+                        </a>
+
+                        <!-- Card 2: Dashtab -->
+                        <a href="https://chromewebstore.google.com/detail/dashtab-premium-calm-dash/dpmklgiaeiademeabgdjmaecemjocnjk"
+                            target="_blank" rel="noopener noreferrer"
+                            class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
+                            <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
+                                <img src="images/extensions/dashtab_promo.png" alt="Dashtab"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-4 space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <img src="images/extensions/dashtab.webp" alt="Dashtab Logo"
+                                            class="w-6 h-6 rounded object-contain">
+                                        <span
+                                            class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">Dashtab</span>
+                                    </div>
+                                    <span
+                                        class="text-xs text-inkMuted group-hover:text-ink font-sans transition-colors">متجر
+                                        كروم ↗</span>
+                                </div>
+                                <p class="text-xs text-inkMuted leading-relaxed">
+                                    صفحة تبويب جديدة هادئة ومميزة تمنحك مساحة مريحة وتركيزاً أعلى أثناء التصفح.
+                                </p>
+                            </div>
+                        </a>
+
+                        <!-- Card 3: Chrona -->
+                        <a href="https://chromewebstore.google.com/detail/chrona-privacy-first-time/enjpejidceeiieigmodceapflnaddlak"
+                            target="_blank" rel="noopener noreferrer"
+                            class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
+                            <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
+                                <img src="images/extensions/chrona_promo.png" alt="Chrona"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-4 space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <img src="images/extensions/chrona.webp" alt="Chrona Logo"
+                                            class="w-6 h-6 rounded object-contain">
+                                        <span
+                                            class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">Chrona</span>
+                                    </div>
+                                    <span
+                                        class="text-xs text-inkMuted group-hover:text-ink font-sans transition-colors">متجر
+                                        كروم ↗</span>
+                                </div>
+                                <p class="text-xs text-inkMuted leading-relaxed">
+                                    تتبع وقت التصفح والإنتاجية الرقمية مع الحفاظ الكامل على الخصوصية محلياً.
+                                </p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-                <div class="space-y-1">
-                    <div class="text-xl font-bold text-ink">03. Flex POS</div>
-                    <p class="text-inkMuted text-base">برنامج نقاط البيع المكتبي والسريع لإدارة الفواتير والمخازن (C#
-                        .NET / WPF).</p>
+
+                <!-- Mobile Apps -->
+                <div class="space-y-3 pb-6 border-b border-black/10">
+                    <div class="space-y-1">
+                        <div class="text-xl font-bold text-ink">تطبيقات الهواتف المحمولة</div>
+                    </div>
+
+                    <!-- Mobile Apps Cards Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 pt-2">
+                        <!-- Card 1: Safi -->
+                        <div
+                            class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
+                            <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
+                                <img src="images/apps/safi_promo_ar.jpg" alt="Safi"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-4 space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <img src="images/apps/safi.png" alt="Safi Logo"
+                                            class="w-6 h-6 rounded object-contain">
+                                        <span
+                                            class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">Safi</span>
+                                    </div>
+                                    <span class="text-xs text-inkMuted font-sans">تطبيق موبايل</span>
+                                </div>
+                                <p class="text-xs text-inkMuted leading-relaxed">
+                                    تطبيق وسوق رقمي يربط أصحاب المهن والحرفيين بالعملاء مباشرة مع إدارة الطلبات وحجز
+                                    الخدمات.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Madyan -->
+                        <div
+                            class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
+                            <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
+                                <img src="images/apps/madyan_promo_ar.jpg" alt="Madyan"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-4 space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <img src="images/apps/madyan.png" alt="Madyan Logo"
+                                            class="w-6 h-6 rounded object-contain">
+                                        <span
+                                            class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">Madyan</span>
+                                    </div>
+                                    <span class="text-xs text-inkMuted font-sans">تطبيق موبايل</span>
+                                </div>
+                                <p class="text-xs text-inkMuted leading-relaxed">
+                                    دفتر ديون مالي متكامل لإدارة الديون.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Macropad -->
+                        <a href="https://peucom.github.io/#app/macropad" target="_blank" rel="noopener noreferrer"
+                            class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
+                            <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
+                                <img src="images/apps/macropad_promo_ar.jpg" alt="Macropad"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-4 space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <img src="images/apps/macropad.png" alt="Macropad Logo"
+                                            class="w-6 h-6 rounded object-contain">
+                                        <span
+                                            class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">Macropad</span>
+                                    </div>
+                                    <span
+                                        class="text-xs text-inkMuted group-hover:text-ink font-sans transition-colors">صفحة
+                                        التطبيق ↗</span>
+                                </div>
+                                <p class="text-xs text-inkMuted leading-relaxed">
+                                    لوحة ماكرو واختصارات ذكية للتحكم بالكمبيوتر وتشغيل الأوامر عن بُعد.
+                                </p>
+                            </div>
+                        </a>
+
+                        <!-- Card 4: Maham -->
+                        <div
+                            class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
+                            <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
+                                <img src="images/apps/maham_promo_ar.jpg" alt="مهام"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-4 space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <img src="images/apps/maham.png" alt="شعار مهام"
+                                            class="w-6 h-6 rounded object-contain">
+                                        <span
+                                            class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">مهام</span>
+                                    </div>
+                                    <span class="text-xs text-inkMuted font-sans">تطبيق موبايل</span>
+                                </div>
+                                <p class="text-xs text-inkMuted leading-relaxed">
+                                    تطبيق لإدارة العمليات التشغيلية وتعيين المهام ومتابعة سير الإنجاز بين الإدارة وفرق العمل.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="space-y-1">
-                    <div class="text-xl font-bold text-ink">04. Madyan — دفتر الديون المالي</div>
-                    <p class="text-inkMuted text-base">نظام إدارة الأقساط والديون التجارية بدون إنترنت (Offline-first /
-                        SQLite).</p>
+
+                <!-- Mobile Games -->
+                <div class="space-y-3 pb-6 border-b border-black/10">
+                    <div class="space-y-1">
+                        <div class="text-xl font-bold text-ink">ألعاب الهواتف المحمولة</div>
+                    </div>
+
+                    <!-- Mobile Games Cards Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 pt-2">
+                        <!-- Card 1: SLIDE -->
+                        <div
+                            class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
+                            <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
+                                <img src="images/apps/slide_promo.jpg" alt="SLIDE"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-4 space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <img src="images/apps/slide.png" alt="SLIDE Logo"
+                                            class="w-6 h-6 rounded object-contain">
+                                        <span
+                                            class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">SLIDE</span>
+                                    </div>
+                                    <span class="text-xs text-inkMuted font-sans">لعبة ألغاز</span>
+                                </div>
+                                <p class="text-xs text-inkMuted leading-relaxed">
+                                    لعبة ألغاز وتمرير ذكية؛ تعتمد على التخطيط لمسح المربعات وتخطي أكثر من 500 مستوى بدون إنترنت.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="space-y-1">
-                    <div class="text-xl font-bold text-ink">05. Browser DevTools Extensions</div>
-                    <p class="text-inkMuted text-base">RequestPilot, Chrona, and PDF ELITE — حزمة أدوات موجهة للمطورين.
-                    </p>
+
+                <!-- Corporate Websites -->
+                <div class="space-y-3 pt-2">
+                    <div class="space-y-1">
+                        <div class="text-xl font-bold text-ink">مواقع الويب للشركات</div>
+                    </div>
+
+                    <!-- Websites Rows List -->
+                    <div class="border border-black/10 rounded-xl divide-y divide-black/10 bg-white overflow-hidden">
+                        <!-- Row 1: Anbar NYC -->
+                        <div class="group flex items-start sm:items-center justify-between gap-4 p-3.5 sm:p-4 hover:bg-neutral-50/70 transition-colors">
+                            <div class="flex items-start sm:items-center gap-3.5 sm:gap-4 min-w-0">
+                                <div class="w-12 h-12 rounded-lg bg-neutral-100/70 border border-black/5 p-2 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
+                                    <img src="images/websites/anbar_national_youth_council.png" alt="مجلس شباب الانبار الوطني"
+                                        class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-200">
+                                </div>
+                                <div class="space-y-0.5 min-w-0">
+                                    <div class="font-bold text-ink text-sm sm:text-base group-hover:text-blueInk transition-colors">مجلس شباب الانبار الوطني</div>
+                                    <p class="text-xs text-inkMuted leading-relaxed">
+                                        موقع إلكتروني رسمي لمجلس شباب الانبار الوطني.
+                                    </p>
+                                </div>
+                            </div>
+                            <span class="text-xs text-inkMuted font-sans px-2.5 py-1 rounded-md bg-neutral-100 border border-black/5 shrink-0 whitespace-nowrap self-start sm:self-center">موقع رسمي</span>
+                        </div>
+
+                        <!-- Row 2: Al-Jiwar -->
+                        <div class="group flex items-start sm:items-center justify-between gap-4 p-3.5 sm:p-4 hover:bg-neutral-50/70 transition-colors">
+                            <div class="flex items-start sm:items-center gap-3.5 sm:gap-4 min-w-0">
+                                <div class="w-12 h-12 rounded-lg bg-neutral-100/70 border border-black/5 p-2 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
+                                    <img src="images/websites/aljiwar.png" alt="شركة الجوار"
+                                        class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-200">
+                                </div>
+                                <div class="space-y-0.5 min-w-0">
+                                    <div class="font-bold text-ink text-sm sm:text-base group-hover:text-blueInk transition-colors">شركة الجوار</div>
+                                    <p class="text-xs text-inkMuted leading-relaxed">
+                                        تطوير موقع إلكتروني وتطبيقات أعمال داخلية لشركة الجوار تشمل إدارة المبيعات وCRM.
+                                    </p>
+                                </div>
+                            </div>
+                            <span class="text-xs text-inkMuted font-sans px-2.5 py-1 rounded-md bg-neutral-100 border border-black/5 shrink-0 whitespace-nowrap self-start sm:self-center">موقع وأنظمة</span>
+                        </div>
+
+                        <!-- Row 3: Creative Shot -->
+                        <div class="group flex items-start sm:items-center justify-between gap-4 p-3.5 sm:p-4 hover:bg-neutral-50/70 transition-colors">
+                            <div class="flex items-start sm:items-center gap-3.5 sm:gap-4 min-w-0">
+                                <div class="w-12 h-12 rounded-lg bg-neutral-100/70 border border-black/5 p-2 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
+                                    <img src="images/websites/csc.jpg" alt="شركة لقطة إبداع"
+                                        class="max-h-full max-w-full object-contain rounded group-hover:scale-105 transition-transform duration-200">
+                                </div>
+                                <div class="space-y-0.5 min-w-0">
+                                    <div class="font-bold text-ink text-sm sm:text-base group-hover:text-blueInk transition-colors">شركة لقطة إبداع</div>
+                                    <p class="text-xs text-inkMuted leading-relaxed">
+                                        تطوير الموقع الرسمي لشركة لقطة إبداع المتخصصة في خدمات التصوير والإنتاج الإعلامي.
+                                    </p>
+                                </div>
+                            </div>
+                            <span class="text-xs text-inkMuted font-sans px-2.5 py-1 rounded-md bg-neutral-100 border border-black/5 shrink-0 whitespace-nowrap self-start sm:self-center">موقع إلكتروني</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Navigation Links -->
+                <div class="flex items-center gap-8 sm:gap-12 text-lg sm:text-xl font-arabicBody text-ink font-bold pt-8 border-t border-black/10">
+                    <span onclick="showPage('about')" class="nav-link hover:text-blueInk transition-colors">عني</span>
+                    <span onclick="showPage('contact')" class="nav-link hover:text-blueInk transition-colors">تواصل</span>
+                    <span onclick="showPage('follow')" class="nav-link hover:text-blueInk transition-colors">تابع</span>
                 </div>
             </div>
 
             <!-- English Works -->
-            <div class="lang-en space-y-6 max-w-2xl font-sans">
-                <div class="space-y-1">
-                    <div class="text-xl font-bold text-ink">01. ICMS — Integrated Construction ERP</div>
-                    <p class="text-inkMuted text-base">Comprehensive enterprise resource planning system for major
-                        contracting companies (PHP / Laravel / MySQL).</p>
+            <div class="lang-en space-y-6 max-w-3xl font-sans">
+                <!-- 01. Desktop Software -->
+                <div class="space-y-3 pb-6 border-b border-black/10">
+                    <div class="space-y-1">
+                        <div class="text-xl font-bold text-ink">Desktop Software</div>
+                    </div>
+
+                    <!-- Desktop Apps Cards Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 pt-2">
+                        <!-- Card 1: ICMS -->
+                        <a href="https://itbrok.github.io/apps/icms/" target="_blank" rel="noopener noreferrer"
+                            class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
+                            <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
+                                <img src="images/apps/icms_promo_en.jpg" alt="ICMS"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-4 space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <img src="images/apps/icms.png" alt="ICMS Logo"
+                                            class="w-6 h-6 rounded object-contain">
+                                        <span
+                                            class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">ICMS</span>
+                                    </div>
+                                    <span
+                                        class="text-xs text-inkMuted group-hover:text-ink font-sans transition-colors">Landing
+                                        Page ↗</span>
+                                </div>
+                                <p class="text-xs text-inkMuted leading-relaxed">
+                                    Comprehensive suite for construction firms; integrates finances & profit allocation,
+                                    material inventory, and workforce management.
+                                </p>
+                            </div>
+                        </a>
+
+                        <!-- Card 2: Flex POS -->
+                        <div
+                            class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
+                            <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
+                                <img src="images/apps/flex_promo_en.jpg" alt="Flex POS"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-4 space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <img src="images/apps/flex.png" alt="Flex POS Logo"
+                                            class="w-6 h-6 rounded object-contain">
+                                        <span
+                                            class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">Flex
+                                            POS</span>
+                                    </div>
+                                    <span class="text-xs text-inkMuted font-sans">Desktop App</span>
+                                </div>
+                                <p class="text-xs text-inkMuted leading-relaxed">
+                                    High-performance desktop point-of-sale software for rapid invoicing, inventory
+                                    tracking, and barcode receipt printing.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="space-y-1">
-                    <div class="text-xl font-bold text-ink">02. Safi — On-Demand Services & Artisan Marketplace</div>
-                    <p class="text-inkMuted text-base">Digital marketplace & mobile app connecting local skilled
-                        tradesmen directly with clients (Flutter / Node.js).</p>
+
+                <!-- Chrome Extensions Suite -->
+                <div class="space-y-3 pb-6 border-b border-black/10">
+                    <div class="space-y-1">
+                        <div class="text-xl font-bold text-ink">Chrome Extensions Suite</div>
+                    </div>
+
+                    <!-- Extensions Cards Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 pt-2">
+                        <!-- Card 1: Keyboardly -->
+                        <a href="https://chromewebstore.google.com/detail/keyboardly/celoipomkbbpllhnpmfomdamnnjfjnbe"
+                            target="_blank" rel="noopener noreferrer"
+                            class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
+                            <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
+                                <img src="images/extensions/keyboardly_promo.png" alt="Keyboardly"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-4 space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <img src="images/extensions/keyboardly.webp" alt="Keyboardly Logo"
+                                            class="w-6 h-6 rounded object-contain">
+                                        <span
+                                            class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">Keyboardly</span>
+                                    </div>
+                                    <span
+                                        class="text-xs text-inkMuted group-hover:text-ink font-sans transition-colors">Web
+                                        Store ↗</span>
+                                </div>
+                                <p class="text-xs text-inkMuted leading-relaxed">
+                                    Instant snippet and command launcher via <span class="font-mono">Ctrl+Space</span>
+                                    with fuzzy search.
+                                </p>
+                            </div>
+                        </a>
+
+                        <!-- Card 2: Dashtab -->
+                        <a href="https://chromewebstore.google.com/detail/dashtab-premium-calm-dash/dpmklgiaeiademeabgdjmaecemjocnjk"
+                            target="_blank" rel="noopener noreferrer"
+                            class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
+                            <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
+                                <img src="images/extensions/dashtab_promo.png" alt="Dashtab"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-4 space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <img src="images/extensions/dashtab.webp" alt="Dashtab Logo"
+                                            class="w-6 h-6 rounded object-contain">
+                                        <span
+                                            class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">Dashtab</span>
+                                    </div>
+                                    <span
+                                        class="text-xs text-inkMuted group-hover:text-ink font-sans transition-colors">Web
+                                        Store ↗</span>
+                                </div>
+                                <p class="text-xs text-inkMuted leading-relaxed">
+                                    A serene and distraction-free New Tab dashboard designed to inspire everyday focus.
+                                </p>
+                            </div>
+                        </a>
+
+                        <!-- Card 3: Chrona -->
+                        <a href="https://chromewebstore.google.com/detail/chrona-privacy-first-time/enjpejidceeiieigmodceapflnaddlak"
+                            target="_blank" rel="noopener noreferrer"
+                            class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
+                            <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
+                                <img src="images/extensions/chrona_promo.png" alt="Chrona"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-4 space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <img src="images/extensions/chrona.webp" alt="Chrona Logo"
+                                            class="w-6 h-6 rounded object-contain">
+                                        <span
+                                            class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">Chrona</span>
+                                    </div>
+                                    <span
+                                        class="text-xs text-inkMuted group-hover:text-ink font-sans transition-colors">Web
+                                        Store ↗</span>
+                                </div>
+                                <p class="text-xs text-inkMuted leading-relaxed">
+                                    Automatic, privacy-first web browsing time tracker and digital wellbeing monitor.
+                                </p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-                <div class="space-y-1">
-                    <div class="text-xl font-bold text-ink">03. Flex POS</div>
-                    <p class="text-inkMuted text-base">High-performance desktop point-of-sale software for invoicing and
-                        inventory control (C# .NET / WPF).</p>
+
+                <!-- Mobile Apps -->
+                <div class="space-y-3 pb-6 border-b border-black/10">
+                    <div class="space-y-1">
+                        <div class="text-xl font-bold text-ink">Mobile Applications</div>
+                    </div>
+
+                    <!-- Mobile Apps Cards Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 pt-2">
+                        <!-- Card 1: Safi -->
+                        <div
+                            class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
+                            <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
+                                <img src="images/apps/safi_promo_en.jpg" alt="Safi"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-4 space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <img src="images/apps/safi.png" alt="Safi Logo"
+                                            class="w-6 h-6 rounded object-contain">
+                                        <span
+                                            class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">Safi</span>
+                                    </div>
+                                    <span class="text-xs text-inkMuted font-sans">Mobile App</span>
+                                </div>
+                                <p class="text-xs text-inkMuted leading-relaxed">
+                                    Digital marketplace & on-demand service platform connecting local skilled tradesmen
+                                    directly with clients.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Madyan -->
+                        <div
+                            class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
+                            <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
+                                <img src="images/apps/madyan_promo_en.jpg" alt="Madyan"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-4 space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <img src="images/apps/madyan.png" alt="Madyan Logo"
+                                            class="w-6 h-6 rounded object-contain">
+                                        <span
+                                            class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">Madyan</span>
+                                    </div>
+                                    <span class="text-xs text-inkMuted font-sans">Mobile App</span>
+                                </div>
+                                <p class="text-xs text-inkMuted leading-relaxed">
+                                    Offline-first financial ledger for credit and debt tracking.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Macropad -->
+                        <a href="https://peucom.github.io/#app/macropad" target="_blank" rel="noopener noreferrer"
+                            class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
+                            <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
+                                <img src="images/apps/macropad_promo_en.jpg" alt="Macropad"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-4 space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <img src="images/apps/macropad.png" alt="Macropad Logo"
+                                            class="w-6 h-6 rounded object-contain">
+                                        <span
+                                            class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">Macropad</span>
+                                    </div>
+                                    <span
+                                        class="text-xs text-inkMuted group-hover:text-ink font-sans transition-colors">App
+                                        Page ↗</span>
+                                </div>
+                                <p class="text-xs text-inkMuted leading-relaxed">
+                                    Custom macro pad & remote shortcut deck to control PC workflows wirelessly.
+                                </p>
+                            </div>
+                        </a>
+
+                        <!-- Card 4: Maham -->
+                        <div
+                            class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
+                            <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
+                                <img src="images/apps/maham_promo_en.jpg" alt="Maham"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-4 space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <img src="images/apps/maham.png" alt="Maham Logo"
+                                            class="w-6 h-6 rounded object-contain">
+                                        <span
+                                            class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">Maham</span>
+                                    </div>
+                                    <span class="text-xs text-inkMuted font-sans">Mobile App</span>
+                                </div>
+                                <p class="text-xs text-inkMuted leading-relaxed">
+                                    Operations management app for leadership to assign, monitor, and track employee tasks and execution workflows.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="space-y-1">
-                    <div class="text-xl font-bold text-ink">04. Madyan — Financial Debt Ledger</div>
-                    <p class="text-inkMuted text-base">Offline-first credit, installment, and commercial debt tracking
-                        system (Offline-first / SQLite).</p>
+
+                <!-- Mobile Games -->
+                <div class="space-y-3 pb-6 border-b border-black/10">
+                    <div class="space-y-1">
+                        <div class="text-xl font-bold text-ink">Mobile Games</div>
+                    </div>
+
+                    <!-- Mobile Games Cards Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 pt-2">
+                        <!-- Card 1: SLIDE -->
+                        <div
+                            class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
+                            <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
+                                <img src="images/apps/slide_promo.jpg" alt="SLIDE"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-4 space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <img src="images/apps/slide.png" alt="SLIDE Logo"
+                                            class="w-6 h-6 rounded object-contain">
+                                        <span
+                                            class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">SLIDE</span>
+                                    </div>
+                                    <span class="text-xs text-inkMuted font-sans">Puzzle Game</span>
+                                </div>
+                                <p class="text-xs text-inkMuted leading-relaxed">
+                                    A minimalist swipe puzzle game; slide the glowing block to clear tiles across 500+ offline challenge levels.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="space-y-1">
-                    <div class="text-xl font-bold text-ink">05. Browser DevTools Extensions</div>
-                    <p class="text-inkMuted text-base">RequestPilot, Chrona, and PDF ELITE — A suite of productivity
-                        tools tailored for developers.</p>
+
+                <!-- Corporate Websites -->
+                <div class="space-y-3 pt-2">
+                    <div class="space-y-1">
+                        <div class="text-xl font-bold text-ink">Corporate & Client Websites</div>
+                    </div>
+
+                    <!-- Websites Rows List -->
+                    <div class="border border-black/10 rounded-xl divide-y divide-black/10 bg-white overflow-hidden">
+                        <!-- Row 1: Anbar NYC -->
+                        <div class="group flex items-start sm:items-center justify-between gap-4 p-3.5 sm:p-4 hover:bg-neutral-50/70 transition-colors">
+                            <div class="flex items-start sm:items-center gap-3.5 sm:gap-4 min-w-0">
+                                <div class="w-12 h-12 rounded-lg bg-neutral-100/70 border border-black/5 p-2 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
+                                    <img src="images/websites/anbar_national_youth_council.png" alt="Anbar National Youth Council"
+                                        class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-200">
+                                </div>
+                                <div class="space-y-0.5 min-w-0">
+                                    <div class="font-bold text-ink text-sm sm:text-base group-hover:text-blueInk transition-colors">Anbar Youth Council</div>
+                                    <p class="text-xs text-inkMuted leading-relaxed">
+                                        Official institutional website for the Anbar National Youth Council.
+                                    </p>
+                                </div>
+                            </div>
+                            <span class="text-xs text-inkMuted font-sans px-2.5 py-1 rounded-md bg-neutral-100 border border-black/5 shrink-0 whitespace-nowrap self-start sm:self-center">Official Website</span>
+                        </div>
+
+                        <!-- Row 2: Al-Jiwar -->
+                        <div class="group flex items-start sm:items-center justify-between gap-4 p-3.5 sm:p-4 hover:bg-neutral-50/70 transition-colors">
+                            <div class="flex items-start sm:items-center gap-3.5 sm:gap-4 min-w-0">
+                                <div class="w-12 h-12 rounded-lg bg-neutral-100/70 border border-black/5 p-2 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
+                                    <img src="images/websites/aljiwar.png" alt="Al-Jiwar Co."
+                                        class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-200">
+                                </div>
+                                <div class="space-y-0.5 min-w-0">
+                                    <div class="font-bold text-ink text-sm sm:text-base group-hover:text-blueInk transition-colors">Al-Jiwar Company</div>
+                                    <p class="text-xs text-inkMuted leading-relaxed">
+                                        Corporate website & internal business applications for Al-Jiwar, covering sales operations and CRM.
+                                    </p>
+                                </div>
+                            </div>
+                            <span class="text-xs text-inkMuted font-sans px-2.5 py-1 rounded-md bg-neutral-100 border border-black/5 shrink-0 whitespace-nowrap self-start sm:self-center">Web & CRM</span>
+                        </div>
+
+                        <!-- Row 3: Creative Shot -->
+                        <div class="group flex items-start sm:items-center justify-between gap-4 p-3.5 sm:p-4 hover:bg-neutral-50/70 transition-colors">
+                            <div class="flex items-start sm:items-center gap-3.5 sm:gap-4 min-w-0">
+                                <div class="w-12 h-12 rounded-lg bg-neutral-100/70 border border-black/5 p-2 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
+                                    <img src="images/websites/csc.jpg" alt="Creative Shot Co."
+                                        class="max-h-full max-w-full object-contain rounded group-hover:scale-105 transition-transform duration-200">
+                                </div>
+                                <div class="space-y-0.5 min-w-0">
+                                    <div class="font-bold text-ink text-sm sm:text-base group-hover:text-blueInk transition-colors">Creative Shot Co.</div>
+                                    <p class="text-xs text-inkMuted leading-relaxed">
+                                        Official website for Creative Shot Company, specializing in photography and media production.
+                                    </p>
+                                </div>
+                            </div>
+                            <span class="text-xs text-inkMuted font-sans px-2.5 py-1 rounded-md bg-neutral-100 border border-black/5 shrink-0 whitespace-nowrap self-start sm:self-center">Corporate Site</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Navigation Links -->
+                <div class="flex items-center gap-8 sm:gap-12 text-lg sm:text-xl font-sans text-ink font-bold pt-8 border-t border-black/10">
+                    <span onclick="showPage('about')" class="nav-link hover:text-blueInk transition-colors">About</span>
+                    <span onclick="showPage('contact')" class="nav-link hover:text-blueInk transition-colors">Contact</span>
+                    <span onclick="showPage('follow')" class="nav-link hover:text-blueInk transition-colors">Follow</span>
                 </div>
             </div>
         </div>
 
-        <!-- ================= CAREER PAGE ================= -->
-        <div id="page-career" class="page-view space-y-8">
-            <h2 class="text-3xl sm:text-4xl font-arabicDisplay font-bold text-ink border-b border-black/10 pb-4"
-                id="title-career">مسيرتي المهنية</h2>
 
-            <!-- Arabic Career -->
-            <div class="lang-ar space-y-6 max-w-2xl font-arabicBody text-lg">
-                <div class="space-y-1">
-                    <div class="font-bold text-ink">Co-Founder & Lead Architect — Creative Shot (CSC)</div>
-                    <p class="text-inkMuted text-base">قيادة عمليات التطوير وبناء الأنظمة الرقمية للمؤسسات والشركات.</p>
-                </div>
-                <div class="space-y-1">
-                    <div class="font-bold text-ink">المركز الأول — جامعة الأنبار</div>
-                    <p class="text-inkMuted text-base">التخرج بمرتبة الشرف الأولى على كلية علوم الحاسوب وتكنولوجيا
-                        المعلومات.</p>
-                </div>
-                <div class="space-y-1">
-                    <div class="font-bold text-ink">باحث ومحاضر — Sakarya University (تركيا)</div>
-                    <p class="text-inkMuted text-base">تقديم أوراق وعروض أكاديمية في معالجة اللغة الطبيعية (NLP).</p>
-                </div>
-                <div class="space-y-1">
-                    <div class="font-bold text-ink">خريج حاضنة الأعمال — Orange Corners</div>
-                    <p class="text-inkMuted text-base">تطوير نموذج العمل الريادي والأنظمة التقنية المرافقة.</p>
-                </div>
-            </div>
-
-            <!-- English Career -->
-            <div class="lang-en space-y-6 max-w-2xl font-sans text-lg">
-                <div class="space-y-1">
-                    <div class="font-bold text-ink">Co-Founder & Lead Architect — Creative Shot (CSC)</div>
-                    <p class="text-inkMuted text-base">Leading software engineering initiatives and building enterprise
-                        digital architectures.</p>
-                </div>
-                <div class="space-y-1">
-                    <div class="font-bold text-ink">Valedictorian (Rank 1) — University of Anbar</div>
-                    <p class="text-inkMuted text-base">Graduated with top honors from the College of Computer Science &
-                        Information Technology.</p>
-                </div>
-                <div class="space-y-1">
-                    <div class="font-bold text-ink">Researcher & Lecturer — Sakarya University (Turkey)</div>
-                    <p class="text-inkMuted text-base">Delivered academic presentations and research on Natural Language
-                        Processing (NLP).</p>
-                </div>
-                <div class="space-y-1">
-                    <div class="font-bold text-ink">Incubator Graduate — Orange Corners</div>
-                    <p class="text-inkMuted text-base">Developed innovative startup business models and engineered the
-                        supporting tech stack.</p>
-                </div>
-            </div>
-        </div>
 
         <!-- ================= SKILLS PAGE ================= -->
         <div id="page-skills" class="page-view space-y-8">
@@ -438,6 +1048,13 @@
                     <p class="text-inkMuted">ESC/POS Thermal Printing Drivers, Barcode Hardware IO, Git Workflows,
                         Offline Sync Architecture.</p>
                 </div>
+
+                <!-- Bottom Navigation Links -->
+                <div class="sm:col-span-2 flex items-center gap-8 sm:gap-12 text-lg sm:text-xl font-arabicBody text-ink font-bold pt-8 border-t border-black/10">
+                    <span onclick="showPage('about')" class="nav-link hover:text-blueInk transition-colors">عني</span>
+                    <span onclick="showPage('contact')" class="nav-link hover:text-blueInk transition-colors">تواصل</span>
+                    <span onclick="showPage('follow')" class="nav-link hover:text-blueInk transition-colors">تابع</span>
+                </div>
             </div>
 
             <!-- English Skills -->
@@ -460,6 +1077,13 @@
                     <div class="font-bold text-ink text-lg">Systems & Hardware</div>
                     <p class="text-inkMuted">ESC/POS Thermal Printing Drivers, Barcode Hardware IO, Git Workflows,
                         Offline Sync Architecture.</p>
+                </div>
+
+                <!-- Bottom Navigation Links -->
+                <div class="sm:col-span-2 flex items-center gap-8 sm:gap-12 text-lg sm:text-xl font-sans text-ink font-bold pt-8 border-t border-black/10">
+                    <span onclick="showPage('about')" class="nav-link hover:text-blueInk transition-colors">About</span>
+                    <span onclick="showPage('contact')" class="nav-link hover:text-blueInk transition-colors">Contact</span>
+                    <span onclick="showPage('follow')" class="nav-link hover:text-blueInk transition-colors">Follow</span>
                 </div>
             </div>
         </div>
@@ -485,7 +1109,7 @@
                 <div class="pt-4 border-t border-black/5">
                     <h3 class="text-2xl font-arabicDisplay font-bold text-ink mb-3">بداية القصة</h3>
                     <div class="flow-root">
-                        <img src="mepcpic.png" alt="بداية الشغف" class="about-img">
+                        <img src="images/me/mepcpic.png" alt="بداية الشغف" class="about-img">
                         <p class="text-lg text-ink/90 leading-relaxed">
                             الشغف بالتقنية لم يكن قراراً اتخذته لاحقاً، بل بدايتي الأولى. الصورة تختصر السنوات الأولى من
                             الفضول الذي تحول اليوم إلى مهنة وشغف ببناء البرمجيات.
@@ -497,13 +1121,20 @@
                 <div class="pt-6 border-t border-black/5 clear-both">
                     <h3 class="text-2xl font-arabicDisplay font-bold text-ink mb-3">نقطة الانطلاق</h3>
                     <div class="flow-root">
-                        <img src="grad.jpg" alt="نقطة الانطلاق" class="about-img">
+                        <img src="images/me/grad.jpg" alt="نقطة الانطلاق" class="about-img">
                         <p class="text-lg text-ink/90 leading-relaxed">
                             تخرجت بتفوق كـ <strong>المركز الأول على كلية علوم الحاسوب وتكنولوجيا المعلومات في جامعة
                                 الأنبار</strong>. كانت تلك المحطة الأكاديمية ركيزة أساسية انطلقت منها لترجمة النظريات
                             البرمجية إلى أنظمة وحلول حقيقية تخدم المؤسسات وسوق العمل.
                         </p>
                     </div>
+                </div>
+
+                <!-- روابط الأقسام في نهاية عني -->
+                <div
+                    class="pt-8 border-t border-black/10 flex flex-col items-start space-y-3 text-xl sm:text-2xl font-arabicBody font-bold text-ink clear-both">
+                    <span onclick="showPage('works')" class="section-link">اعمالي</span>
+                    <span onclick="showPage('skills')" class="section-link">الخبرات</span>
                 </div>
             </div>
 
@@ -524,7 +1155,7 @@
                 <div class="pt-4 border-t border-black/5">
                     <h3 class="text-2xl font-bold text-ink mb-3">The Early Spark</h3>
                     <div class="flow-root">
-                        <img src="mepcpic.png" alt="Early passion" class="about-img">
+                        <img src="images/me/mepcpic.png" alt="Early passion" class="about-img">
                         <p class="text-lg text-ink/90 leading-relaxed">
                             My passion for technology wasn't a path chosen later—it was my very beginning. This picture
                             captures the early years of curiosity and tinkering that evolved into a lifelong career and
@@ -537,7 +1168,7 @@
                 <div class="pt-6 border-t border-black/5 clear-both">
                     <h3 class="text-2xl font-bold text-ink mb-3">Academic Milestone</h3>
                     <div class="flow-root">
-                        <img src="grad.jpg" alt="Valedictorian graduation" class="about-img">
+                        <img src="images/me/grad.jpg" alt="Valedictorian graduation" class="about-img">
                         <p class="text-lg text-ink/90 leading-relaxed">
                             I graduated as the <strong>Valedictorian (Rank 1) of the College of Computer Science and
                                 Information Technology at the University of Anbar</strong>. That academic milestone was
@@ -545,6 +1176,13 @@
                             real-world solutions for businesses.
                         </p>
                     </div>
+                </div>
+
+                <!-- Section Links at end of About -->
+                <div
+                    class="pt-8 border-t border-black/10 flex flex-col items-start space-y-3 text-xl sm:text-2xl font-sans font-bold text-ink clear-both">
+                    <span onclick="showPage('works')" class="section-link">My Works</span>
+                    <span onclick="showPage('skills')" class="section-link">Skills & Tech</span>
                 </div>
             </div>
         </div>
@@ -555,40 +1193,58 @@
                 id="title-contact">تواصل</h2>
 
             <!-- Arabic Contact -->
-            <div class="lang-ar max-w-xl font-arabicBody text-lg space-y-4">
-                <div>
-                    <div class="text-sm text-inkMuted uppercase tracking-wider font-sans">البريد الإلكتروني</div>
-                    <a href="mailto:Mohammed@devcore.site"
-                        class="text-xl font-bold text-ink hover:underline">Mohammed@devcore.site</a>
+            <div class="lang-ar max-w-xl font-arabicBody text-lg space-y-6">
+                <div class="space-y-4">
+                    <div>
+                        <div class="text-sm text-inkMuted uppercase tracking-wider font-sans">البريد الإلكتروني</div>
+                        <a href="mailto:brokmtf@gmail.com"
+                            class="text-xl font-bold text-ink hover:underline">brokmtf@gmail.com</a>
+                    </div>
+                    <div>
+                        <div class="text-sm text-inkMuted uppercase tracking-wider font-sans">الهاتف / واتساب</div>
+                        <a href="tel:+9647829933540" dir="ltr"
+                            class="my-phone-number text-xl font-bold text-ink hover:underline"><bdi dir="ltr">+964 782 9933
+                                540</bdi></a>
+                    </div>
+                    <div>
+                        <div class="text-sm text-inkMuted uppercase tracking-wider font-sans">الموقع</div>
+                        <p class="text-xl font-bold text-ink">الرمادي، الأنبار، العراق</p>
+                    </div>
                 </div>
-                <div>
-                    <div class="text-sm text-inkMuted uppercase tracking-wider font-sans">الهاتف / واتساب</div>
-                    <a href="tel:+9647829933540" dir="ltr"
-                        class="my-phone-number text-xl font-bold text-ink hover:underline"><bdi dir="ltr">+964 782 9933
-                            540</bdi></a>
-                </div>
-                <div>
-                    <div class="text-sm text-inkMuted uppercase tracking-wider font-sans">الموقع</div>
-                    <p class="text-xl font-bold text-ink">الرمادي، الأنبار، العراق</p>
+
+                <!-- روابط الأقسام في نهاية تواصل -->
+                <div
+                    class="pt-8 border-t border-black/10 flex flex-col items-start space-y-3 text-xl sm:text-2xl font-arabicBody font-bold text-ink">
+                    <span onclick="showPage('works')" class="section-link">اعمالي</span>
+                    <span onclick="showPage('skills')" class="section-link">الخبرات</span>
                 </div>
             </div>
 
             <!-- English Contact -->
-            <div class="lang-en max-w-xl font-sans text-lg space-y-4">
-                <div>
-                    <div class="text-sm text-inkMuted uppercase tracking-wider">Email</div>
-                    <a href="mailto:Mohammed@devcore.site"
-                        class="text-xl font-bold text-ink hover:underline">Mohammed@devcore.site</a>
+            <div class="lang-en max-w-xl font-sans text-lg space-y-6">
+                <div class="space-y-4">
+                    <div>
+                        <div class="text-sm text-inkMuted uppercase tracking-wider">Email</div>
+                        <a href="mailto:brokmtf@gmail.com"
+                            class="text-xl font-bold text-ink hover:underline">brokmtf@gmail.com</a>
+                    </div>
+                    <div>
+                        <div class="text-sm text-inkMuted uppercase tracking-wider">Phone / Whatsapp</div>
+                        <a href="tel:+9647829933540" dir="ltr"
+                            class="my-phone-number text-xl font-bold text-ink hover:underline"><bdi dir="ltr">+964 782 9933
+                                540</bdi></a>
+                    </div>
+                    <div>
+                        <div class="text-sm text-inkMuted uppercase tracking-wider">Location</div>
+                        <p class="text-xl font-bold text-ink">Ramadi, Anbar, Iraq</p>
+                    </div>
                 </div>
-                <div>
-                    <div class="text-sm text-inkMuted uppercase tracking-wider">Phone / Whatsapp</div>
-                    <a href="tel:+9647829933540" dir="ltr"
-                        class="my-phone-number text-xl font-bold text-ink hover:underline"><bdi dir="ltr">+964 782 9933
-                            540</bdi></a>
-                </div>
-                <div>
-                    <div class="text-sm text-inkMuted uppercase tracking-wider">Location</div>
-                    <p class="text-xl font-bold text-ink">Ramadi, Anbar, Iraq</p>
+
+                <!-- Section Links at end of Contact -->
+                <div
+                    class="pt-8 border-t border-black/10 flex flex-col items-start space-y-3 text-xl sm:text-2xl font-sans font-bold text-ink">
+                    <span onclick="showPage('works')" class="section-link">My Works</span>
+                    <span onclick="showPage('skills')" class="section-link">Skills & Tech</span>
                 </div>
             </div>
         </div>
@@ -597,14 +1253,42 @@
         <div id="page-follow" class="page-view space-y-6">
             <h2 class="text-3xl sm:text-4xl font-arabicDisplay font-bold text-ink border-b border-black/10 pb-4"
                 id="title-follow">تابع</h2>
-            <div class="flex flex-col items-start gap-3 font-arabicBody text-xl font-bold">
-                <a href="https://github.com" target="_blank" class="hover:underline">GitHub</a>
-                <a href="https://linkedin.com" target="_blank" class="hover:underline">LinkedIn</a>
-                <a href="https://telegram.org" target="_blank" class="hover:underline">Telegram</a>
+
+            <!-- Arabic Follow -->
+            <div class="lang-ar max-w-xl space-y-6">
+                <div class="flex flex-col items-start gap-3 font-arabicBody text-xl font-bold">
+                    <a href="https://github.com" target="_blank" class="hover:underline">GitHub</a>
+                    <a href="https://linkedin.com" target="_blank" class="hover:underline">LinkedIn</a>
+                    <a href="https://telegram.org" target="_blank" class="hover:underline">Telegram</a>
+                </div>
+
+                <!-- روابط الأقسام في نهاية تابع -->
+                <div
+                    class="pt-8 border-t border-black/10 flex flex-col items-start space-y-3 text-xl sm:text-2xl font-arabicBody font-bold text-ink">
+                    <span onclick="showPage('works')" class="section-link">اعمالي</span>
+                    <span onclick="showPage('skills')" class="section-link">الخبرات</span>
+                </div>
+            </div>
+
+            <!-- English Follow -->
+            <div class="lang-en max-w-xl space-y-6">
+                <div class="flex flex-col items-start gap-3 font-sans text-xl font-bold">
+                    <a href="https://github.com" target="_blank" class="hover:underline">GitHub</a>
+                    <a href="https://linkedin.com" target="_blank" class="hover:underline">LinkedIn</a>
+                    <a href="https://telegram.org" target="_blank" class="hover:underline">Telegram</a>
+                </div>
+
+                <!-- Section Links at end of Follow -->
+                <div
+                    class="pt-8 border-t border-black/10 flex flex-col items-start space-y-3 text-xl sm:text-2xl font-sans font-bold text-ink">
+                    <span onclick="showPage('works')" class="section-link">My Works</span>
+                    <span onclick="showPage('skills')" class="section-link">Skills & Tech</span>
+                </div>
             </div>
         </div>
 
     </main>
+
 
     <!-- INTERACTION LOGIC -->
     <script>
@@ -621,12 +1305,10 @@
                 linkContact: 'تواصل',
                 linkFollow: 'تابع',
                 linkWorks: 'اعمالي',
-                linkCareer: 'مسيرتي المهنية',
                 linkSkills: 'الخبرات',
                 backText: 'العودة للرئيسية',
                 backArrow: '→',
                 titleWorks: 'أعمالي',
-                titleCareer: 'مسيرتي المهنية',
                 titleSkills: 'الخبرات',
                 titleAbout: 'عني',
                 titleContact: 'تواصل',
@@ -642,12 +1324,10 @@
                 linkContact: 'Contact',
                 linkFollow: 'Follow',
                 linkWorks: 'My Works',
-                linkCareer: 'Career Journey',
                 linkSkills: 'Skills & Tech',
                 backText: 'Back to home',
                 backArrow: '←',
                 titleWorks: 'My Works',
-                titleCareer: 'Career Journey',
                 titleSkills: 'Skills & Tech',
                 titleAbout: 'About Me',
                 titleContact: 'Get in Touch',
@@ -668,6 +1348,7 @@
             } else {
                 backBtn.classList.remove('hidden');
             }
+
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -698,17 +1379,16 @@
             document.getElementById('link-contact').textContent = data.linkContact;
             document.getElementById('link-follow').textContent = data.linkFollow;
             document.getElementById('link-works').textContent = data.linkWorks;
-            document.getElementById('link-career').textContent = data.linkCareer;
             document.getElementById('link-skills').textContent = data.linkSkills;
             document.getElementById('back-text').textContent = data.backText;
             document.getElementById('back-arrow').textContent = data.backArrow;
 
             document.getElementById('title-works').textContent = data.titleWorks;
-            document.getElementById('title-career').textContent = data.titleCareer;
             document.getElementById('title-skills').textContent = data.titleSkills;
             document.getElementById('title-about').textContent = data.titleAbout;
             document.getElementById('title-contact').textContent = data.titleContact;
             document.getElementById('title-follow').textContent = data.titleFollow;
+
         }
 
         function toggleLanguage() {
