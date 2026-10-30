@@ -186,6 +186,7 @@
         .about-img {
             width: 45%;
             max-width: 240px;
+            height: auto;
             margin-bottom: 12px;
             border-radius: 2px;
         }
@@ -207,6 +208,18 @@
             width: 25%;
             min-width: 130px;
             max-width: 190px;
+            height: auto;
+        }
+
+        /* Lazy-loaded image smooth fade-in while preserving hover scale transitions */
+        img.lazy {
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        img.lazy.loaded,
+        img.lazy.error {
+            opacity: 1;
         }
 
         html[dir="rtl"] .signature-img {
@@ -277,7 +290,7 @@
 
             <!-- HANDWRITTEN SIGNATURE -->
             <div class="pt-2 pb-4 flow-root">
-                <img src="images/me/signature.png" class="signature-img" alt="Signature">
+                <img src="images/me/signature.png" width="914" height="457" fetchpriority="high" decoding="async" class="signature-img" alt="Signature">
             </div>
 
             <!-- HORIZONTAL LINKS -->
@@ -316,14 +329,16 @@
                         <a href="https://itbrok.github.io/apps/icms/" target="_blank" rel="noopener noreferrer"
                             class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
                             <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
-                                <img src="images/apps/icms_promo_ar.jpg" alt="ICMS"
-                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/apps/icms_promo_ar.jpg" decoding="async" alt="ICMS"
+                                    class="lazy w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                             </div>
                             <div class="p-4 space-y-2">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center gap-2">
-                                        <img src="images/apps/icms.png" alt="ICMS Logo"
-                                            class="w-6 h-6 rounded object-contain">
+                                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                            data-src="images/apps/icms.png" decoding="async" alt="ICMS Logo"
+                                            class="lazy w-6 h-6 rounded object-contain">
                                         <span
                                             class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">ICMS</span>
                                     </div>
@@ -342,14 +357,16 @@
                         <div
                             class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
                             <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
-                                <img src="images/apps/flex_promo_ar.jpg" alt="Flex POS"
-                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/apps/flex_promo_ar.jpg" decoding="async" alt="Flex POS"
+                                    class="lazy w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                             </div>
                             <div class="p-4 space-y-2">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center gap-2">
-                                        <img src="images/apps/flex.png" alt="Flex POS Logo"
-                                            class="w-6 h-6 rounded object-contain">
+                                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                            data-src="images/apps/flex.png" decoding="async" alt="Flex POS Logo"
+                                            class="lazy w-6 h-6 rounded object-contain">
                                         <span
                                             class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">Flex
                                             POS</span>
@@ -378,14 +395,16 @@
                             target="_blank" rel="noopener noreferrer"
                             class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
                             <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
-                                <img src="images/extensions/keyboardly_promo.png" alt="Keyboardly"
-                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/extensions/keyboardly_promo.png" decoding="async" alt="Keyboardly"
+                                    class="lazy w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                             </div>
                             <div class="p-4 space-y-2">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center gap-2">
-                                        <img src="images/extensions/keyboardly.webp" alt="Keyboardly Logo"
-                                            class="w-6 h-6 rounded object-contain">
+                                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                            data-src="images/extensions/keyboardly.webp" decoding="async" alt="Keyboardly Logo"
+                                            class="lazy w-6 h-6 rounded object-contain">
                                         <span
                                             class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">Keyboardly</span>
                                     </div>
@@ -404,14 +423,16 @@
                             target="_blank" rel="noopener noreferrer"
                             class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
                             <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
-                                <img src="images/extensions/dashtab_promo.png" alt="Dashtab"
-                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/extensions/dashtab_promo.png" decoding="async" alt="Dashtab"
+                                    class="lazy w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                             </div>
                             <div class="p-4 space-y-2">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center gap-2">
-                                        <img src="images/extensions/dashtab.webp" alt="Dashtab Logo"
-                                            class="w-6 h-6 rounded object-contain">
+                                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                            data-src="images/extensions/dashtab.webp" decoding="async" alt="Dashtab Logo"
+                                            class="lazy w-6 h-6 rounded object-contain">
                                         <span
                                             class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">Dashtab</span>
                                     </div>
@@ -430,14 +451,16 @@
                             target="_blank" rel="noopener noreferrer"
                             class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
                             <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
-                                <img src="images/extensions/chrona_promo.png" alt="Chrona"
-                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/extensions/chrona_promo.png" decoding="async" alt="Chrona"
+                                    class="lazy w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                             </div>
                             <div class="p-4 space-y-2">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center gap-2">
-                                        <img src="images/extensions/chrona.webp" alt="Chrona Logo"
-                                            class="w-6 h-6 rounded object-contain">
+                                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                            data-src="images/extensions/chrona.webp" decoding="async" alt="Chrona Logo"
+                                            class="lazy w-6 h-6 rounded object-contain">
                                         <span
                                             class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">Chrona</span>
                                     </div>
@@ -465,14 +488,16 @@
                         <div
                             class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
                             <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
-                                <img src="images/apps/safi_promo_ar.jpg" alt="Safi"
-                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/apps/safi_promo_ar.jpg" decoding="async" alt="Safi"
+                                    class="lazy w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                             </div>
                             <div class="p-4 space-y-2">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center gap-2">
-                                        <img src="images/apps/safi.png" alt="Safi Logo"
-                                            class="w-6 h-6 rounded object-contain">
+                                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                            data-src="images/apps/safi.png" decoding="async" alt="Safi Logo"
+                                            class="lazy w-6 h-6 rounded object-contain">
                                         <span
                                             class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">Safi</span>
                                     </div>
@@ -489,14 +514,16 @@
                         <div
                             class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
                             <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
-                                <img src="images/apps/madyan_promo_ar.jpg" alt="Madyan"
-                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/apps/madyan_promo_ar.jpg" decoding="async" alt="Madyan"
+                                    class="lazy w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                             </div>
                             <div class="p-4 space-y-2">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center gap-2">
-                                        <img src="images/apps/madyan.png" alt="Madyan Logo"
-                                            class="w-6 h-6 rounded object-contain">
+                                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                            data-src="images/apps/madyan.png" decoding="async" alt="Madyan Logo"
+                                            class="lazy w-6 h-6 rounded object-contain">
                                         <span
                                             class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">Madyan</span>
                                     </div>
@@ -512,14 +539,16 @@
                         <a href="https://peucom.github.io/#app/macropad" target="_blank" rel="noopener noreferrer"
                             class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
                             <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
-                                <img src="images/apps/macropad_promo_ar.jpg" alt="Macropad"
-                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/apps/macropad_promo_ar.jpg" decoding="async" alt="Macropad"
+                                    class="lazy w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                             </div>
                             <div class="p-4 space-y-2">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center gap-2">
-                                        <img src="images/apps/macropad.png" alt="Macropad Logo"
-                                            class="w-6 h-6 rounded object-contain">
+                                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                            data-src="images/apps/macropad.png" decoding="async" alt="Macropad Logo"
+                                            class="lazy w-6 h-6 rounded object-contain">
                                         <span
                                             class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">Macropad</span>
                                     </div>
@@ -537,14 +566,16 @@
                         <div
                             class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
                             <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
-                                <img src="images/apps/maham_promo_ar.jpg" alt="مهام"
-                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/apps/maham_promo_ar.jpg" decoding="async" alt="مهام"
+                                    class="lazy w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                             </div>
                             <div class="p-4 space-y-2">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center gap-2">
-                                        <img src="images/apps/maham.png" alt="شعار مهام"
-                                            class="w-6 h-6 rounded object-contain">
+                                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                            data-src="images/apps/maham.png" decoding="async" alt="شعار مهام"
+                                            class="lazy w-6 h-6 rounded object-contain">
                                         <span
                                             class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">مهام</span>
                                     </div>
@@ -570,14 +601,16 @@
                         <div
                             class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
                             <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
-                                <img src="images/apps/slide_promo.jpg" alt="SLIDE"
-                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/apps/slide_promo.jpg" decoding="async" alt="SLIDE"
+                                    class="lazy w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                             </div>
                             <div class="p-4 space-y-2">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center gap-2">
-                                        <img src="images/apps/slide.png" alt="SLIDE Logo"
-                                            class="w-6 h-6 rounded object-contain">
+                                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                            data-src="images/apps/slide.png" decoding="async" alt="SLIDE Logo"
+                                            class="lazy w-6 h-6 rounded object-contain">
                                         <span
                                             class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">SLIDE</span>
                                     </div>
@@ -603,8 +636,9 @@
                         <div class="group flex items-start sm:items-center justify-between gap-4 p-3.5 sm:p-4 hover:bg-neutral-50/70 transition-colors">
                             <div class="flex items-start sm:items-center gap-3.5 sm:gap-4 min-w-0">
                                 <div class="w-12 h-12 rounded-lg bg-neutral-100/70 border border-black/5 p-2 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
-                                    <img src="images/websites/anbar_national_youth_council.png" alt="مجلس شباب الانبار الوطني"
-                                        class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-200">
+                                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                        data-src="images/websites/anbar_national_youth_council.png" decoding="async" alt="مجلس شباب الانبار الوطني"
+                                        class="lazy max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-200">
                                 </div>
                                 <div class="space-y-0.5 min-w-0">
                                     <div class="font-bold text-ink text-sm sm:text-base group-hover:text-blueInk transition-colors">مجلس شباب الانبار الوطني</div>
@@ -620,8 +654,9 @@
                         <div class="group flex items-start sm:items-center justify-between gap-4 p-3.5 sm:p-4 hover:bg-neutral-50/70 transition-colors">
                             <div class="flex items-start sm:items-center gap-3.5 sm:gap-4 min-w-0">
                                 <div class="w-12 h-12 rounded-lg bg-neutral-100/70 border border-black/5 p-2 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
-                                    <img src="images/websites/aljiwar.png" alt="شركة الجوار"
-                                        class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-200">
+                                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                        data-src="images/websites/aljiwar.png" decoding="async" alt="شركة الجوار"
+                                        class="lazy max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-200">
                                 </div>
                                 <div class="space-y-0.5 min-w-0">
                                     <div class="font-bold text-ink text-sm sm:text-base group-hover:text-blueInk transition-colors">شركة الجوار</div>
@@ -637,8 +672,9 @@
                         <div class="group flex items-start sm:items-center justify-between gap-4 p-3.5 sm:p-4 hover:bg-neutral-50/70 transition-colors">
                             <div class="flex items-start sm:items-center gap-3.5 sm:gap-4 min-w-0">
                                 <div class="w-12 h-12 rounded-lg bg-neutral-100/70 border border-black/5 p-2 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
-                                    <img src="images/websites/csc.jpg" alt="شركة لقطة إبداع"
-                                        class="max-h-full max-w-full object-contain rounded group-hover:scale-105 transition-transform duration-200">
+                                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                        data-src="images/websites/csc.jpg" decoding="async" alt="شركة لقطة إبداع"
+                                        class="lazy max-h-full max-w-full object-contain rounded group-hover:scale-105 transition-transform duration-200">
                                 </div>
                                 <div class="space-y-0.5 min-w-0">
                                     <div class="font-bold text-ink text-sm sm:text-base group-hover:text-blueInk transition-colors">شركة لقطة إبداع</div>
@@ -674,14 +710,16 @@
                         <a href="https://itbrok.github.io/apps/icms/" target="_blank" rel="noopener noreferrer"
                             class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
                             <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
-                                <img src="images/apps/icms_promo_en.jpg" alt="ICMS"
-                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/apps/icms_promo_en.jpg" decoding="async" alt="ICMS"
+                                    class="lazy w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                             </div>
                             <div class="p-4 space-y-2">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center gap-2">
-                                        <img src="images/apps/icms.png" alt="ICMS Logo"
-                                            class="w-6 h-6 rounded object-contain">
+                                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                            data-src="images/apps/icms.png" decoding="async" alt="ICMS Logo"
+                                            class="lazy w-6 h-6 rounded object-contain">
                                         <span
                                             class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">ICMS</span>
                                     </div>
@@ -700,14 +738,16 @@
                         <div
                             class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
                             <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
-                                <img src="images/apps/flex_promo_en.jpg" alt="Flex POS"
-                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/apps/flex_promo_en.jpg" decoding="async" alt="Flex POS"
+                                    class="lazy w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                             </div>
                             <div class="p-4 space-y-2">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center gap-2">
-                                        <img src="images/apps/flex.png" alt="Flex POS Logo"
-                                            class="w-6 h-6 rounded object-contain">
+                                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                            data-src="images/apps/flex.png" decoding="async" alt="Flex POS Logo"
+                                            class="lazy w-6 h-6 rounded object-contain">
                                         <span
                                             class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">Flex
                                             POS</span>
@@ -736,14 +776,16 @@
                             target="_blank" rel="noopener noreferrer"
                             class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
                             <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
-                                <img src="images/extensions/keyboardly_promo.png" alt="Keyboardly"
-                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/extensions/keyboardly_promo.png" decoding="async" alt="Keyboardly"
+                                    class="lazy w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                             </div>
                             <div class="p-4 space-y-2">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center gap-2">
-                                        <img src="images/extensions/keyboardly.webp" alt="Keyboardly Logo"
-                                            class="w-6 h-6 rounded object-contain">
+                                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                            data-src="images/extensions/keyboardly.webp" decoding="async" alt="Keyboardly Logo"
+                                            class="lazy w-6 h-6 rounded object-contain">
                                         <span
                                             class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">Keyboardly</span>
                                     </div>
@@ -763,14 +805,16 @@
                             target="_blank" rel="noopener noreferrer"
                             class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
                             <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
-                                <img src="images/extensions/dashtab_promo.png" alt="Dashtab"
-                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/extensions/dashtab_promo.png" decoding="async" alt="Dashtab"
+                                    class="lazy w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                             </div>
                             <div class="p-4 space-y-2">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center gap-2">
-                                        <img src="images/extensions/dashtab.webp" alt="Dashtab Logo"
-                                            class="w-6 h-6 rounded object-contain">
+                                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                            data-src="images/extensions/dashtab.webp" decoding="async" alt="Dashtab Logo"
+                                            class="lazy w-6 h-6 rounded object-contain">
                                         <span
                                             class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">Dashtab</span>
                                     </div>
@@ -789,14 +833,16 @@
                             target="_blank" rel="noopener noreferrer"
                             class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
                             <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
-                                <img src="images/extensions/chrona_promo.png" alt="Chrona"
-                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/extensions/chrona_promo.png" decoding="async" alt="Chrona"
+                                    class="lazy w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                             </div>
                             <div class="p-4 space-y-2">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center gap-2">
-                                        <img src="images/extensions/chrona.webp" alt="Chrona Logo"
-                                            class="w-6 h-6 rounded object-contain">
+                                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                            data-src="images/extensions/chrona.webp" decoding="async" alt="Chrona Logo"
+                                            class="lazy w-6 h-6 rounded object-contain">
                                         <span
                                             class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">Chrona</span>
                                     </div>
@@ -824,14 +870,16 @@
                         <div
                             class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
                             <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
-                                <img src="images/apps/safi_promo_en.jpg" alt="Safi"
-                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/apps/safi_promo_en.jpg" decoding="async" alt="Safi"
+                                    class="lazy w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                             </div>
                             <div class="p-4 space-y-2">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center gap-2">
-                                        <img src="images/apps/safi.png" alt="Safi Logo"
-                                            class="w-6 h-6 rounded object-contain">
+                                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                            data-src="images/apps/safi.png" decoding="async" alt="Safi Logo"
+                                            class="lazy w-6 h-6 rounded object-contain">
                                         <span
                                             class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">Safi</span>
                                     </div>
@@ -848,14 +896,16 @@
                         <div
                             class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
                             <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
-                                <img src="images/apps/madyan_promo_en.jpg" alt="Madyan"
-                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/apps/madyan_promo_en.jpg" decoding="async" alt="Madyan"
+                                    class="lazy w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                             </div>
                             <div class="p-4 space-y-2">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center gap-2">
-                                        <img src="images/apps/madyan.png" alt="Madyan Logo"
-                                            class="w-6 h-6 rounded object-contain">
+                                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                            data-src="images/apps/madyan.png" decoding="async" alt="Madyan Logo"
+                                            class="lazy w-6 h-6 rounded object-contain">
                                         <span
                                             class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">Madyan</span>
                                     </div>
@@ -871,14 +921,16 @@
                         <a href="https://peucom.github.io/#app/macropad" target="_blank" rel="noopener noreferrer"
                             class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
                             <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
-                                <img src="images/apps/macropad_promo_en.jpg" alt="Macropad"
-                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/apps/macropad_promo_en.jpg" decoding="async" alt="Macropad"
+                                    class="lazy w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                             </div>
                             <div class="p-4 space-y-2">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center gap-2">
-                                        <img src="images/apps/macropad.png" alt="Macropad Logo"
-                                            class="w-6 h-6 rounded object-contain">
+                                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                            data-src="images/apps/macropad.png" decoding="async" alt="Macropad Logo"
+                                            class="lazy w-6 h-6 rounded object-contain">
                                         <span
                                             class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">Macropad</span>
                                     </div>
@@ -896,14 +948,16 @@
                         <div
                             class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
                             <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
-                                <img src="images/apps/maham_promo_en.jpg" alt="Maham"
-                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/apps/maham_promo_en.jpg" decoding="async" alt="Maham"
+                                    class="lazy w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                             </div>
                             <div class="p-4 space-y-2">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center gap-2">
-                                        <img src="images/apps/maham.png" alt="Maham Logo"
-                                            class="w-6 h-6 rounded object-contain">
+                                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                            data-src="images/apps/maham.png" decoding="async" alt="Maham Logo"
+                                            class="lazy w-6 h-6 rounded object-contain">
                                         <span
                                             class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">Maham</span>
                                     </div>
@@ -929,14 +983,16 @@
                         <div
                             class="group block border border-black/10 rounded-xl overflow-hidden hover:border-black/30 hover:shadow-lg transition-all duration-200 bg-white">
                             <div class="overflow-hidden bg-neutral-900 aspect-[16/10] flex items-center justify-center">
-                                <img src="images/apps/slide_promo.jpg" alt="SLIDE"
-                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                    data-src="images/apps/slide_promo.jpg" decoding="async" alt="SLIDE"
+                                    class="lazy w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                             </div>
                             <div class="p-4 space-y-2">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center gap-2">
-                                        <img src="images/apps/slide.png" alt="SLIDE Logo"
-                                            class="w-6 h-6 rounded object-contain">
+                                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                            data-src="images/apps/slide.png" decoding="async" alt="SLIDE Logo"
+                                            class="lazy w-6 h-6 rounded object-contain">
                                         <span
                                             class="font-bold text-ink text-base group-hover:text-blueInk transition-colors">SLIDE</span>
                                     </div>
@@ -962,8 +1018,9 @@
                         <div class="group flex items-start sm:items-center justify-between gap-4 p-3.5 sm:p-4 hover:bg-neutral-50/70 transition-colors">
                             <div class="flex items-start sm:items-center gap-3.5 sm:gap-4 min-w-0">
                                 <div class="w-12 h-12 rounded-lg bg-neutral-100/70 border border-black/5 p-2 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
-                                    <img src="images/websites/anbar_national_youth_council.png" alt="Anbar National Youth Council"
-                                        class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-200">
+                                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                        data-src="images/websites/anbar_national_youth_council.png" decoding="async" alt="Anbar National Youth Council"
+                                        class="lazy max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-200">
                                 </div>
                                 <div class="space-y-0.5 min-w-0">
                                     <div class="font-bold text-ink text-sm sm:text-base group-hover:text-blueInk transition-colors">Anbar Youth Council</div>
@@ -979,8 +1036,9 @@
                         <div class="group flex items-start sm:items-center justify-between gap-4 p-3.5 sm:p-4 hover:bg-neutral-50/70 transition-colors">
                             <div class="flex items-start sm:items-center gap-3.5 sm:gap-4 min-w-0">
                                 <div class="w-12 h-12 rounded-lg bg-neutral-100/70 border border-black/5 p-2 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
-                                    <img src="images/websites/aljiwar.png" alt="Al-Jiwar Co."
-                                        class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-200">
+                                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                        data-src="images/websites/aljiwar.png" decoding="async" alt="Al-Jiwar Co."
+                                        class="lazy max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-200">
                                 </div>
                                 <div class="space-y-0.5 min-w-0">
                                     <div class="font-bold text-ink text-sm sm:text-base group-hover:text-blueInk transition-colors">Al-Jiwar Company</div>
@@ -996,8 +1054,9 @@
                         <div class="group flex items-start sm:items-center justify-between gap-4 p-3.5 sm:p-4 hover:bg-neutral-50/70 transition-colors">
                             <div class="flex items-start sm:items-center gap-3.5 sm:gap-4 min-w-0">
                                 <div class="w-12 h-12 rounded-lg bg-neutral-100/70 border border-black/5 p-2 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
-                                    <img src="images/websites/csc.jpg" alt="Creative Shot Co."
-                                        class="max-h-full max-w-full object-contain rounded group-hover:scale-105 transition-transform duration-200">
+                                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                        data-src="images/websites/csc.jpg" decoding="async" alt="Creative Shot Co."
+                                        class="lazy max-h-full max-w-full object-contain rounded group-hover:scale-105 transition-transform duration-200">
                                 </div>
                                 <div class="space-y-0.5 min-w-0">
                                     <div class="font-bold text-ink text-sm sm:text-base group-hover:text-blueInk transition-colors">Creative Shot Co.</div>
@@ -1109,7 +1168,9 @@
                 <div class="pt-4 border-t border-black/5">
                     <h3 class="text-2xl font-arabicDisplay font-bold text-ink mb-3">بداية القصة</h3>
                     <div class="flow-root">
-                        <img src="images/me/mepcpic.png" alt="بداية الشغف" class="about-img">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 520 709'%3E%3C/svg%3E"
+                            data-src="images/me/mepcpic.webp" width="520" height="709" decoding="async"
+                            alt="بداية الشغف" class="lazy about-img">
                         <p class="text-lg text-ink/90 leading-relaxed">
                             الشغف بالتقنية لم يكن قراراً اتخذته لاحقاً، بل بدايتي الأولى. الصورة تختصر السنوات الأولى من
                             الفضول الذي تحول اليوم إلى مهنة وشغف ببناء البرمجيات.
@@ -1121,7 +1182,9 @@
                 <div class="pt-6 border-t border-black/5 clear-both">
                     <h3 class="text-2xl font-arabicDisplay font-bold text-ink mb-3">نقطة الانطلاق</h3>
                     <div class="flow-root">
-                        <img src="images/me/grad.jpg" alt="نقطة الانطلاق" class="about-img">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 462 467'%3E%3C/svg%3E"
+                            data-src="images/me/grad.jpg" width="462" height="467" decoding="async"
+                            alt="نقطة الانطلاق" class="lazy about-img">
                         <p class="text-lg text-ink/90 leading-relaxed">
                             تخرجت بتفوق كـ <strong>المركز الأول على كلية علوم الحاسوب وتكنولوجيا المعلومات في جامعة
                                 الأنبار</strong>. كانت تلك المحطة الأكاديمية ركيزة أساسية انطلقت منها لترجمة النظريات
@@ -1155,7 +1218,9 @@
                 <div class="pt-4 border-t border-black/5">
                     <h3 class="text-2xl font-bold text-ink mb-3">The Early Spark</h3>
                     <div class="flow-root">
-                        <img src="images/me/mepcpic.png" alt="Early passion" class="about-img">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 520 709'%3E%3C/svg%3E"
+                            data-src="images/me/mepcpic.webp" width="520" height="709" decoding="async"
+                            alt="Early passion" class="lazy about-img">
                         <p class="text-lg text-ink/90 leading-relaxed">
                             My passion for technology wasn't a path chosen later—it was my very beginning. This picture
                             captures the early years of curiosity and tinkering that evolved into a lifelong career and
@@ -1168,7 +1233,9 @@
                 <div class="pt-6 border-t border-black/5 clear-both">
                     <h3 class="text-2xl font-bold text-ink mb-3">Academic Milestone</h3>
                     <div class="flow-root">
-                        <img src="images/me/grad.jpg" alt="Valedictorian graduation" class="about-img">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 462 467'%3E%3C/svg%3E"
+                            data-src="images/me/grad.jpg" width="462" height="467" decoding="async"
+                            alt="Valedictorian graduation" class="lazy about-img">
                         <p class="text-lg text-ink/90 leading-relaxed">
                             I graduated as the <strong>Valedictorian (Rank 1) of the College of Computer Science and
                                 Information Technology at the University of Anbar</strong>. That academic milestone was
@@ -1290,9 +1357,41 @@
     </main>
 
 
+    <!-- Vanilla LazyLoad (lightweight pre-built IntersectionObserver lazy-loader) -->
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.min.js"></script>
+
     <!-- INTERACTION LOGIC -->
     <script>
         let currentLang = document.documentElement.getAttribute('lang') || 'ar';
+
+        // Initialize lazy loading: only load images in visible pages/languages when within 250px of viewport
+        let lazyLoadInstance = null;
+        if (typeof LazyLoad !== 'undefined') {
+            lazyLoadInstance = new LazyLoad({
+                elements_selector: '.lazy',
+                thresholds: '250px 0px'
+            });
+        } else if ('IntersectionObserver' in window) {
+            const fallbackObserver = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    const img = entry.target;
+                    if (img.dataset.src) img.src = img.dataset.src;
+                    img.onload = () => img.classList.add('loaded');
+                    img.onerror = () => img.classList.add('error');
+                    obs.unobserve(img);
+                });
+            }, { rootMargin: '250px 0px' });
+            lazyLoadInstance = {
+                update: () => {
+                    document.querySelectorAll('img.lazy:not(.loaded)').forEach(img => {
+                        fallbackObserver.unobserve(img);
+                        fallbackObserver.observe(img);
+                    });
+                }
+            };
+            lazyLoadInstance.update();
+        }
 
         const i18n = {
             ar: {
@@ -1349,8 +1448,11 @@
                 backBtn.classList.remove('hidden');
             }
 
-
             window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            if (lazyLoadInstance) {
+                lazyLoadInstance.update();
+            }
         }
 
         function applyLanguage(lang) {
@@ -1389,6 +1491,9 @@
             document.getElementById('title-contact').textContent = data.titleContact;
             document.getElementById('title-follow').textContent = data.titleFollow;
 
+            if (lazyLoadInstance) {
+                lazyLoadInstance.update();
+            }
         }
 
         function toggleLanguage() {
