@@ -27,7 +27,7 @@
 - Safi (تطبيق صافي): On-demand digital marketplace connecting local tradesmen and service professionals with clients in Iraq.
 - Madyan (تطبيق مديان): Offline-first financial ledger mobile app for credit and debt management.
 - Maham (تطبيق مهام): Operations and team task execution management mobile app.
-- SLIDE: Minimalist offline puzzle mobile game with 500+ levels.
+- [SLIDE — Google Play](https://play.google.com/store/apps/details?id=com.studio.slide): Minimalist offline puzzle mobile game published on Google Play with 500+ levels.
 - Corporate Websites & CRM Systems: Anbar National Youth Council (مجلس شباب الانبار الوطني), Al-Jiwar Co. (شركة الجوار), Creative Shot Co. (شركة لقطة إبداع).
 
 ## Technical Stack
@@ -42,3 +42,4 @@
 - GitHub: [https://github.com/itbrok](https://github.com/itbrok)
 - Email: `brokmtf@gmail.com`
 - Phone / WhatsApp: `+964 782 9933 540`
+
