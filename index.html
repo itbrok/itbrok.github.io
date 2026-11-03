@@ -2783,7 +2783,10 @@
 
     <!-- INTERACTION LOGIC -->
     <script>
-        let currentLang = document.documentElement.getAttribute('lang') || 'ar';
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlLang = urlParams.get('lang');
+        const savedLang = localStorage.getItem('preferred_lang');
+        let currentLang = (urlLang === 'en' || urlLang === 'ar') ? urlLang : (savedLang || document.documentElement.getAttribute('lang') || 'ar');
         let lazyLoadInstance = null;
 
         function ensureLazyLoad() {
@@ -2825,6 +2828,7 @@
                 metaDescription: 'محمد آل ثميل (محمد أحمد رشيد) — مبرمج ومهندس برمجيات ومصمم أنظمة رقمية في الرمادي، العراق. تطوير أنظمة ERP ونقاط البيع، تطبيقات الهواتف (Flutter)، ومواقع الشركات.',
                 langBtn: 'EN',
                 langHref: '?lang=en',
+                langTitle: 'Switch to English',
                 name: 'محمد آل ثميل',
                 role: 'مبرمج . مصمم',
                 bio: 'أحب الحياة ببساطتها. الكود، النماذج، والتجارب جزء مني. أحول المعقد لسهل لدرجة تسأل نفسك «شلون سواها؟!».',
@@ -2848,6 +2852,7 @@
                 metaDescription: 'Mohammed Al-Thumail (Mohammed Ahmed Rasheed) — Software Engineer & Digital Systems Architect in Ramadi, Iraq. Building ERP & POS software, Flutter mobile apps, Chrome extensions, and web platforms.',
                 langBtn: 'عربي',
                 langHref: './',
+                langTitle: 'التحويل إلى اللغة العربية',
                 name: 'Mohammed Al-Thumail',
                 role: 'Developer . Designer',
                 bio: 'I love life in its simplicity. Code, prototypes, and experiments are part of me. Crafting complex ideas into approachable systems that leave you wondering, "Wait, how did he do that?!".',
@@ -2937,6 +2942,8 @@
             const langBtn = document.getElementById('lang-btn');
             langBtn.textContent = data.langBtn;
             langBtn.setAttribute('href', data.langHref);
+            langBtn.setAttribute('title', data.langTitle);
+            langBtn.setAttribute('aria-label', data.langTitle);
 
             document.getElementById('nav-primary').setAttribute('aria-label', currentLang === 'en' ? 'Primary navigation' : 'روابط التعريف والتواصل');
             document.getElementById('nav-sections').setAttribute('aria-label', currentLang === 'en' ? 'Portfolio and skills' : 'الأعمال والخبرات');
